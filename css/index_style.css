@@ -1,0 +1,26 @@
+html,body{
+  height: 100%;
+  width: 100%;
+}
+
+.image_container{
+  position: relative;
+  height: 80%;
+  width: 80%;
+}
+
+.display-image{
+  position: relative;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+
+.clickable1{
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  background: #676767;
+  height: 30%;
+  width: 30%;
+}

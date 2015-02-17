@@ -1,0 +1,44 @@
+
+*{
+  box-sizing: border-box;
+}
+
+html , body {
+  height: 100%;
+}
+
+.box{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content : center;
+  align-items: stretch;
+  height: 100%
+}
+
+.box div.A{
+  order: 1;
+  flex : 1 1 auto;
+  align-self: auto;
+  min-width: 0;
+  min-height: auto;
+  background: #26C6DA;
+}
+
+.box div.B{
+  order: 2;
+  flex : 1 1 auto;
+  align-self: auto;
+  min-width: 0;
+  min-height: auto;
+  background: #4DD0E1;
+}
+
+.box div.C{
+  order: 3;
+  flex : 1 1 auto;
+  align-self: auto;
+  min-width: 0;
+  min-height: auto;
+  background: #80DEEA;
+}
