@@ -1,0 +1,17 @@
+{
+  "name": "web_display_app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sohamkamani/mock-app-web-view",
+  "main": "dontknow",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

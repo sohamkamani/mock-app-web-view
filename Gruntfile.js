@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['src/**/*.js'],
+        src: ['app/js/**/*.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
@@ -21,11 +21,26 @@ module.exports = function(grunt) {
         }
       }
     },
-    // qunit: {
-    //   files: ['test/**/*.html']
-    // },
+    cssmin: {
+      build: {
+        files: {
+          'dist/application.css': ['app/style/*.css']
+        }
+      }
+    },
+    htmlmin: {                                   
+    dist: {                                     
+      options: {                                  
+        removeComments: true,
+        collapseWhitespace: true
+      },
+      files: {                                   
+        'dist/index.html': 'app/index.html'
+      }
+    }
+  },
     jshint: {
-      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+      files: ['Gruntfile.js', 'app/js/**/*.js', 'test/**/*.js'],
       options: {
         // options here to override JSHint defaults
         globals: {
@@ -37,10 +52,10 @@ module.exports = function(grunt) {
       }
     },
     htmlhint: {
-      src: ['index.html']
+      src: ['app/index.html']
     },
     csslint: {
-      src: ['css/*.css']
+      src: ['app/style/*.css']
     },
     watch: {
       files: ['<%= jshint.files %>'],
@@ -53,17 +68,18 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-htmlhint');
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  // grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('test', ['jshint','htmlhint','csslint']);
+  grunt.registerTask('test', ['jshint', 'htmlhint', 'csslint']);
 
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify','htmlhint','csslint']);
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'cssmin','htmlmin', 'htmlhint', 'csslint']);
 
   grunt.registerMultiTask('log', 'Log stuff.', function() {
     grunt.log.writeln(this.target + ': ' + this.data);
