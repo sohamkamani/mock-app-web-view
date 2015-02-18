@@ -10,8 +10,8 @@ var renderPage = function() {
     JsonInfo = newJsonInfo;
   }
 
-  function render(JsonInfo, imgName) {
-    renderHistory.push(imgName);
+  function render(JsonInfo) {
+    imgName = location.href.split("#")[1];
     setJsonInfo(JsonInfo);
     var imageContainer = document.getElementById("image-container");
     while (imageContainer.firstChild) {
@@ -50,7 +50,10 @@ var renderPage = function() {
     hotspotDiv.style.background = "#676767";
     hotspotDiv.appendChild(faIcon);
     hotspotDiv.addEventListener("click", function() {
-      render(getJsonInfo(), hotspot.link);
+      location.href = "index.html#" + hotspot.link;
+      render(getJsonInfo());
+      //location.reload();
+
     });
     imageContainer.appendChild(hotspotDiv);
   }
