@@ -4,23 +4,31 @@
 <head>
   <title></title>
   <meta charset="utf-8">
+  <!-- build:css index_style.css -->
+  <link rel="stylesheet" type="text/css" href="style/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome-animation/dist/font-awesome-animation.css">
   <link rel="stylesheet" type="text/css" href="style/index_style.css">
+
+  <!-- endbuild -->
+  <!-- build:js app.js -->
   <script type="text/javascript" src="../bower_components/lodash/lodash.js"></script>
   <script type="text/javascript" src="js/render_image.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <!-- endbuild -->
+
 </head>
+
 
 <body>
 
 
 
-  <div class="image_container">
-    <div class="clickable1"></div>
-    <div class="clickable2"></div>
-    <img src="#" alt="" id="display-image" class="display-image">
+  <div class="image-container" id="image-container">
   </div>
 
 
-
+<i class="fa fa-circle-o"></i>
 
 </body>
 

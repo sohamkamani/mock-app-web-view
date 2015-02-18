@@ -1,1 +1,23 @@
-{"a":1 , "b":{"a":2,"b":0}}
+projetct = {
+  'default': 'img1',
+  'images': {
+    'img1': {
+      'filename':'img1'
+       id: 'img1'
+       filepickerurl:'img1'
+        dimensions: {
+          'height' : 230,
+          'width' :230
+        }
+         hotspots: {
+        
+        hp1: {
+          id: hp1
+          t: l: w: h
+          link
+        },
+        hp2: {}
+      }
+    }
+  }
+}

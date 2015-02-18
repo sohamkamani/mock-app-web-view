@@ -1,32 +1,52 @@
-window.onload = init;
+var renderPage = function() {
 
-function AJAX_JSON_Req(url) {
-  var AJAX_req = new XMLHttpRequest();
-  AJAX_req.open("GET", url, true);
-  AJAX_req.setRequestHeader("Content-type", "application/json");
+  function render(JsonInfo) {
 
-  AJAX_req.onreadystatechange = function() {
-    if (AJAX_req.readyState == 4 && AJAX_req.status == 200) {
-      var response = JSON.parse(AJAX_req.responseText);
+    renderImage(JsonInfo.images[JsonInfo["default"]]);
+
+    function renderImage(imgInfo) {
+      var imageContainer = document.getElementById("image-container");
+      while (imageContainer.firstChild) {
+        imageContainer.removeChild(imageContainer.firstChild);
+      }
+      var imageSource = imgInfo.filepickerurl;
+      var mainImage = document.createElement("img");
+      mainImage.classList.add("display-image");
+      mainImage.setAttribute("src", imageSource);
+      imageContainer.appendChild(mainImage);
+
+      _.map(imgInfo.hotspots, renderHotspots);
+
+      function renderHotspots(hotspot) {
+        var hotspotDiv = document.createElement('div');
+        var faIcon = document.createElement('i');
+        faIcon.classList.add("fa");
+        faIcon.classList.add("fa-circle-o");
+        faIcon.classList.add("faa-burst");
+        faIcon.classList.add("animated");
+        faIcon.style.color = "red";
+        faIcon.style.position = "absolute";
+        faIcon.style.top = "50%";
+        faIcon.style.left = "50%";
+        hotspotDiv.setAttribute("id", hotspot.id);
+        hotspotDiv.style.position = 'absolute';
+        hotspotDiv.style.top = hotspot.t + "%";
+        hotspotDiv.style.left = hotspot.l + "%";
+        hotspotDiv.style.height = hotspot.h + "%";
+        hotspotDiv.style.width = hotspot.w + "%";
+        hotspotDiv.style.background = "#676767";
+        hotspotDiv.appendChild(faIcon);
+        hotspotDiv.addEventListener("click", function() {
+          renderImage(JsonInfo.images[hotspot.link]);
+        });
+        imageContainer.appendChild(hotspotDiv);
+      }
+
     }
+  }
+
+  return {
+    render: render
   };
-  AJAX_req.send();
-}
 
-
-function init() {
-
-  var imageSource = "dummy_data/img1.png";
-
-  var mainImage = document.getElementById("display-image");
-
-  var dummyJSON = AJAX_JSON_Req('dummy_data/dummy.json');
-
-  var c = _.map(dummyJSON, function(item) {
-    return item;
-  });
-
-  alert(c[1].a);
-
-  mainImage.setAttribute("src", imageSource);
-}
+}();
