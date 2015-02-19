@@ -73,7 +73,7 @@ app.renderPage = (function() {
           commentp = document.createElement('p'),
           commentvalue = document.createTextNode(comment.comment_value);
 
-        // li.setAttribute('id',comment._id.$oid);
+        li.setAttribute('id',comment._id.$oid);
         li.classList.add('column');
         li.appendChild(aname);
         li.appendChild(timeSpan);
@@ -109,10 +109,21 @@ app.renderPage = (function() {
     listNode.appendChild(docFrag);
   }
 
+  function hideHotSpots () {
+    var img = document.getElementsByClassName('image')[0];
+    img.style.zIndex = "1";
+  }
+
+  function restoreHotSpots () {
+    var img = document.getElementsByClassName('image')[0];
+    img.style.zIndex = "-1";
+  }
 
   return {
     render: render,
-    displayComment: displayComment
+    displayComment: displayComment,
+    hideHotSpots : hideHotSpots,
+    restoreHotSpots : restoreHotSpots
   };
 
 })();

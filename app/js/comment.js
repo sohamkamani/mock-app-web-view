@@ -23,8 +23,10 @@ app.commentPage = (function() {
   }
 
   function clicky() {
-    var li = document.getElementsByClassName('image-container');
-    li[0].addEventListener('click', getCoords, false);
+
+    var li = document.getElementById('image-container');
+    li.addEventListener('click', getCoords, false);
+
   }
 
   function getImageId() {
@@ -62,11 +64,13 @@ app.commentPage = (function() {
       if (flag === 1) {
         makev = document.getElementById('comment-form');
         makev.style.setProperty('display', 'block');
+        app.renderPage.hideHotSpots();
         flag = 0;
       } else {
         flag = 1;
         makev = document.getElementById('comment-form');
         makev.style.setProperty('display', 'none');
+        app.renderPage.restoreHotSpots();
       }
     }
 
