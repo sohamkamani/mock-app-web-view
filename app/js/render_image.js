@@ -7,7 +7,6 @@ app.renderPage = (function() {
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
-    _clearComments();
     imageContainer.style.height = app.infoCenter.getRelativeHeight();
     _renderImage(imageContainer, app.infoCenter.getImageUrl());
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
@@ -80,6 +79,9 @@ app.renderPage = (function() {
           deleteValue = document.createTextNode('  X');
 
         li.setAttribute('id', comment._id.$oid);
+        li.setAttribute('positionX', comment.position_x);
+        li.setAttribute('positionY', comment.position_y);
+        li.setAttribute('id', comment._id.$oid);
         deleteComment.classList.add('deleteComment');
         li.classList.add('column');
         li.appendChild(aname);
@@ -109,6 +111,7 @@ app.renderPage = (function() {
   }
 
   function displayComment() {
+    _clearComments();
     var data = app.infoCenter.getCommentInfo();
     var docFrag = document.createDocumentFragment();
 
