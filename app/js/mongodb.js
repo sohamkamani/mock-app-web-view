@@ -77,6 +77,7 @@ app.mongodb=(function(){
    promise.then(function(data){
     console.log(data);
     app.infoCenter.setCommentInfo(data);
+    app.renderPage.displayComment();
   },function(status) {
    console.log('Unsuccessful!!. Error status: '+status);
  });
