@@ -1,4 +1,4 @@
-var insertPage = function() {
+app.insertPage = (function() {
 
     var insertIntoMongo = function(data) {
       console.log(data);
@@ -31,4 +31,4 @@ var insertPage = function() {
     return {
         insertIntoMongo: insertIntoMongo
     };
-}();
+})();
