@@ -92,6 +92,7 @@ app.renderPage = (function() {
         deleteComment.setAttribute('id', comment._id.$oid);
         deleteComment.addEventListener('click', deleteCommentListener);
         li.appendChild(commentp);
+        li.addEventListener('click', flashCommentLocation)
         commentp.appendChild(commentvalue);
         return {
           success: true,
@@ -108,6 +109,29 @@ app.renderPage = (function() {
   function deleteCommentListener(e) {
     var id = e.target.id;
     app.mongodb.deleteFromMongo(id);
+  }
+
+  function flashCommentLocation(e) {
+    var imageContainer = document.getElementById('image-container');
+    var faIcon = document.createElement('i');
+    if (document.getElementById('commentFlash') != null) {
+      var element = document.getElementById('commentFlash');
+      element.parentNode.removeChild(element);
+    }
+    faIcon.setAttribute('id', 'commentFlash');
+    faIcon.classList.add('fa');
+    faIcon.classList.add('fa-circle-o');
+    faIcon.classList.add('faa-burst');
+    faIcon.classList.add('animated');
+    faIcon.style.color = 'red';
+    faIcon.style.fontSize = '2em';
+    faIcon.style.zIndex = '1';
+    faIcon.style.position = 'absolute';
+    var top = e.target.getAttribute('positionx'); // + '%';
+    console.log(top);
+    faIcon.style.top = e.target.getAttribute('positiony') + '%';
+    faIcon.style.left = e.target.getAttribute('positionx') + '%';
+    imageContainer.appendChild(faIcon);
   }
 
   function displayComment() {
