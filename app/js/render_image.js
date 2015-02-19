@@ -12,6 +12,7 @@ app.renderPage = (function() {
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
+    displayComment();
 
   }
 
@@ -20,6 +21,7 @@ app.renderPage = (function() {
     mainImage.classList.add('image');
     mainImage.classList.add('display-image');
     mainImage.setAttribute('src', imageSource);
+    mainImage.setAttribute('id', app.infoCenter.getImageId())
     imageContainer.appendChild(mainImage);
   }
 
@@ -67,12 +69,12 @@ app.renderPage = (function() {
         var li = document.createElement('li'),
           aname = document.createTextNode(comment.author_name),
           timeSpan = document.createElement('span'),
-          time = document.createTextNode(comment.timestamp),
+          time = document.createTextNode(comment.time_stamp),
           commentp = document.createElement('p'),
           commentvalue = document.createTextNode(comment.comment_value);
 
-        li.setAttribute('id', 'column');
-
+        li.setAttribute('id',comment._id.$oid);
+        li.classList.add('column')
         li.appendChild(aname);
         li.appendChild(timeSpan);
         timeSpan.appendChild(time);
@@ -90,7 +92,8 @@ app.renderPage = (function() {
     }
   }
 
-  function displayComment(data) {
+  function displayComment() {
+    var data = app.infoCenter.getCommentInfo();
     var docFrag = document.createDocumentFragment();
 
     for (var i = 0, len = data.length; i < len; i++) {

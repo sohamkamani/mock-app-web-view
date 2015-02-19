@@ -1,6 +1,7 @@
 app.infoCenter = (function() {
   'use strict';
   var JsonInfo;
+  var commentInfo;
 
   function getJsonInfo() {
     return JsonInfo;
@@ -8,6 +9,14 @@ app.infoCenter = (function() {
 
   function setJsonInfo(newJsonInfo) {
     JsonInfo = newJsonInfo;
+  }
+
+  function getCommentInfo() {
+    return commentInfo;
+  }
+
+  function setCommentInfo(newCommentInfo) {
+    commentInfo = newCommentInfo;
   }
 
   function getImage() {
@@ -36,12 +45,25 @@ app.infoCenter = (function() {
     return h*80/w + '%'; 
   }
 
+  function getDateTime(){
+    var currentDate = new Date();
+    return currentDate.toDateString()+' ' + currentDate.toLocaleTimeString();
+  }
+
+  function getImageId(){
+    return getImage().id;
+  }
+
   return {
     getJsonInfo: getJsonInfo,
     setJsonInfo: setJsonInfo,
     getImage: getImage,
     getImageUrl: getImageUrl,
     getHotspots: getHotspots,
-    getRelativeHeight : getRelativeHeight
+    getRelativeHeight : getRelativeHeight,
+    getCommentInfo : getCommentInfo,
+    setCommentInfo : setCommentInfo,
+    getDateTime : getDateTime,
+    getImageId : getImageId
   };
 })();
