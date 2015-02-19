@@ -23,7 +23,7 @@ app.commentPage = (function() {
   }
 
   function clicky() {
-    var li = document.getElementsByClassName('image');
+    var li = document.getElementsByClassName('image-container');
     li[0].addEventListener('click', getCoords, false);
   }
 
