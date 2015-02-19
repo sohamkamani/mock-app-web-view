@@ -9,24 +9,19 @@ module.exports = function(grunt) {
         dest: 'dist'
       }
     },
-    usemin:{
-      html:['dist/index.html']
+    usemin: {
+      html: ['dist/index.html']
     },
-    copy:{
-      task0:{
-        src : 'app/index.html',
-        dest : 'dist/index.html'
+    copy: {
+      task0: {
+        src: 'app/index.html',
+        dest: 'dist/index.html'
       }
     },
     jshint: {
       files: ['Gruntfile.js', 'app/js/**/*.js', 'test/**/*.js'],
-      options: {  
-        globals: {
-          jQuery: true,
-          console: true,
-          module: true,
-          document: true
-        }
+      options: {
+        jshintrc: '.jshintrc',
       }
     },
     htmlhint: {
@@ -54,8 +49,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('test', ['jshint', 'htmlhint', 'csslint']);
-  grunt.registerTask('build', ['copy:task0','useminPrepare','concat','cssmin','uglify','usemin']);
-  grunt.registerTask('default',['test', 'build']);
+  grunt.registerTask('build', ['copy:task0', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
+  grunt.registerTask('default', ['test', 'build']);
 
 
   grunt.registerMultiTask('log', 'Log stuff.', function() {
