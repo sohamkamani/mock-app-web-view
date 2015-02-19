@@ -10,7 +10,9 @@ function init () {
 
   // location.href = "index.html#" + project.default;
   app.infoCenter.setJsonInfo(project);
-  app.renderPage.render(project);
+  app.renderPage.render();
+  commentPage.displayCommentBox();
+  
 
 
 }

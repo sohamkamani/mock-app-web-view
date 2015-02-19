@@ -9,20 +9,38 @@ app.infoCenter = function() {
     JsonInfo = newJsonInfo;
   }
 
-  function getImageName () {
+  function getImage() {
     var imgName = location.hash;
     // imgName === "" ? (imgName = JsonInfo.default ): (imgName = imgName.split('#')[1]);
-    if(imgName === ""){
+    if (imgName === "") {
       imgName = JsonInfo.default;
-    }else{
+    } else {
       imgName = imgName.split('#')[1];
     }
-    return imgName;
+    return JsonInfo.images[imgName];
   }
 
-  return{
-    getJsonInfo : getJsonInfo,
-    setJsonInfo : setJsonInfo,
-    getImageName : getImageName
+  function getImageUrl() {
+    return getImage().filepickerurl;
+  }
+
+  function getHotspots() {
+    return getImage().hotspots;
+  }
+
+  function getRelativeHeight () {
+    var w = getImage().dimensions.width;
+    var h = getImage().dimensions.height;
+
+    return w*100/h + "%"; 
+  }
+
+  return {
+    getJsonInfo: getJsonInfo,
+    setJsonInfo: setJsonInfo,
+    getImage: getImage,
+    getImageUrl: getImageUrl,
+    getHotspots: getHotspots,
+    getRelativeHeight : getRelativeHeight
   };
 }();
