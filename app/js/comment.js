@@ -16,10 +16,7 @@ app.commentPage = (function() {
     var y = event.clientY;
     document.getElementById('xcord').value=x;
     document.getElementById('ycord').value=y;
-    coords = {
-      xcord: x,
-      ycord: y
-    };
+    coords = app.infoCenter.getCoordsInPercentage(x,y);
   }
 
   function clicky() {
