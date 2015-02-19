@@ -12,7 +12,7 @@ app.renderPage = (function() {
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
-    displayComment();
+    
 
   }
 
