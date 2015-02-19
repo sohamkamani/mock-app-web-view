@@ -52,7 +52,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('test', ['jshint', 'htmlhint', 'csslint']);
+  grunt.registerTask('test', ['jshint', 'htmlhint']);
   grunt.registerTask('build', ['copy:task0', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
   grunt.registerTask('default', ['test', 'build']);
 

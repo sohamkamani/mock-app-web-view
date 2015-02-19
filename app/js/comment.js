@@ -27,7 +27,13 @@ app.commentPage = (function() {
     li[0].addEventListener('click', getCoords, false);
   }
 
-
+  function getImageId() {
+    var x = document.getElementsByClassName('image');
+    var y = x[0].getAttribute('id');
+    return {
+      image_id: y
+    };
+  }
 
   function addCommentDetails() {
     var aname = document.getElementById('name').value;
@@ -76,9 +82,10 @@ app.commentPage = (function() {
 
   function add() {
     var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];
+    var image = getImageId();
     var comment_details = addCommentDetails();
     var json = {};
-    json.image_id = app.infoCenter.getImageId();
+    json.image_id = image.image_id;
     json.author_name = comment_detail.author_name;
     json.comment_value = comment_detail.comment_value;
     json.position_x = coords.xcord;
