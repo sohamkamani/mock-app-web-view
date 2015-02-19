@@ -13,7 +13,7 @@ var commentPage = function() {
     function getCoords(event) {
         var x = event.clientX;
         var y = event.clientY;
-        
+
         coords = {
             xcord: x,
             ycord: y
