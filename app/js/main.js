@@ -1,7 +1,5 @@
 'use strict';
-window.onload = init;
 
-window.onhashchange = init;
 
 function init () {
 
@@ -17,3 +15,7 @@ function init () {
 
 
 }
+
+window.onload = init;
+
+window.onhashchange = init;
