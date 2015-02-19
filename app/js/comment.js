@@ -6,14 +6,16 @@ app.commentPage = (function() {
   };
 
   var coords = {
-    xcord: 0,
-    ycord: 0
+    xcord: -100,
+    ycord: -100
   };
 
+ 
   function getCoords(event) {
     var x = event.clientX;
     var y = event.clientY;
-
+    document.getElementById('xcord').value=x;
+    document.getElementById('ycord').value=y;
     coords = {
       xcord: x,
       ycord: y
@@ -21,11 +23,19 @@ app.commentPage = (function() {
   }
 
   function clicky() {
-    var li = document.getElementsByClassName('image');
-    li[0].addEventListener('click', getCoords, false);
+
+    var li = document.getElementById('image-container');
+    li.addEventListener('click', getCoords, false);
+
   }
 
-
+  function getImageId() {
+    var x = document.getElementsByClassName('image');
+    var y = x[0].getAttribute('id');
+    return {
+      image_id: y
+    };
+  }
 
 
   function getImageId() {
@@ -63,11 +73,13 @@ app.commentPage = (function() {
       if (flag === 1) {
         makev = document.getElementById('comment-form');
         makev.style.setProperty('display', 'block');
+        app.renderPage.hideHotSpots();
         flag = 0;
       } else {
         flag = 1;
         makev = document.getElementById('comment-form');
         makev.style.setProperty('display', 'none');
+        app.renderPage.restoreHotSpots();
       }
     }
 
@@ -82,7 +94,7 @@ app.commentPage = (function() {
   }
 
   function add() {
-    var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y'];
+    var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];
     var image = getImageId();
     var comment_details = addCommentDetails();
     var json = {};
