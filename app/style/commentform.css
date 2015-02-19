@@ -42,21 +42,50 @@ header {
 }
 
 
+
+
+span
+{
+  float: right;
+}
+ul
+{
+  list-style-type: none;
+}
+
+
+.container{
+  width:100%;
+  height:70%;
+  overflow: hidden;
+}
+
+.form{
+  float:right;
+  width:20%;
+  height:100%;
+  border: solid black 1px;
+
+
+}
+
+
+
+
 #comment-form {
   
-  width: 15%;
-  min-width: 400px;
-  position: fixed;
-<<<<<<< HEAD
-  z-index: 1;
-=======
-  z-index: 2;
->>>>>>> 0436d145d6c8a60f1f90d9ea18849008abc3057f
-  background: #CFD8DC;
+  width: 25%;
+  
   display: none;
+
+  z-index: 1;
+
+  background: #CFD8DC;
+  
   border: 1px solid #D7CCC8;
-  margin-top:2%;
-  height:80%;
+  
+  height:100%;
+  margin-top: 2%;
 
   margin-left:0.5%;
   -webkit-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
@@ -80,12 +109,12 @@ header {
   outline: 0;
 }
 #comment-form textarea {
-  width: 300px;
+  width:90%;
 }
 #comment-form input {
-  width: 150px;
+  width:90%;
 }
-#comment-form input[type="submit"] {
+#comment-form input[type="button"] {
   cursor: pointer;
   background: -webkit-linear-gradient(top, #efefef, #ddd);
   background: -moz-linear-gradient(top, #efefef, #ddd);
@@ -96,7 +125,7 @@ header {
   text-shadow: 0px 1px 1px rgba(255, 255, 255, 1);
   border: 1px solid #ccc;
 }
-#comment-form input[type="submit"]:hover {
+#comment-form input[type="button"]:hover {
   background: -webkit-linear-gradient(top, #eee, #ccc);
   background: -moz-linear-gradient(top, #eee, #ccc);
   background: -ms-linear-gradient(top, #eee, #ccc);
@@ -104,7 +133,7 @@ header {
   background: linear-gradient(top, #eee, #ccc);
   border: 1px solid #bbb;
 }
-#comment-form input[type="submit"]:active {
+#comment-form input[type="button"]:active {
   background: -webkit-linear-gradient(top, #ddd, #aaa);
   background: -moz-linear-gradient(top, #ddd, #aaa);
   background: -ms-linear-gradient(top, #ddd, #aaa);
@@ -112,17 +141,9 @@ header {
   background: linear-gradient(top, #ddd, #aaa);
   border: 1px solid #999;
 }
-#comment-form div {
-  margin-bottom: 8px;
-}
 
+.comments{
+  height:30%;
+  margin-top: 2%;
 
-
-span
-{
-  float: right;
-}
-ul
-{
-  list-style-type: none;
 }

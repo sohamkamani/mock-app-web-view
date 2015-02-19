@@ -62,8 +62,9 @@ app.commentPage = (function() {
 
     function displaycomment() {
       if (flag === 1) {
+        
         makev = document.getElementById('comment-form');
-        makev.style.setProperty('display', 'block');
+        makev.style.setProperty('display', 'inline');
         app.renderPage.hideHotSpots();
         flag = 0;
       } else {

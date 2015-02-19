@@ -52,9 +52,6 @@ app.renderPage = (function() {
     imageContainer.appendChild(hotspotDiv);
   }
 
-
-
-
   function createListNode(comment) {
     // we will simply return is object if item is not correct
     var failResponse = {
