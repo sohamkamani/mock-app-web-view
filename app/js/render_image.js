@@ -74,14 +74,21 @@ app.renderPage = (function() {
           aname = document.createTextNode(comment.author_name),
           timeSpan = document.createElement('span'),
           time = document.createTextNode(comment.time_stamp),
+          deleteComment = document.createElement('span'),
           commentp = document.createElement('p'),
-          commentvalue = document.createTextNode(comment.comment_value);
+          commentvalue = document.createTextNode(comment.comment_value),
+          deleteValue = document.createTextNode('  X');
 
         li.setAttribute('id', comment._id.$oid);
+        deleteComment.classList.add('deleteComment');
         li.classList.add('column');
         li.appendChild(aname);
         li.appendChild(timeSpan);
         timeSpan.appendChild(time);
+        timeSpan.appendChild(deleteComment);
+        deleteComment.appendChild(deleteValue);
+        deleteComment.setAttribute('id', comment._id.$oid);
+        deleteComment.addEventListener('click', deleteCommentListener);
         li.appendChild(commentp);
         commentp.appendChild(commentvalue);
         return {
@@ -94,6 +101,11 @@ app.renderPage = (function() {
     } else {
       return failResponse;
     }
+  }
+
+  function deleteCommentListener(e) {
+    var id = e.target.id;
+    app.mongodb.deleteFromMongo(id);
   }
 
   function displayComment() {
