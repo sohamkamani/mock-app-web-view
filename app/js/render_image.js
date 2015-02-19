@@ -1,4 +1,4 @@
-var renderPage = function() {
+app.renderPage = function() {
 
   var JsonInfo;
 
@@ -11,26 +11,31 @@ var renderPage = function() {
   }
 
   function render(JsonInfo) {
-    imgName = location.href.split("#")[1];
+    var imgName = location.hash;
+    imgName === "" ? imgName = JsonInfo.default : imgName = imgName.split('#')[1];
+    // imgName = infoCenter.getImageName();
     setJsonInfo(JsonInfo);
     var imageContainer = document.getElementById("image-container");
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
-    renderImage(imageContainer, JsonInfo.images[imgName].filepickerurl);
+    _renderImage(imageContainer, JsonInfo.images[imgName].filepickerurl);
     _.map(JsonInfo.images[imgName].hotspots, function(hotspot) {
-      renderHotspot(imageContainer, hotspot);
+      _renderHotspot(imageContainer, hotspot);
     });
   }
 
-  function renderImage(imageContainer, imageSource) {
+  function _renderImage(imageContainer, imageSource) {
     var mainImage = document.createElement("img");
     mainImage.classList.add("display-image");
+    // mainImage.style.height = _getRelativeImageHeight();
     mainImage.setAttribute("src", imageSource);
     imageContainer.appendChild(mainImage);
   }
 
-  function renderHotspot(imageContainer, hotspot) {
+
+
+  function _renderHotspot(imageContainer, hotspot) {
     var hotspotDiv = document.createElement('div');
     var faIcon = document.createElement('i');
     faIcon.classList.add("fa");
@@ -47,13 +52,11 @@ var renderPage = function() {
     hotspotDiv.style.left = hotspot.l + "%";
     hotspotDiv.style.height = hotspot.h + "%";
     hotspotDiv.style.width = hotspot.w + "%";
-    hotspotDiv.style.background = "#676767";
+    hotspotDiv.style.background = "rgba(192,192,192,0.6)";
     hotspotDiv.appendChild(faIcon);
     hotspotDiv.addEventListener("click", function() {
       location.href = "index.html#" + hotspot.link;
-      render(getJsonInfo());
-      //location.reload();
-
+      // render(getJsonInfo());
     });
     imageContainer.appendChild(hotspotDiv);
   }

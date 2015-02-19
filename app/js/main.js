@@ -9,7 +9,8 @@ function init () {
   var project = JSON.parse(dummyJson);
 
   // location.href = "index.html#" + project.default;
-  renderPage.render(project);
+  app.infoCenter.setJsonInfo(project);
+  app.renderPage.render(project);
 
 
 }
