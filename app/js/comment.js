@@ -91,7 +91,7 @@ app.commentPage = (function() {
         json.comment_value = comment_detail.comment_value;
         json.position_x = coords.xcord;
         json.position_y = coords.ycord;
-        app.insertPage.insertIntoMongo(json);
+        app.mongodb.insertIntoMongo(json);
     }
 
     return {
