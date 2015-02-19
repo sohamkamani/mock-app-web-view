@@ -20,6 +20,8 @@ module.exports = function(grunt) {
         },
         jshint: {
             files: ['Gruntfile.js', 'app/js/**/*.js', 'test/**/*.js'],
+
+
             options: {
                 jshintrc: '.jshintrc'
             }
@@ -55,6 +57,6 @@ module.exports = function(grunt) {
 
     grunt.registerMultiTask('log', 'Log stuff.', function() {
         grunt.log.writeln(this.target + ': ' + this.data);
-    });
+    }); >>> >>> > cfc6fdc182eb5098ca74e72f1476c05b5e5c143a
 
 };
