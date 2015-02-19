@@ -47,7 +47,7 @@ header {
   width: 100%;
   min-width: 400px;
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   background: #CFD8DC;
   display: none;
   border: 1px solid #D7CCC8;

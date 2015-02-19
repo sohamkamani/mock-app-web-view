@@ -1,11 +1,6 @@
 app.mongodb=(function(){
 'use strict';
   var insertIntoMongo=function(data){
-    
-    if(data.hasOwnProperty('timestamp'))
-      {
-        data.timestamp = new Date();
-      }
 
     var url='https://api.mongolab.com/api/1/databases/orb/collections/comment_details?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
     var promise=new Promise(function(resolve, reject) {
@@ -33,7 +28,7 @@ app.mongodb=(function(){
   };
 
   var deleteFromMongo=function(id){
-    var url='https://api.mongolab.com/api/1/databases/orb/collections/comment_details/"+id+"?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
+    var url='https://api.mongolab.com/api/1/databases/orb/collections/comment_details/'+id+'?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
     var promise=new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open('DELETE', url, true);
@@ -56,7 +51,7 @@ app.mongodb=(function(){
   };
 
   var fetchFormMongo=function(){
-   var url='https://api.mongolab.com/api/1/databases/orb/collections/comments_details?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
+   var url='https://api.mongolab.com/api/1/databases/orb/collections/comment_details?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
    var promise=new Promise(function(resolve, reject) {
      var xhr = new XMLHttpRequest();
      xhr.open('get', url, true);
