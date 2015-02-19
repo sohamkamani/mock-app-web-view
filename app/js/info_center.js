@@ -1,4 +1,5 @@
 app.infoCenter = (function() {
+  'use strict';
   var JsonInfo;
 
   function getJsonInfo() {
@@ -12,7 +13,7 @@ app.infoCenter = (function() {
   function getImage() {
     var imgName = location.hash;
     // imgName === "" ? (imgName = JsonInfo.default ): (imgName = imgName.split('#')[1]);
-    if (imgName === "") {
+    if (imgName === '') {
       imgName = JsonInfo.default;
     } else {
       imgName = imgName.split('#')[1];
@@ -32,7 +33,7 @@ app.infoCenter = (function() {
     var w = getImage().dimensions.width;
     var h = getImage().dimensions.height;
 
-    return w*100/h + "%"; 
+    return w*100/h + '%'; 
   }
 
   return {
