@@ -147,3 +147,17 @@ ul
   margin-top: 2%;
 
 }
+
+ul
+{
+  list-style-type: none;
+}
+
+.deleteComment
+{
+  color: red;
+  font-size: 10px;
+  padding: 3px;
+  border: 1px solid black;
+}
+

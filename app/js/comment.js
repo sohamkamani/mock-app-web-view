@@ -10,16 +10,13 @@ app.commentPage = (function() {
     ycord: -100
   };
 
- 
+
   function getCoords(event) {
     var x = event.clientX;
     var y = event.clientY;
     document.getElementById('xcord').value=x;
     document.getElementById('ycord').value=y;
-    coords = {
-      xcord: x,
-      ycord: y
-    };
+    coords = app.infoCenter.getCoordsInPercentage(x,y);
   }
 
   function clicky() {
@@ -98,6 +95,10 @@ app.commentPage = (function() {
     json.time_stamp = app.infoCenter.getDateTime();
     app.mongodb.insertIntoMongo(json);
   }
+
+
+
+
 
   return {
     displayCommentBox: displayCommentBox
