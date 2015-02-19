@@ -134,6 +134,7 @@ app.renderPage = (function() {
     imageContainer.appendChild(faIcon);
   }
 
+
   function displayComment() {
     _clearComments();
     var data = app.infoCenter.getCommentInfo();
