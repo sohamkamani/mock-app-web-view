@@ -89,7 +89,7 @@ app.renderPage = (function() {
         deleteComment.setAttribute('id', comment._id.$oid);
         deleteComment.addEventListener('click', deleteCommentListener);
         li.appendChild(commentp);
-        li.addEventListener('click', flashCommentLocation)
+        li.addEventListener('click', flashCommentLocation);
         commentp.appendChild(commentvalue);
         return {
           success: true,
@@ -111,7 +111,7 @@ app.renderPage = (function() {
   function flashCommentLocation(e) {
     var imageContainer = document.getElementById('image-container');
     var faIcon = document.createElement('i');
-    if (document.getElementById('commentFlash') != null) {
+    if (document.getElementById('commentFlash') !== null) {
       var element = document.getElementById('commentFlash');
       element.parentNode.removeChild(element);
     }
