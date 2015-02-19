@@ -7,6 +7,7 @@ app.renderPage = (function() {
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
+    _clearComments();
     imageContainer.style.height = app.infoCenter.getRelativeHeight();
     _renderImage(imageContainer, app.infoCenter.getImageUrl());
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
@@ -109,15 +110,23 @@ app.renderPage = (function() {
     listNode.appendChild(docFrag);
   }
 
+  function _clearComments () {
+    var commentContainer = document.getElementById('comments');
+    while (commentContainer.firstChild) {
+      commentContainer.removeChild(commentContainer.firstChild);
+    }
+  }
+
   function hideHotSpots () {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = "1";
+    img.style.zIndex = '1';
   }
 
   function restoreHotSpots () {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = "-1";
+    img.style.zIndex = '-1';
   }
+
 
   return {
     render: render,
