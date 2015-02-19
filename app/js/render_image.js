@@ -1,7 +1,9 @@
-app.renderPage = function() {
+app.renderPage = (function() {
+
+  'use strict';
 
   function render() {
-    var imageContainer = document.getElementById("image-container");
+    var imageContainer = document.getElementById('image-container');
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
@@ -12,10 +14,10 @@ app.renderPage = function() {
   }
 
   function _renderImage(imageContainer, imageSource) {
-    var mainImage = document.createElement("img");
-    mainImage.classList.add("image");
+    var mainImage = document.createElement('img');
+    mainImage.classList.add('image');
     mainImage.style.height = app.infoCenter.getRelativeHeight();
-    mainImage.setAttribute("src", imageSource);
+    mainImage.setAttribute('src', imageSource);
     imageContainer.appendChild(mainImage);
   }
 
@@ -24,24 +26,24 @@ app.renderPage = function() {
   function _renderHotspot(imageContainer, hotspot) {
     var hotspotDiv = document.createElement('div');
     var faIcon = document.createElement('i');
-    faIcon.classList.add("fa");
-    faIcon.classList.add("fa-circle-o");
-    faIcon.classList.add("faa-burst");
-    faIcon.classList.add("animated");
-    faIcon.style.color = "red";
-    faIcon.style.position = "absolute";
-    faIcon.style.top = "50%";
-    faIcon.style.left = "50%";
-    hotspotDiv.setAttribute("id", hotspot.id);
+    faIcon.classList.add('fa');
+    faIcon.classList.add('fa-circle-o');
+    faIcon.classList.add('faa-burst');
+    faIcon.classList.add('animated');
+    faIcon.style.color = 'red';
+    faIcon.style.position = 'absolute';
+    faIcon.style.top = '50%';
+    faIcon.style.left = '50%';
+    hotspotDiv.setAttribute('id', hotspot.id);
     hotspotDiv.style.position = 'absolute';
-    hotspotDiv.style.top = hotspot.t + "%";
-    hotspotDiv.style.left = hotspot.l + "%";
-    hotspotDiv.style.height = hotspot.h + "%";
-    hotspotDiv.style.width = hotspot.w + "%";
-    hotspotDiv.style.background = "rgba(192,192,192,0.6)";
+    hotspotDiv.style.top = hotspot.t + '%';
+    hotspotDiv.style.left = hotspot.l + '%';
+    hotspotDiv.style.height = hotspot.h + '%';
+    hotspotDiv.style.width = hotspot.w + '%';
+    hotspotDiv.style.background = 'rgba(192,192,192,0.6)';
     hotspotDiv.appendChild(faIcon);
-    hotspotDiv.addEventListener("click", function() {
-      location.href = "index.html#" + hotspot.link;
+    hotspotDiv.addEventListener('click', function() {
+      location.href = 'index.html#' + hotspot.link;
     });
     imageContainer.appendChild(hotspotDiv);
   }
@@ -67,7 +69,7 @@ app.renderPage = function() {
           commentp = document.createElement('p'),
           commentvalue = document.createTextNode(comment.comment_value);
 
-        li.setAttribute('id', "column");
+        li.setAttribute('id', 'column');
 
         li.appendChild(aname);
         li.appendChild(timeSpan);
@@ -108,4 +110,4 @@ app.renderPage = function() {
     displayComment: displayComment
   };
 
-}();
+})();

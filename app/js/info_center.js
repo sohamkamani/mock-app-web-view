@@ -1,4 +1,4 @@
-app.infoCenter = function() {
+app.infoCenter = (function() {
   var JsonInfo;
 
   function getJsonInfo() {
@@ -43,4 +43,4 @@ app.infoCenter = function() {
     getHotspots: getHotspots,
     getRelativeHeight : getRelativeHeight
   };
-}();
+})();
