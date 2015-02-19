@@ -43,20 +43,25 @@ header {
 
 
 #comment-form {
-  padding: 20px 20px 20px 20px;
-  width: 100%;
+  
+  width: 15%;
   min-width: 400px;
   position: fixed;
-  z-index: 0;
+  z-index: 1;
   background: #CFD8DC;
   display: none;
   border: 1px solid #D7CCC8;
-  margin-top:  12px;
-  margin-left: auto;
+  margin-top:2%;
+  height:80%;
+
+  margin-left:0.5%;
   -webkit-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
   -moz-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
   box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
   padding: 8px;
+
+
+
 }
 
 #comment-form h5 {

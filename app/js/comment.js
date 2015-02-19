@@ -6,13 +6,17 @@ app.commentPage = (function() {
   };
 
   var coords = {
-    xcord: 0,
-    ycord: 0
+    xcord: -100,
+    ycord: -100
   };
 
+ 
   function getCoords(event) {
     var x = event.clientX;
     var y = event.clientY;
+    document.getElementById('xcord').value=x;
+    document.getElementById('ycord').value=y;
+
 
     coords = {
       xcord: x,
