@@ -47,7 +47,11 @@ header {
   width: 15%;
   min-width: 400px;
   position: fixed;
+<<<<<<< HEAD
   z-index: 1;
+=======
+  z-index: 2;
+>>>>>>> 0436d145d6c8a60f1f90d9ea18849008abc3057f
   background: #CFD8DC;
   display: none;
   border: 1px solid #D7CCC8;

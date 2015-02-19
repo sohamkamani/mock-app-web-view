@@ -86,7 +86,7 @@ app.commentPage = (function() {
   }
 
   function add() {
-    var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y'];
+    var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];
     var image = getImageId();
     var comment_details = addCommentDetails();
     var json = {};
@@ -95,6 +95,7 @@ app.commentPage = (function() {
     json.comment_value = comment_detail.comment_value;
     json.position_x = coords.xcord;
     json.position_y = coords.ycord;
+    json.time_stamp = app.infoCenter.getDateTime();
     app.mongodb.insertIntoMongo(json);
   }
 

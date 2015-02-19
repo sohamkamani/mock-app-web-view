@@ -5,11 +5,13 @@ html,body{
 
 .image-container{
   position: relative;
+
   height: 80%;
   width: 70%;
   background-size: contain;
   float: right;
   margin-top:2%;
+
 
 }
 
