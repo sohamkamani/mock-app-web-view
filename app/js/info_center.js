@@ -54,6 +54,20 @@ app.infoCenter = (function() {
     return getImage().id;
   }
 
+  function getCoordsInPercentage (x,y) {
+    var imageContainer = document.getElementById("image-container");
+    var offsetTop = imageContainer.offsetTop;
+    var offsetLeft = imageContainer.offsetLeft;
+    var offsetHeight = imageContainer.offsetHeight;
+    var offsetWidth = imageContainer.offsetWidth;
+    var xPercentage = (x-offsetLeft) * 100 / offsetWidth ; 
+    var yPercentage = (y-offsetTop) * 100 / offsetHeight ; 
+    return {
+      xcord : xPercentage,
+      ycord : yPercentage
+    };
+  }
+
   return {
     getJsonInfo: getJsonInfo,
     setJsonInfo: setJsonInfo,
@@ -64,6 +78,7 @@ app.infoCenter = (function() {
     getCommentInfo : getCommentInfo,
     setCommentInfo : setCommentInfo,
     getDateTime : getDateTime,
-    getImageId : getImageId
+    getImageId : getImageId,
+    getCoordsInPercentage : getCoordsInPercentage
   };
 })();

@@ -35,7 +35,9 @@ app.renderPage = (function() {
     faIcon.classList.add('fa-circle-o');
     faIcon.classList.add('faa-burst');
     faIcon.classList.add('animated');
-    faIcon.style.color = 'red';
+    faIcon.style.color = 'blue';
+    faIcon.style.fontSize = '2em';
+    faIcon.style.zIndex = '1';
     faIcon.style.position = 'absolute';
     faIcon.style.top = '50%';
     faIcon.style.left = '50%';
@@ -45,7 +47,8 @@ app.renderPage = (function() {
     hotspotDiv.style.left = hotspot.l + '%';
     hotspotDiv.style.height = hotspot.h + '%';
     hotspotDiv.style.width = hotspot.w + '%';
-    hotspotDiv.style.background = 'rgba(192,192,192,0.6)';
+    hotspotDiv.style.zIndex = '2';
+    hotspotDiv.style.background = 'rgba(192,192,192,0)';
     hotspotDiv.appendChild(faIcon);
     hotspotDiv.addEventListener('click', function() {
       location.href = 'index.html#' + hotspot.link;
@@ -131,7 +134,7 @@ app.renderPage = (function() {
 
   function hideHotSpots() {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = '1';
+    img.style.zIndex = '3';
   }
 
   function restoreHotSpots() {

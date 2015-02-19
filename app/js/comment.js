@@ -14,12 +14,9 @@ app.commentPage = (function() {
   function getCoords(event) {
     var x = event.clientX;
     var y = event.clientY;
-    document.getElementById('xcord').value = x;
-    document.getElementById('ycord').value = y;
-    coords = {
-      xcord: x,
-      ycord: y
-    };
+    document.getElementById('xcord').value=x;
+    document.getElementById('ycord').value=y;
+    coords = app.infoCenter.getCoordsInPercentage(x,y);
   }
 
   function clicky() {
