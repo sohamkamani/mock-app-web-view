@@ -33,7 +33,7 @@ app.infoCenter = (function() {
     var w = getImage().dimensions.width;
     var h = getImage().dimensions.height;
 
-    return w*100/h + '%'; 
+    return h*80/w + '%'; 
   }
 
   return {

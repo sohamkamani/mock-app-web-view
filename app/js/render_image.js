@@ -7,16 +7,18 @@ app.renderPage = (function() {
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
+    imageContainer.style.height = app.infoCenter.getRelativeHeight();
     _renderImage(imageContainer, app.infoCenter.getImageUrl());
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
+
   }
 
   function _renderImage(imageContainer, imageSource) {
     var mainImage = document.createElement('img');
     mainImage.classList.add('image');
-    mainImage.style.height = app.infoCenter.getRelativeHeight();
+    mainImage.classList.add('display-image');
     mainImage.setAttribute('src', imageSource);
     imageContainer.appendChild(mainImage);
   }
