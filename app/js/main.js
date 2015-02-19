@@ -12,7 +12,7 @@ function init () {
   // location.href = "index.html#" + project.default;
   app.infoCenter.setJsonInfo(project);
   app.renderPage.render();
-  commentPage.displayCommentBox();
+  app.commentPage.displayCommentBox();
   
 
 
