@@ -50,8 +50,9 @@ app.mongodb=(function(){
     });
   };
 
-  var fetchFormMongo=function(){
+  function fetchFromMongo(){
    var url='https://api.mongolab.com/api/1/databases/orb/collections/comment_details?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
+   var fetchedData = 'not fetched';
    var promise=new Promise(function(resolve, reject) {
      var xhr = new XMLHttpRequest();
      xhr.open('get', url, true);
@@ -69,15 +70,18 @@ app.mongodb=(function(){
    });
 
    promise.then(function(data){
-    return {
-      data: data
-    };
+    console.log(data);
+    app.infoCenter.setCommentInfo(data);
+    app.renderPage.displayComment();
   },function(status) {
    console.log('Unsuccessful!!. Error status: '+status);
  });
- };
+
+   
+ }
+
  return{
-  fetchFormMongo : fetchFormMongo,
+  fetchFromMongo : fetchFromMongo,
   insertIntoMongo : insertIntoMongo,
   deleteFromMongo : deleteFromMongo
  };
