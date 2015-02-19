@@ -71,14 +71,21 @@ app.renderPage = (function() {
           aname = document.createTextNode(comment.author_name),
           timeSpan = document.createElement('span'),
           time = document.createTextNode(comment.time_stamp),
+          deleteComment = document.createElement('span'),
           commentp = document.createElement('p'),
-          commentvalue = document.createTextNode(comment.comment_value);
+          commentvalue = document.createTextNode(comment.comment_value),
+          deleteValue = document.createTextNode('  X');
 
-        li.setAttribute('id',comment._id.$oid);
+        li.setAttribute('id', comment._id.$oid);
+        deleteComment.classList.add('deleteComment');
         li.classList.add('column');
         li.appendChild(aname);
         li.appendChild(timeSpan);
         timeSpan.appendChild(time);
+        timeSpan.appendChild(deleteComment);
+        deleteComment.appendChild(deleteValue);
+        deleteComment.setAttribute('id', comment._id.$oid);
+        deleteComment.addEventListener('click', deleteCommentListener);
         li.appendChild(commentp);
         commentp.appendChild(commentvalue);
         return {
@@ -93,11 +100,16 @@ app.renderPage = (function() {
     }
   }
 
+  function deleteCommentListener(e) {
+    var id = e.target.id;
+    app.mongodb.deleteFromMongo(id);
+  }
+
   function displayComment() {
     var data = app.infoCenter.getCommentInfo();
     var docFrag = document.createDocumentFragment();
 
-    for (var i = 0 ; i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
       var li = createListNode(data[i]);
       if (!li.success) {
         console.info(li.message);
@@ -110,19 +122,19 @@ app.renderPage = (function() {
     listNode.appendChild(docFrag);
   }
 
-  function _clearComments () {
+  function _clearComments() {
     var commentContainer = document.getElementById('comments');
     while (commentContainer.firstChild) {
       commentContainer.removeChild(commentContainer.firstChild);
     }
   }
 
-  function hideHotSpots () {
+  function hideHotSpots() {
     var img = document.getElementsByClassName('image')[0];
     img.style.zIndex = '1';
   }
 
-  function restoreHotSpots () {
+  function restoreHotSpots() {
     var img = document.getElementsByClassName('image')[0];
     img.style.zIndex = '-1';
   }
@@ -131,8 +143,8 @@ app.renderPage = (function() {
   return {
     render: render,
     displayComment: displayComment,
-    hideHotSpots : hideHotSpots,
-    restoreHotSpots : restoreHotSpots
+    hideHotSpots: hideHotSpots,
+    restoreHotSpots: restoreHotSpots
   };
 
 })();

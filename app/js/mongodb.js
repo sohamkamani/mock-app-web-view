@@ -33,7 +33,7 @@ app.mongodb=(function(){
   };
 
   var deleteFromMongo=function(id){
-    var url='https://api.mongolab.com/api/1/databases/orb/collections/comment_details/"+id+"?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
+    var url='https://api.mongolab.com/api/1/databases/orb/collections/comment_details/'+ id +'?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
     var promise=new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open('DELETE', url, true);
@@ -42,6 +42,7 @@ app.mongodb=(function(){
         var status = xhr.status;
         if (status === 200) {
           resolve(xhr.response);
+          console.log(xhr.response);
         } else {
           reject(status);
         }

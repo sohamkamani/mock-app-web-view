@@ -10,12 +10,12 @@ app.commentPage = (function() {
     ycord: -100
   };
 
- 
+
   function getCoords(event) {
     var x = event.clientX;
     var y = event.clientY;
-    document.getElementById('xcord').value=x;
-    document.getElementById('ycord').value=y;
+    document.getElementById('xcord').value = x;
+    document.getElementById('ycord').value = y;
     coords = {
       xcord: x,
       ycord: y
@@ -28,15 +28,6 @@ app.commentPage = (function() {
     li.addEventListener('click', getCoords, false);
 
   }
-
-  function getImageId() {
-    var x = document.getElementsByClassName('image');
-    var y = x[0].getAttribute('id');
-    return {
-      image_id: y
-    };
-  }
-
 
   function getImageId() {
     var x = document.getElementsByClassName('image');
@@ -105,6 +96,10 @@ app.commentPage = (function() {
     json.position_y = coords.ycord;
     app.mongodb.insertIntoMongo(json);
   }
+
+
+
+
 
   return {
     displayCommentBox: displayCommentBox
