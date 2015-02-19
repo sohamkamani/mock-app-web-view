@@ -12,7 +12,7 @@ app.renderPage = (function() {
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
-    
+
 
   }
 
@@ -21,7 +21,7 @@ app.renderPage = (function() {
     mainImage.classList.add('image');
     mainImage.classList.add('display-image');
     mainImage.setAttribute('src', imageSource);
-    mainImage.setAttribute('id', app.infoCenter.getImageId())
+    mainImage.setAttribute('id', app.infoCenter.getImageId());
     imageContainer.appendChild(mainImage);
   }
 
@@ -65,7 +65,7 @@ app.renderPage = (function() {
     // cheching for correct data  type
     if (comment !== null && typeof comment === 'object') {
       //checking if required keys are available
-      if (comment.hasOwnProperty('author_name') && (comment.hasOwnProperty('comment_value')) && (comment.hasOwnProperty('timestamp'))) {
+      if (comment.hasOwnProperty('author_name') && (comment.hasOwnProperty('comment_value')) && (comment.hasOwnProperty('time_stamp'))) {
         var li = document.createElement('li'),
           aname = document.createTextNode(comment.author_name),
           timeSpan = document.createElement('span'),
@@ -73,8 +73,8 @@ app.renderPage = (function() {
           commentp = document.createElement('p'),
           commentvalue = document.createTextNode(comment.comment_value);
 
-        li.setAttribute('id',comment._id.$oid);
-        li.classList.add('column')
+        // li.setAttribute('id',comment._id.$oid);
+        li.classList.add('column');
         li.appendChild(aname);
         li.appendChild(timeSpan);
         timeSpan.appendChild(time);
@@ -96,7 +96,7 @@ app.renderPage = (function() {
     var data = app.infoCenter.getCommentInfo();
     var docFrag = document.createDocumentFragment();
 
-    for (var i = 0, len = data.length; i < len; i++) {
+    for (var i = 0 ; i < data.length; i++) {
       var li = createListNode(data[i]);
       if (!li.success) {
         console.info(li.message);
