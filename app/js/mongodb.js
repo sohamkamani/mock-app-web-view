@@ -49,7 +49,7 @@ app.mongodb=(function(){
       xhr.send(null);
     });
     promise.then(function(data){
-      console.log('Successful !!');
+      console.log('Successfully deleted!!');
     },function(status) {
       console.log('Unsuccessful!! Error status: '+status);
     });
