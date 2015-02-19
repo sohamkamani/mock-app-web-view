@@ -64,11 +64,11 @@ app.renderPage = (function() {
       success: false,
       message: '| ' + JSON.stringify(comment) + ' | is not a valid item, hence skipping!'
     };
-
+     var current_image_id = app.infoCenter.getImageId();
     // cheching for correct data  type
     if (comment !== null && typeof comment === 'object') {
       //checking if required keys are available
-      if (comment.hasOwnProperty('author_name') && (comment.hasOwnProperty('comment_value')) && (comment.hasOwnProperty('time_stamp'))) {
+      if (comment.hasOwnProperty('author_name') && (comment.hasOwnProperty('comment_value')) && (comment.hasOwnProperty('time_stamp')) && (comment.image_id === current_image_id)) {
         var li = document.createElement('li'),
           aname = document.createTextNode(comment.author_name),
           timeSpan = document.createElement('span'),
