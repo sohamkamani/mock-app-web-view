@@ -1,6 +1,5 @@
-window.onload = init;
+'use strict';
 
-window.onhashchange = init;
 
 function init () {
 
@@ -11,8 +10,12 @@ function init () {
   // location.href = "index.html#" + project.default;
   app.infoCenter.setJsonInfo(project);
   app.renderPage.render();
-  commentPage.displayCommentBox();
+  app.commentPage.displayCommentBox();
   
 
 
 }
+
+window.onload = init;
+
+window.onhashchange = init;
