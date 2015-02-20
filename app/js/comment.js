@@ -75,9 +75,6 @@ app.commentPage = (function() {
     var list = app.domInfo.getById('comment-button');
     list.addEventListener('click', displaycomment, false);
 
-
-
-    assignEventToImage();
     getCommentDetails();
 
   }
