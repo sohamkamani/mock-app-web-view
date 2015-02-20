@@ -42,7 +42,7 @@ app.infoCenter = (function() {
     var w = getImage().dimensions.width;
     var h = getImage().dimensions.height;
 
-    return h*80/w + '%'; 
+    return h*100/w + '%'; 
   }
 
   function getDateTime(){
