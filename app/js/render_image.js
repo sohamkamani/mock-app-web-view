@@ -111,12 +111,12 @@ app.renderPage = (function() {
 
   function hideHotSpots () {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = "1";
+    img.style.zIndex = '1';
   }
 
   function restoreHotSpots () {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = "-1";
+    img.style.zIndex = '-1';
   }
 
   return {
