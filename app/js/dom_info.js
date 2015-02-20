@@ -6,8 +6,13 @@ app.domInfo = (function(){
     return document.getElementById(id);
   }
 
+  function getFirstElementOfClass(className){
+    return document.getElementsByClassName(className);
+  }
+
   return{
-    getById : getById
+    getById : getById,
+    getFirstElementOfClass : getFirstElementOfClass
   };
 
 })();
