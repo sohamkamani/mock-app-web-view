@@ -42,7 +42,7 @@ app.infoCenter = (function() {
     var w = getImage().dimensions.width;
     var h = getImage().dimensions.height;
 
-    return h*80/w + '%'; 
+    return h*100/w + '%'; 
   }
 
   function getDateTime(){
@@ -52,6 +52,20 @@ app.infoCenter = (function() {
 
   function getImageId(){
     return getImage().id;
+  }
+
+  function getCoordsInPercentage (x,y) {
+    var imageContainer = app.domInfo.getById('image-container');
+    var offsetTop = imageContainer.offsetTop;
+    var offsetLeft = imageContainer.offsetLeft;
+    var offsetHeight = imageContainer.offsetHeight;
+    var offsetWidth = imageContainer.offsetWidth;
+    var xPercentage = (x-offsetLeft) * 100 / offsetWidth ; 
+    var yPercentage = (y-offsetTop) * 100 / offsetHeight ; 
+    return {
+      xcord : xPercentage,
+      ycord : yPercentage
+    };
   }
 
   return {
@@ -64,6 +78,7 @@ app.infoCenter = (function() {
     getCommentInfo : getCommentInfo,
     setCommentInfo : setCommentInfo,
     getDateTime : getDateTime,
-    getImageId : getImageId
+    getImageId : getImageId,
+    getCoordsInPercentage : getCoordsInPercentage
   };
 })();

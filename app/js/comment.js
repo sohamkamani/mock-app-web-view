@@ -10,27 +10,24 @@ app.commentPage = (function() {
     ycord: -100
   };
 
- 
+
   function getCoords(event) {
     var x = event.clientX;
     var y = event.clientY;
-    document.getElementById('xcord').value=x;
-    document.getElementById('ycord').value=y;
-    coords = {
-      xcord: x,
-      ycord: y
-    };
+    app.domInfo.getById('xcord').value = x;
+    app.domInfo.getById('ycord').value = y;
+    coords = app.infoCenter.getCoordsInPercentage(x, y);
   }
 
-  function clicky() {
+  function assignEventToImage() {
 
-    var li = document.getElementById('image-container');
-    li.addEventListener('click', getCoords, false);
+    var image = app.domInfo.getById('image-container');
+    image.addEventListener('click', getCoords, false);
 
   }
 
   function getImageId() {
-    var x = document.getElementsByClassName('image');
+    var x = app.domInfo.getFirstElementOfClass('image');
     var y = x[0].getAttribute('id');
     return {
       image_id: y
@@ -38,8 +35,8 @@ app.commentPage = (function() {
   }
 
   function addCommentDetails() {
-    var aname = document.getElementById('name').value;
-    var comment = document.getElementById('comment').value;
+    var aname = app.domInfo.getById('name').value;
+    var comment = app.domInfo.getById('comment').value;
     comment_detail = {
       author_name: aname,
       comment_value: comment
@@ -49,8 +46,8 @@ app.commentPage = (function() {
 
   function getCommentDetails() {
 
-    var list = document.getElementById('addComment');
-    list.addEventListener('click', add, false);
+    var commentList = app.domInfo.getById('addComment');
+    commentList.addEventListener('click', add, false);
   }
 
 
@@ -58,28 +55,29 @@ app.commentPage = (function() {
   function displayCommentBox() {
 
     var flag = 1;
-    var makev;
+    var comment_form;
 
     function displaycomment() {
       if (flag === 1) {
-        makev = document.getElementById('comment-form');
-        makev.style.setProperty('display', 'block');
+
+        comment_form = app.domInfo.getById('comment-form');
+        comment_form.style.setProperty('display', 'inline');
         app.renderPage.hideHotSpots();
         flag = 0;
       } else {
         flag = 1;
-        makev = document.getElementById('comment-form');
-        makev.style.setProperty('display', 'none');
+        comment_form = app.domInfo.getById('comment-form');
+        comment_form.style.setProperty('display', 'none');
         app.renderPage.restoreHotSpots();
       }
     }
 
-    var list = document.getElementById('comment-button');
+    var list = app.domInfo.getById('comment-button');
     list.addEventListener('click', displaycomment, false);
 
 
 
-    clicky();
+    assignEventToImage();
     getCommentDetails();
 
   }
@@ -97,6 +95,10 @@ app.commentPage = (function() {
     json.time_stamp = app.infoCenter.getDateTime();
     app.mongodb.insertIntoMongo(json);
   }
+
+
+
+
 
   return {
     displayCommentBox: displayCommentBox

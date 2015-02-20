@@ -5,7 +5,7 @@
   <title></title>
   <meta charset="utf-8">
   <!-- build:css index_style.css -->
-  <link rel="stylesheet" type="text/css" href="style/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/normalize.css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome-animation/dist/font-awesome-animation.css">
   <link rel="stylesheet" type="text/css" href="style/index_style.css">
@@ -20,14 +20,10 @@
 
 <body>
 
-  <header>
-    <h1>ORB-3<img src="images/chat.png" class = "comment"  id="comment-button" alt="sorry"></h1>
-  </header>
 
-  <div id="comment-form">
-    <h3>Leave your comments here: </h3>
-    
-    <form>
+  <!-- <div class="container">
+    <div class="form" id="comment-form">
+      <h3>Leave your comments here: </h3>
       <div>
         <input type="text" name="name" id="name" value="" placeholder="Name" required>
       </div>
@@ -44,11 +40,11 @@
       <div>
         <input type="button" name="submit" value="Add Comment" id="addComment">
       </div>
-      
-    </form>
-  </div>
+      <span id="successful-submission"></span>
+    </div>
+  </div> -->
 
-  <div class="image-container" id="image-container">
+  <div id="image-container" class="image-container">
   </div>
 
   <ul id="comments">
@@ -60,6 +56,7 @@
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/comment.js"></script>
   <script type="text/javascript" src="js/mongodb.js"></script>
+  <script type="text/javascript" src="js/dom_info.js"></script>
   <script type="text/javascript" src="js/info_center.js"></script>
   <script type="text/javascript" src="js/render_image.js"></script>
 
