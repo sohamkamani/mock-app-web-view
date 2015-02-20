@@ -6,10 +6,8 @@ html,body{
 .image-container{
   position: relative;
 
-  height: 100%;
-  width: 72%;
-  background-size: contain;
-  float: left;
+  height: 98%;
+  width: 100%;
   margin-top:2%;
 
 
