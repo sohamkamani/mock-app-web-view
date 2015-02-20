@@ -20,35 +20,32 @@
 
 <body>
 
+  <p id="info-section" class="info-section transition">
+    Click on <i class="fa fa-comment-o"></i> to display comments.
+    <br>
+    <br> Click on <i class="fa fa-info-circle"></i> to hide this dialogue.
+  </p>
 
-  <!-- <div class="container">
-    <div class="form" id="comment-form">
-      <h3>Leave your comments here: </h3>
-      <div>
-        <input type="text" name="name" id="name" value="" placeholder="Name" required>
-      </div>
-      <div>
-        <textarea rows="8" cols="4" name="comment" id="comment" placeholder="Comment" required></textarea>
-      </div>
-      <h5>*Click the image area to get coordinates</h5>
-      <div>
-        <input type="text" name="xcord" id="xcord" value="" placeholder="X Coordinate" required>
-      </div>
-      <div>
-        <input type="text" name="ycord" id="ycord" value="" placeholder="Y Coordinate" required>
-      </div>
-      <div>
-        <input type="button" name="submit" value="Add Comment" id="addComment">
-      </div>
-      <span id="successful-submission"></span>
+  <div class="container">
+
+    <div class="icon-container transition" id="icon-container">
+      <i class="fa fa-info-circle info-button" id="info-button">
+      </i>
+      <i class="fa fa-comment-o comment-button" id="comment-button"></i>
+
     </div>
-  </div> -->
 
-  <div id="image-container" class="image-container">
+
+    <div class="comment-container transition" id="comment-container">
+      <ul id="comments">
+       
+      </ul>
+    </div>
+
+    <div id="image-container" class="image-container transition">
+    </div>
+
   </div>
-
-  <ul id="comments">
-  </ul>
 
   <!-- build:js app.js -->
   <script type="text/javascript" src="../bower_components/lodash/lodash.js"></script>

@@ -52,35 +52,7 @@ app.commentPage = (function() {
 
 
 
-  function displayCommentBox() {
 
-    var flag = 1;
-    var comment_form;
-
-    function displaycomment() {
-      if (flag === 1) {
-
-        comment_form = app.domInfo.getById('comment-form');
-        comment_form.style.setProperty('display', 'inline');
-        app.renderPage.hideHotSpots();
-        flag = 0;
-      } else {
-        flag = 1;
-        comment_form = app.domInfo.getById('comment-form');
-        comment_form.style.setProperty('display', 'none');
-        app.renderPage.restoreHotSpots();
-      }
-    }
-
-    var list = app.domInfo.getById('comment-button');
-    list.addEventListener('click', displaycomment, false);
-
-
-
-    assignEventToImage();
-    getCommentDetails();
-
-  }
 
   function add() {
     var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];
@@ -101,6 +73,5 @@ app.commentPage = (function() {
 
 
   return {
-    displayCommentBox: displayCommentBox
   };
 })();

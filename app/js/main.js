@@ -9,7 +9,6 @@ function init () {
   
   app.renderPage.render();
   app.mongodb.fetchFromMongo();
-  app.commentPage.displayCommentBox();
 }
 
 
