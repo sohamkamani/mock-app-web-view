@@ -191,7 +191,7 @@ app.renderPage = (function() {
 
   function hideHotSpots() {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = '3';
+    img.style.zIndex = '1';
   }
 
   function restoreHotSpots() {
@@ -215,12 +215,14 @@ app.renderPage = (function() {
     app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.add('comment-layout-comment');
     e.target.addEventListener('click',_hideCommentLayout);
+    hideHotSpots();
     e.target.removeEventListener('click',_showCommentLayout);
   }
    function _hideCommentLayout (e) {
     app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
     e.target.addEventListener('click',_showCommentLayout);
+    restoreHotSpots();
     e.target.removeEventListener('click',_hideCommentLayout);
   }
 
