@@ -65,7 +65,7 @@ app.commentPage = (function() {
     json.position_x = coords.xcord;
     json.position_y = coords.ycord;
     json.time_stamp = app.infoCenter.getDateTime();
-    app.mongodb.insertIntoMongo(json);
+    app.mongodb.insert(json);
   }
 
 

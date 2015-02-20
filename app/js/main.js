@@ -8,13 +8,13 @@ function init () {
   app.infoCenter.setJsonInfo(project);
   
   app.renderPage.render();
-  app.mongodb.fetchFromMongo();
+  app.mongodb.fetch();
 }
 
 
 function reRender () {
   app.renderPage.render();
-  app.mongodb.fetchFromMongo();
+  app.mongodb.fetch();
 }
 
 

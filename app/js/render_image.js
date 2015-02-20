@@ -106,7 +106,7 @@ app.renderPage = (function() {
 
   function deleteCommentListener(e) {
     var id = e.target.id;
-    app.mongodb.deleteFromMongo(id);
+    app.mongodb.remove(id);
   }
 
   function flashCommentLocation(e) {
