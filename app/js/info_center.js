@@ -55,7 +55,7 @@ app.infoCenter = (function() {
   }
 
   function getCoordsInPercentage (x,y) {
-    var imageContainer = document.getElementById('image-container');
+    var imageContainer = app.domInfo.getById('image-container');
     var offsetTop = imageContainer.offsetTop;
     var offsetLeft = imageContainer.offsetLeft;
     var offsetHeight = imageContainer.offsetHeight;
