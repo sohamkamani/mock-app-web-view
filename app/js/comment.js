@@ -66,24 +66,6 @@ app.commentPage = (function() {
 
 
 
-  function displaycomment() {
-    if (flag === 1) {
-
-      comment_form = app.domInfo.getById('form-container');
-      comment_form.style.setProperty('display', 'inline');
-      app.renderPage.hideHotSpots();
-      flag = 0;
-    } else {
-      flag = 1;
-      comment_form = app.domInfo.getById('form-container');
-      comment_form.style.setProperty('display', 'none');
-      app.renderPage.restoreHotSpots();
-    }
-
-
-
-  }
-
   function add() {
     var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];
     var image = getImageId();
@@ -95,11 +77,13 @@ app.commentPage = (function() {
     json.position_x = coords.xcord;
     json.position_y = coords.ycord;
     json.time_stamp = app.infoCenter.getDateTime();
-    app.mongodb.insertIntoMongo(json);
+
+    app.mongodb.insert(json);
     comment_form = app.domInfo.getById('form-container');
     comment_form.style.setProperty('display', 'none');
     comment_form.parentNode.removeChild(comment_form);
         
+
 
 
       }
@@ -114,3 +98,4 @@ app.commentPage = (function() {
         getCommentDetails: getCommentDetails
       };
     })();
+
