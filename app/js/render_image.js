@@ -16,6 +16,37 @@ app.renderPage = (function() {
 
   }
 
+
+
+  
+
+  function addCommentBox(x,y){
+    var imageContainer = document.getElementById('image-container');
+    var formContainer= document.createElement('div');
+    var authorName = document.createElement('input');
+    var comment = document.createElement('textarea');
+    var button = document.createElement('input');
+    formContainer.setAttribute('id', 'form-container');
+    authorName.setAttribute('type', 'text');
+    authorName.setAttribute('placeholder', 'Enter Name');
+    authorName.setAttribute('id', 'name');
+    comment.setAttribute('placeholder', 'Enter Comment');
+    comment.setAttribute('id', 'comment');
+    button.setAttribute('type', 'button');
+    button.setAttribute('id', 'addComment');
+    button.setAttribute('value', 'Add Comment');
+    formContainer.appendChild(authorName);
+    formContainer.appendChild(comment);
+    formContainer.appendChild(button);
+    formContainer.style.top=y+'%';
+    formContainer.style.left=x +'%';
+    imageContainer.appendChild(formContainer);
+    //imageContainer.removeEventListener('click',app.commentPage.containerListener,false);
+    app.commentPage.getCommentDetails();
+
+  }
+
+
   function _renderImage(imageContainer, imageSource) {
     var mainImage = document.createElement('img');
     mainImage.classList.add('image');
@@ -172,7 +203,8 @@ app.renderPage = (function() {
     render: render,
     displayComment: displayComment,
     hideHotSpots: hideHotSpots,
-    restoreHotSpots: restoreHotSpots
+    restoreHotSpots: restoreHotSpots,
+    addCommentBox: addCommentBox
   };
 
 })();

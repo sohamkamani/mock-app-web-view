@@ -12,19 +12,28 @@ app.commentPage = (function() {
 
 
   function getCoords(event) {
+
     var x = event.clientX;
     var y = event.clientY;
-    app.domInfo.getById('xcord').value = x;
-    app.domInfo.getById('ycord').value = y;
+
     coords = app.infoCenter.getCoordsInPercentage(x, y);
+    return coords;
+  }
+
+  function containerListener(e) {
+    if(e.target.id === 'image-container'){
+      var coords = getCoords(e);
+      app.renderPage.addCommentBox(coords.xcord, coords.ycord);
+    }
   }
 
   function assignEventToImage() {
 
     var image = app.domInfo.getById('image-container');
-    image.addEventListener('click', getCoords, false);
+    image.addEventListener('click', containerListener, false);
 
   }
+
 
   function getImageId() {
     var x = app.domInfo.getFirstElementOfClass('image');
@@ -51,34 +60,27 @@ app.commentPage = (function() {
   }
 
 
+  var flag = 1;
+  var comment_form;
 
-  function displayCommentBox() {
 
-    var flag = 1;
-    var comment_form;
 
-    function displaycomment() {
-      if (flag === 1) {
 
-        comment_form = app.domInfo.getById('comment-form');
-        comment_form.style.setProperty('display', 'inline');
-        app.renderPage.hideHotSpots();
-        flag = 0;
-      } else {
-        flag = 1;
-        comment_form = app.domInfo.getById('comment-form');
-        comment_form.style.setProperty('display', 'none');
-        app.renderPage.restoreHotSpots();
-      }
+  function displaycomment() {
+    if (flag === 1) {
+
+      comment_form = app.domInfo.getById('form-container');
+      comment_form.style.setProperty('display', 'inline');
+      app.renderPage.hideHotSpots();
+      flag = 0;
+    } else {
+      flag = 1;
+      comment_form = app.domInfo.getById('form-container');
+      comment_form.style.setProperty('display', 'none');
+      app.renderPage.restoreHotSpots();
     }
 
-    var list = app.domInfo.getById('comment-button');
-    list.addEventListener('click', displaycomment, false);
 
-
-
-    assignEventToImage();
-    getCommentDetails();
 
   }
 
@@ -94,13 +96,21 @@ app.commentPage = (function() {
     json.position_y = coords.ycord;
     json.time_stamp = app.infoCenter.getDateTime();
     app.mongodb.insertIntoMongo(json);
-  }
+    comment_form = app.domInfo.getById('form-container');
+    comment_form.style.setProperty('display', 'none');
+    comment_form.parentNode.removeChild(comment_form);
+        
+
+
+      }
 
 
 
 
-
-  return {
-    displayCommentBox: displayCommentBox
-  };
-})();
+      return {
+        assignEventToImage: assignEventToImage,
+        getCoords: getCoords,
+        containerListener: containerListener,
+        getCommentDetails: getCommentDetails
+      };
+    })();
