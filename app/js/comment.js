@@ -72,7 +72,7 @@ app.commentPage = (function() {
       }
     }
 
-    var list = app.domInfo.getById('comment-button');
+    var list = app.domInfo.getById('image-container');
     list.addEventListener('click', displaycomment, false);
 
     getCommentDetails();
