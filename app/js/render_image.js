@@ -7,14 +7,46 @@ app.renderPage = (function() {
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
-    imageContainer.style.height = app.infoCenter.getRelativeHeight();
+   // imageContainer.style.height = app.infoCenter.getRelativeHeight();
     _renderImage(imageContainer, app.infoCenter.getImageUrl());
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
-
+    app.domInfo.getById('info-button').addEventListener('click',_showInfoSection);
+    app.domInfo.getById('comment-button').addEventListener('click',_showCommentLayout);
 
   }
+
+
+
+  
+
+  function addCommentBox(x,y){
+    var imageContainer = document.getElementById('image-container');
+    var formContainer= document.createElement('div');
+    var authorName = document.createElement('input');
+    var comment = document.createElement('textarea');
+    var button = document.createElement('input');
+    formContainer.setAttribute('id', 'form-container');
+    authorName.setAttribute('type', 'text');
+    authorName.setAttribute('placeholder', 'Enter Name');
+    authorName.setAttribute('id', 'name');
+    comment.setAttribute('placeholder', 'Enter Comment');
+    comment.setAttribute('id', 'comment');
+    button.setAttribute('type', 'button');
+    button.setAttribute('id', 'addComment');
+    button.setAttribute('value', 'Add Comment');
+    formContainer.appendChild(authorName);
+    formContainer.appendChild(comment);
+    formContainer.appendChild(button);
+    formContainer.style.top=y+'%';
+    formContainer.style.left=x +'%';
+    imageContainer.appendChild(formContainer);
+    //imageContainer.removeEventListener('click',app.commentPage.containerListener,false);
+    app.commentPage.getCommentDetails();
+
+  }
+
 
   function _renderImage(imageContainer, imageSource) {
     var mainImage = document.createElement('img');
@@ -88,9 +120,9 @@ app.renderPage = (function() {
         deleteComment.appendChild(deleteValue);
         deleteComment.setAttribute('id', comment._id.$oid);
         deleteComment.addEventListener('click', deleteCommentListener);
+        commentp.appendChild(commentvalue);
         li.appendChild(commentp);
         li.addEventListener('click', flashCommentLocation);
-        commentp.appendChild(commentvalue);
         return {
           success: true,
           node: li
@@ -105,7 +137,7 @@ app.renderPage = (function() {
 
   function deleteCommentListener(e) {
     var id = e.target.id;
-    app.mongodb.deleteFromMongo(id);
+    app.mongodb.remove(id);
   }
 
   function flashCommentLocation(e) {
@@ -159,7 +191,7 @@ app.renderPage = (function() {
 
   function hideHotSpots() {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = '3';
+    img.style.zIndex = '1';
   }
 
   function restoreHotSpots() {
@@ -167,12 +199,39 @@ app.renderPage = (function() {
     img.style.zIndex = '-1';
   }
 
+  function _showInfoSection (e) {
+    app.domInfo.getById('info-section').classList.add('make-full');
+    e.target.addEventListener('click',_hideInfoSection);
+    e.target.removeEventListener('click',_showInfoSection);
+  }
+
+  function _hideInfoSection (e) {
+    app.domInfo.getById('info-section').classList.remove('make-full');
+    e.target.addEventListener('click',_showInfoSection);
+    e.target.removeEventListener('click',_hideInfoSection);
+  }
+
+  function _showCommentLayout (e) {
+    app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
+    app.domInfo.getById('comment-container').classList.add('comment-layout-comment');
+    e.target.addEventListener('click',_hideCommentLayout);
+    hideHotSpots();
+    e.target.removeEventListener('click',_showCommentLayout);
+  }
+   function _hideCommentLayout (e) {
+    app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
+    app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
+    e.target.addEventListener('click',_showCommentLayout);
+    restoreHotSpots();
+    e.target.removeEventListener('click',_hideCommentLayout);
+  }
 
   return {
     render: render,
     displayComment: displayComment,
     hideHotSpots: hideHotSpots,
-    restoreHotSpots: restoreHotSpots
+    restoreHotSpots: restoreHotSpots,
+    addCommentBox: addCommentBox
   };
 
 })();

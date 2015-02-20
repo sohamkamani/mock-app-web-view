@@ -8,14 +8,18 @@ function init () {
   app.infoCenter.setJsonInfo(project);
   
   app.renderPage.render();
-  app.mongodb.fetchFromMongo();
-  app.commentPage.displayCommentBox();
+
+  app.commentPage.assignEventToImage();
+
+  app.mongodb.fetch();
+
 }
 
 
 function reRender () {
   app.renderPage.render();
-  app.mongodb.fetchFromMongo();
+  app.commentPage.assignEventToImage();
+  app.mongodb.fetch();
 }
 
 
