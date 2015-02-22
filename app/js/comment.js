@@ -21,25 +21,26 @@ app.commentPage = (function() {
   }
 
   function containerListener(e) {
-    if(e.target.id === 'image-container'){
       var coords = getCoords(e);
+      app.renderPage.removeOldCommentBox();
       app.renderPage.addCommentBox(coords.xcord, coords.ycord);
-    }
   }
 
   function assignEventToImage() {
 
-    var image = app.domInfo.getById('image-container');
+    // var image = app.domInfo.getById('image-container');
+    // image.addEventListener('click', containerListener, false);
+    var image = app.domInfo.getFirstElementOfClass('image');
     image.addEventListener('click', containerListener, false);
 
   }
 
 
   function getImageId() {
-    var x = app.domInfo.getFirstElementOfClass('image');
-    var y = x[0].getAttribute('id');
+    var img = app.domInfo.getFirstElementOfClass('image');
+    var id = img.getAttribute('id');
     return {
-      image_id: y
+      image_id: id
     };
   }
 
@@ -79,20 +80,19 @@ app.commentPage = (function() {
     comment_form = app.domInfo.getById('form-container');
     comment_form.style.setProperty('display', 'none');
     comment_form.parentNode.removeChild(comment_form);
-        
-
-
-
-      }
 
 
 
 
-      return {
-        assignEventToImage: assignEventToImage,
-        getCoords: getCoords,
-        containerListener: containerListener,
-        getCommentDetails: getCommentDetails
-      };
-    })();
+  }
 
+
+
+
+  return {
+    assignEventToImage: assignEventToImage,
+    getCoords: getCoords,
+    containerListener: containerListener,
+    getCommentDetails: getCommentDetails
+  };
+})();

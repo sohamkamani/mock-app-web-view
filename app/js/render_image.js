@@ -7,23 +7,23 @@ app.renderPage = (function() {
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
-   // imageContainer.style.height = app.infoCenter.getRelativeHeight();
+    // imageContainer.style.height = app.infoCenter.getRelativeHeight();
     _renderImage(imageContainer, app.infoCenter.getImageUrl());
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
-    app.domInfo.getById('info-button').addEventListener('click',_showInfoSection);
-    app.domInfo.getById('comment-button').addEventListener('click',_showCommentLayout);
+    app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
+    app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
 
   }
 
 
 
-  
 
-  function addCommentBox(x,y){
+
+  function addCommentBox(x, y) {
     var imageContainer = document.getElementById('image-container');
-    var formContainer= document.createElement('div');
+    var formContainer = document.createElement('div');
     var authorName = document.createElement('input');
     var comment = document.createElement('textarea');
     var button = document.createElement('input');
@@ -39,10 +39,9 @@ app.renderPage = (function() {
     formContainer.appendChild(authorName);
     formContainer.appendChild(comment);
     formContainer.appendChild(button);
-    formContainer.style.top=y+'%';
-    formContainer.style.left=x +'%';
+    formContainer.style.top = y + '%';
+    formContainer.style.left = x + '%';
     imageContainer.appendChild(formContainer);
-    //imageContainer.removeEventListener('click',app.commentPage.containerListener,false);
     app.commentPage.getCommentDetails();
 
   }
@@ -93,7 +92,7 @@ app.renderPage = (function() {
       success: false,
       message: '| ' + JSON.stringify(comment) + ' | is not a valid item, hence skipping!'
     };
-     var current_image_id = app.infoCenter.getImageId();
+    var current_image_id = app.infoCenter.getImageId();
     // cheching for correct data  type
     if (comment !== null && typeof comment === 'object') {
       //checking if required keys are available
@@ -172,7 +171,7 @@ app.renderPage = (function() {
     for (var i = 0; i < data.length; i++) {
       var li = createListNode(data[i]);
       if (!li.success) {
-        console.info(li.message);
+        //console.info(li.message);
       } else {
         docFrag.appendChild(li.node);
       }
@@ -191,7 +190,7 @@ app.renderPage = (function() {
 
   function hideHotSpots() {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = '1';
+    img.style.zIndex = '3';
   }
 
   function restoreHotSpots() {
@@ -199,31 +198,39 @@ app.renderPage = (function() {
     img.style.zIndex = '-1';
   }
 
-  function _showInfoSection (e) {
+  function removeOldCommentBox() {
+    var oldForm = document.getElementById('form-container');
+    if (oldForm !== null) {
+      oldForm.parentNode.removeChild(oldForm);
+    }
+  }
+
+  function _showInfoSection(e) {
     app.domInfo.getById('info-section').classList.add('make-full');
-    e.target.addEventListener('click',_hideInfoSection);
-    e.target.removeEventListener('click',_showInfoSection);
+    e.target.addEventListener('click', _hideInfoSection);
+    e.target.removeEventListener('click', _showInfoSection);
   }
 
-  function _hideInfoSection (e) {
+  function _hideInfoSection(e) {
     app.domInfo.getById('info-section').classList.remove('make-full');
-    e.target.addEventListener('click',_showInfoSection);
-    e.target.removeEventListener('click',_hideInfoSection);
+    e.target.addEventListener('click', _showInfoSection);
+    e.target.removeEventListener('click', _hideInfoSection);
   }
 
-  function _showCommentLayout (e) {
+  function _showCommentLayout(e) {
     app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.add('comment-layout-comment');
-    e.target.addEventListener('click',_hideCommentLayout);
+    e.target.addEventListener('click', _hideCommentLayout);
     hideHotSpots();
-    e.target.removeEventListener('click',_showCommentLayout);
+    e.target.removeEventListener('click', _showCommentLayout);
   }
-   function _hideCommentLayout (e) {
+
+  function _hideCommentLayout(e) {
     app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
-    e.target.addEventListener('click',_showCommentLayout);
+    e.target.addEventListener('click', _showCommentLayout);
     restoreHotSpots();
-    e.target.removeEventListener('click',_hideCommentLayout);
+    e.target.removeEventListener('click', _hideCommentLayout);
   }
 
   return {
@@ -231,7 +238,8 @@ app.renderPage = (function() {
     displayComment: displayComment,
     hideHotSpots: hideHotSpots,
     restoreHotSpots: restoreHotSpots,
-    addCommentBox: addCommentBox
+    addCommentBox: addCommentBox,
+    removeOldCommentBox : removeOldCommentBox
   };
 
 })();
