@@ -134,26 +134,30 @@ app.renderPage = (function() {
     }
   }
 
+  function deleteElementById(id) {
+    var element = document.getElementById(id);
+    if (element !== null) {
+      element.parentNode.removeChild(element);
+    }
+  }
+
   function deleteCommentListener(e) {
     var id = e.target.id;
     app.mongodb.remove(id);
+    deleteElementById(id);
   }
 
   function flashCommentLocation(e) {
     var imageContainer = document.getElementById('image-container');
     var faIcon = document.createElement('i');
-    if (document.getElementById('commentFlash') !== null) {
-      var element = document.getElementById('commentFlash');
-      element.parentNode.removeChild(element);
-    }
+    deleteElementById('commentFlash');
     faIcon.setAttribute('id', 'commentFlash');
     faIcon.classList.add('fa');
-    faIcon.classList.add('fa-circle-o');
-    faIcon.classList.add('faa-burst');
-    faIcon.classList.add('animated');
+    faIcon.classList.add('fa-hand-o-right');
+    faIcon.classList.add('bounce');
     faIcon.style.color = 'red';
     faIcon.style.fontSize = '2em';
-    faIcon.style.zIndex = '1';
+    faIcon.style.zIndex = '3';
     faIcon.style.position = 'absolute';
     var top = e.target.getAttribute('positionx'); // + '%';
     console.log(top);
@@ -195,14 +199,8 @@ app.renderPage = (function() {
 
   function restoreHotSpots() {
     var img = document.getElementsByClassName('image')[0];
+    deleteElementById('commentFlash');
     img.style.zIndex = '-1';
-  }
-
-  function removeOldCommentBox() {
-    var oldForm = document.getElementById('form-container');
-    if (oldForm !== null) {
-      oldForm.parentNode.removeChild(oldForm);
-    }
   }
 
   function _showInfoSection(e) {
@@ -230,6 +228,7 @@ app.renderPage = (function() {
     app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
     e.target.addEventListener('click', _showCommentLayout);
     restoreHotSpots();
+    deleteElementById('form-container');
     e.target.removeEventListener('click', _hideCommentLayout);
   }
 
@@ -239,7 +238,7 @@ app.renderPage = (function() {
     hideHotSpots: hideHotSpots,
     restoreHotSpots: restoreHotSpots,
     addCommentBox: addCommentBox,
-    removeOldCommentBox : removeOldCommentBox
+    deleteElementById : deleteElementById
   };
 
 })();

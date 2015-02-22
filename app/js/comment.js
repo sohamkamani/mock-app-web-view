@@ -21,18 +21,14 @@ app.commentPage = (function() {
   }
 
   function containerListener(e) {
-      var coords = getCoords(e);
-      app.renderPage.removeOldCommentBox();
-      app.renderPage.addCommentBox(coords.xcord, coords.ycord);
+    var coords = getCoords(e);
+    app.renderPage.deleteElementById('form-container');
+    app.renderPage.addCommentBox(coords.xcord, coords.ycord);
   }
 
   function assignEventToImage() {
-
-    // var image = app.domInfo.getById('image-container');
-    // image.addEventListener('click', containerListener, false);
     var image = app.domInfo.getFirstElementOfClass('image');
     image.addEventListener('click', containerListener, false);
-
   }
 
 
@@ -47,7 +43,7 @@ app.commentPage = (function() {
   function addCommentDetails() {
     var aname = app.domInfo.getById('name').value;
     var comment = app.domInfo.getById('comment').value;
-    comment_detail = {
+    return {
       author_name: aname,
       comment_value: comment
     };
@@ -67,7 +63,7 @@ app.commentPage = (function() {
   function add() {
     var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];
     var image = getImageId();
-    var comment_details = addCommentDetails();
+    var comment_detail = addCommentDetails();
     var json = {};
     json.image_id = image.image_id;
     json.author_name = comment_detail.author_name;
@@ -77,13 +73,8 @@ app.commentPage = (function() {
     json.time_stamp = app.infoCenter.getDateTime();
 
     app.mongodb.insert(json);
-    comment_form = app.domInfo.getById('form-container');
-    comment_form.style.setProperty('display', 'none');
-    comment_form.parentNode.removeChild(comment_form);
-
-
-
-
+    app.renderPage.deleteElementById('form-container');
+    app.mongodb.fetch();
   }
 
 
