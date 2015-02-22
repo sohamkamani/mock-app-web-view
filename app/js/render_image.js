@@ -153,16 +153,20 @@ app.renderPage = (function() {
     deleteElementById('commentFlash');
     faIcon.setAttribute('id', 'commentFlash');
     faIcon.classList.add('fa');
-    faIcon.classList.add('fa-hand-o-right');
+    faIcon.classList.add('fa-hand-o-up');
     faIcon.classList.add('bounce');
     faIcon.style.color = 'red';
     faIcon.style.fontSize = '2em';
     faIcon.style.zIndex = '3';
     faIcon.style.position = 'absolute';
-    var top = e.target.getAttribute('positionx'); // + '%';
-    console.log(top);
-    faIcon.style.top = e.target.getAttribute('positiony') + '%';
-    faIcon.style.left = e.target.getAttribute('positionx') + '%';
+    if (e.target.hasAttribute('positionX')) {
+      faIcon.style.top = e.target.getAttribute('positiony') + '%';
+      faIcon.style.left = e.target.getAttribute('positionx') + '%';
+    } else {
+      faIcon.style.top = e.target.parentNode.getAttribute('positiony') + '%';
+      faIcon.style.left = e.target.parentNode.getAttribute('positionx') + '%';
+    }
+
     imageContainer.appendChild(faIcon);
   }
 
@@ -238,7 +242,7 @@ app.renderPage = (function() {
     hideHotSpots: hideHotSpots,
     restoreHotSpots: restoreHotSpots,
     addCommentBox: addCommentBox,
-    deleteElementById : deleteElementById
+    deleteElementById: deleteElementById
   };
 
 })();
