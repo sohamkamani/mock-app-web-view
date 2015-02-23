@@ -26,6 +26,7 @@ app.renderPage = (function() {
     var formContainer = document.createElement('div');
     var header = document.createElement('div');
     var faIcon = document.createElement('i');
+    faIcon.style.color = 'rgb(106,67,0)';
     faIcon.classList.add('fa');
     faIcon.classList.add('fa-comments-o');
     var headerContent = document.createTextNode('  Comment');

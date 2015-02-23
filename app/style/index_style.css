@@ -67,14 +67,14 @@ i.comment-button {
 .info-section {
   position: absolute;
   top: 5%;
-  left: 2%;
+  left: 3%;
   width: 20%;
   height: 0%;
   overflow: hidden;
   background: #FFFFCC;
 }
 .make-full {
-  height: 20%;
+  height: 10%;
   -webkit-box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
