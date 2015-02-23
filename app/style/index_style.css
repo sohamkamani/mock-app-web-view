@@ -3,12 +3,7 @@ html, body {
   width: 100%;
   font-family: 'Roboto', sans-serif;
 }
-.transition {
-  /*-webkit-transition: all 0.5s ease-in;
-  -moz-transition: all 0.5s ease-in;
-  -o-transition: all 0.5s ease-in;
-  transition: all 0.5s ease-in;*/
-}
+
 .container {
   display: -webkit-box;
   display: -moz-box;
@@ -118,7 +113,7 @@ html, body {
   padding-bottom: 10px;
   border-bottom: 1px solid #f0e5e5;
 }
-.icon-container i:active, .icon-container i:hover, .compress-button:hover {
+.icon-container i:hover, .compress-button:hover {
   color: white;
   background: #FD9B27;
   -webkit-box-shadow: inset 0px 0px 12px 0px rgba(235, 78, 21, 1);
@@ -143,7 +138,8 @@ html, body {
   min-height: auto;
   height: 100%;
   width: 0%;
-  overflow: hidden;
+  background: white;
+  overflow-x: hidden;
 }
 .image-container {
   position: relative;
@@ -165,7 +161,6 @@ html, body {
   width: 600%;
   height: 100%;
 }
-
 .display-image {
   position: relative;
   z-index: -1;
@@ -201,7 +196,7 @@ html, body {
   top: 3px;
   left: 3px;
   font-size: 1.2em;
-  padding:5px;
+  padding: 5px;
   border-radius: 50%;
   color: rgba(106, 67, 0, 1);
   background: white;
@@ -210,45 +205,35 @@ html, body {
 ul {
   list-style-type: none;
   padding: 0;
-  margin 0;
+  margin: 0;
 }
 .hotspot-blink {
-  box-shadow: 0 1px 13px ;
+  box-shadow: 0 1px 13px;
   -webkit-animation: blink-hotspot 2s infinite;
   -moz-animation: blink-hotspot 2s infinite;
   animation: blink-hotspot 2s infinite;
-  
 }
 @-webkit-keyframes blink-hotspot {
- 
   0%, 100% {
     box-shadow: 0 1px 13px black;
   }
-  50%
-  {
+  50% {
     box-shadow: none;
-
   }
 }
 @-moz-keyframes blink-hotspot {
- 
   0%, 100% {
     box-shadow: 0 1px 13px black;
   }
-  50%
-  {
+  50% {
     box-shadow: none;
-
   }
 }
 @keyframes blink-hotspot {
- 
   0%, 100% {
     box-shadow: 0 1px 13px black;
   }
-  50%
-  {
+  50% {
     box-shadow: none;
-
   }
 }
