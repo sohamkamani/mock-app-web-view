@@ -140,8 +140,10 @@ html, body {
   min-height: auto;
   height: 100%;
   width: 0%;
+
   background: white;
   overflow-x: hidden;
+
 }
 .image-container {
   position: relative;
