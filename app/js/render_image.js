@@ -24,10 +24,22 @@ app.renderPage = (function() {
   function addCommentBox(x, y) {
     var imageContainer = document.getElementById('image-container');
     var formContainer = document.createElement('div');
+    var header = document.createElement('div');
+    var faIcon = document.createElement('i');
+    faIcon.classList.add('fa');
+    faIcon.classList.add('fa-comments-o');
+    var headerContent = document.createTextNode('  Comment');
+    var faCloseIcon = document.createElement('i');
+    faCloseIcon.classList.add('fa');
+    faCloseIcon.classList.add('fa-times');
+    //faCloseIcon.style.color = 'red';
+    faCloseIcon.setAttribute('id', 'close-button');
+    faCloseIcon.addEventListener('click', closeCommentBox);
     var authorName = document.createElement('input');
     var comment = document.createElement('textarea');
     var button = document.createElement('input');
     formContainer.setAttribute('id', 'form-container');
+    header.setAttribute('id', 'form-header');
     authorName.setAttribute('type', 'text');
     authorName.setAttribute('placeholder', 'Enter Name');
     authorName.setAttribute('id', 'name');
@@ -35,7 +47,11 @@ app.renderPage = (function() {
     comment.setAttribute('id', 'comment');
     button.setAttribute('type', 'button');
     button.setAttribute('id', 'addComment');
-    button.setAttribute('value', 'Add Comment');
+    button.setAttribute('value', 'Post');
+    formContainer.appendChild(header);
+    header.appendChild(faIcon);
+    header.appendChild(headerContent);
+    header.appendChild(faCloseIcon);
     formContainer.appendChild(authorName);
     formContainer.appendChild(comment);
     formContainer.appendChild(button);
@@ -46,6 +62,10 @@ app.renderPage = (function() {
 
   }
 
+  function closeCommentBox(e) {
+    var id = e.target.id;
+    deleteElementById('form-container');
+  }
 
   function _renderImage(imageContainer, imageSource) {
     var mainImage = document.createElement('img');
@@ -101,24 +121,26 @@ app.renderPage = (function() {
           aname = document.createTextNode(comment.author_name),
           timeSpan = document.createElement('span'),
           time = document.createTextNode(comment.time_stamp),
-          deleteComment = document.createElement('span'),
+          faCloseIcon = document.createElement('i'),
           commentp = document.createElement('p'),
-          commentvalue = document.createTextNode(comment.comment_value),
-          deleteValue = document.createTextNode('  X');
+          commentvalue = document.createTextNode(comment.comment_value);
 
         li.setAttribute('id', comment._id.$oid);
         li.setAttribute('positionX', comment.position_x);
         li.setAttribute('positionY', comment.position_y);
         li.setAttribute('id', comment._id.$oid);
-        deleteComment.classList.add('deleteComment');
+        faCloseIcon.classList.add('fa');
+        faCloseIcon.classList.add('fa-times');
+        //faCloseIcon.style.color = 'red';
         li.classList.add('column');
         li.appendChild(aname);
+        li.appendChild(faCloseIcon);
         li.appendChild(timeSpan);
+
         timeSpan.appendChild(time);
-        timeSpan.appendChild(deleteComment);
-        deleteComment.appendChild(deleteValue);
-        deleteComment.setAttribute('id', comment._id.$oid);
-        deleteComment.addEventListener('click', deleteCommentListener);
+        
+        faCloseIcon.setAttribute('id', comment._id.$oid);
+        faCloseIcon.addEventListener('click', deleteCommentListener);
         commentp.appendChild(commentvalue);
         li.appendChild(commentp);
         li.addEventListener('click', flashCommentLocation);

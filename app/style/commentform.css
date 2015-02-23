@@ -21,17 +21,34 @@ h1 {
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 10px;
-  background-color: #fff9c4;
+  background-color: #FFFFCC;
   -webkit-box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
 }
-span {
+li {
+  font-size: 20px;
+  font-weight: bold;
+}
+li span {
   float: right;
+  font-size: 10px;
+  padding-top: 3px;
+}
+li i
+{
+  float: right;
+  padding-left: 3%;
+}
+li p
+{
+  font-weight: 100px;
+  font-size: 15px; 
 }
 ul {
   list-style-type: none;
 }
+
 .body {
   position: absolute;
 }
@@ -39,8 +56,8 @@ ul {
   position: absolute;
   display: block;
   z-index: 5;
-  background: #CFD8DC;
-  border: 1px solid #D7CCC8;
+  background: #FFFFCC;
+  border: 1px solid #FFFFCC;
   width: 200px;
   margin-top: 2%;
   margin-left: 0.5%;
@@ -68,6 +85,8 @@ ul {
   background: -o-linear-gradient(top, #efefef, #ddd);
   background: linear-gradient(top, #efefef, #ddd);
   color: #333;
+  width: 30%;
+  float: right;
   text-shadow: 0px 1px 1px rgba(255, 255, 255, 1);
   border: 1px solid #ccc;
 }
@@ -126,4 +145,16 @@ ul {
 .bounce {
   -webkit-animation: bounce 1s ease-out infinite;
   animation: bounce 1s ease-out infinite;
+}
+
+#form-header
+{
+  padding: 10px 5px;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+#close-button
+{
+  float: right;
 }
