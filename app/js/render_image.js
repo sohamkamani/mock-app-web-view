@@ -55,8 +55,28 @@ app.renderPage = (function() {
     formContainer.appendChild(authorName);
     formContainer.appendChild(comment);
     formContainer.appendChild(button);
-    formContainer.style.top = y + '%';
-    formContainer.style.left = x + '%';
+    if ((x < 80) && (y < 70)) {
+      formContainer.style.top = y + '%';
+      formContainer.style.left = x + '%';
+    } 
+    else if ((x > 80) && (y < 70)) {
+      x = 100 - x;
+      formContainer.style.top = y + '%';
+      formContainer.style.right = x + '%';
+    } 
+    else if ((x < 80) && (y > 70)) {
+      y = 100 - y;
+      formContainer.style.bottom = y + '%';
+      formContainer.style.left = x + '%';
+    }
+    else
+    {
+      x = 100 - x;
+       y = 100 - y;
+       formContainer.style.bottom = y + '%';
+      formContainer.style.right = x + '%';
+
+    }
     imageContainer.appendChild(formContainer);
     app.commentPage.getCommentDetails();
 
