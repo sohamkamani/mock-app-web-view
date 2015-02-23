@@ -42,7 +42,6 @@ app.renderPage = (function() {
     formContainer.style.top=y+'%';
     formContainer.style.left=x +'%';
     imageContainer.appendChild(formContainer);
-    //imageContainer.removeEventListener('click',app.commentPage.containerListener,false);
     app.commentPage.getCommentDetails();
 
   }
@@ -149,10 +148,10 @@ app.renderPage = (function() {
     }
     faIcon.setAttribute('id', 'commentFlash');
     faIcon.classList.add('fa');
-    faIcon.classList.add('fa-circle-o');
-    faIcon.classList.add('faa-burst');
-    faIcon.classList.add('animated');
-    faIcon.style.color = 'red';
+    faIcon.classList.add('fa');
+    faIcon.classList.add('fa-comments');
+    
+    
     faIcon.style.fontSize = '2em';
     faIcon.style.zIndex = '1';
     faIcon.style.position = 'absolute';
