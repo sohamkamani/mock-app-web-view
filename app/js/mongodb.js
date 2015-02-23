@@ -47,6 +47,14 @@ app.mongodb = (function() {
     return url;
   }
 
+  function makeJsonFetchUrl() {
+    var database = 'hotspots';
+    var collections = 'hotspot_details';
+    var key = getApiKey();
+    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?apiKey=' + key;
+    return url;
+  }
+
   function makeRemoveUrl(id) {
     var database = getDatabase();
     var collections = getCollection();
@@ -89,9 +97,23 @@ app.mongodb = (function() {
 
   };
 
+  var fetchJsonInfo = function() {
+    var url = makeJsonFetchUrl();
+    promise('get', url, null).then(function(response) {
+      console.log('Successful !!');
+      app.infoCenter.setJsonInfo(response[response.length - 1]);
+      app.renderPage.render();
+      app.commentPage.assignEventToImage();
+    }, function(status) {
+      console.log('Unsuccessful!! Error status: ' + status);
+    });
+
+  };
+
   return {
     fetch: fetch,
     insert: insert,
-    remove: remove
+    remove: remove,
+    fetchJsonInfo:fetchJsonInfo
   };
 })();

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 describe('render page', function() {
   'use strict';
   var hideHotSpots = app.renderPage.hideHotSpots;
@@ -16,11 +16,14 @@ describe('render page', function() {
       switch (id) {
         case 'image-container':
           return imageContainer;
-          break;
       }
     };
     app.commentPage.getCommentDetails = function(){};
     spyOn(app.commentPage,'getCommentDetails');
+  });
+
+  afterEach(function(){
+    imageContainer = document.createElement('div');
   });
 
 
@@ -34,6 +37,13 @@ describe('render page', function() {
     expect(img.style.zIndex).toEqual('-1');
   });
 
+   it('should add comment box at the appropriate location with x>80,y<70',function(){
+    addCommentBox(90,0);
+    expect(imageContainer.firstChild.style.top).toEqual('0%');
+    expect(imageContainer.firstChild.style.right).toEqual('10%');
+    expect(app.commentPage.getCommentDetails).toHaveBeenCalled();
+  });
+
   it('should add comment box at the appropriate location',function(){
     addCommentBox(0,0);
     expect(imageContainer.firstChild.style.top).toEqual('0%');
@@ -41,7 +51,21 @@ describe('render page', function() {
     expect(app.commentPage.getCommentDetails).toHaveBeenCalled();
   });
 
+  it('should add comment box at the appropriate location with x>80,y>70',function(){
+    addCommentBox(90,90);
+    expect(imageContainer.firstChild.style.bottom).toEqual('10%');
+    expect(imageContainer.firstChild.style.right).toEqual('10%');
+    expect(app.commentPage.getCommentDetails).toHaveBeenCalled();
+  });
+
+  it('should add comment box at the appropriate location with x<80,y>70',function(){
+    addCommentBox(79,90);
+    expect(imageContainer.firstChild.style.bottom).toEqual('10%');
+    expect(imageContainer.firstChild.style.left).toEqual('79%');
+    expect(app.commentPage.getCommentDetails).toHaveBeenCalled();
+  });
+
+ 
+
   //will insert additional tests here later
 });
-=======
->>>>>>> d594991034a891180e2d9d696e616d7924653e96
