@@ -117,7 +117,7 @@ html, body {
   padding-bottom: 10px;
   border-bottom: 1px solid #f0e5e5;
 }
-.icon-container i:focus {
+.icon-container i:active, .icon-container i:hover {
   color: white;
   background: #FD9B27;
   -webkit-box-shadow: inset 0px 0px 12px 0px rgba(235, 78, 21, 1);
@@ -179,7 +179,7 @@ html, body {
   height: 0%;
   overflow: hidden;
   z-index: 6;
-  background: #FFFFCC;
+  background: #fafaad;
 }
 .make-full {
   height: 10%;

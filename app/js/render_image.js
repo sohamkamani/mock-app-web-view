@@ -14,6 +14,7 @@ app.renderPage = (function() {
     });
     app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
     app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
+    app.domInfo.getById('home-button').addEventListener('click', _hideCommentLayout);
 
   }
 
@@ -59,22 +60,18 @@ app.renderPage = (function() {
     if ((x < 80) && (y < 70)) {
       formContainer.style.top = y + '%';
       formContainer.style.left = x + '%';
-    } 
-    else if ((x > 80) && (y < 70)) {
+    } else if ((x > 80) && (y < 70)) {
       x = 100 - x;
       formContainer.style.top = y + '%';
       formContainer.style.right = x + '%';
-    } 
-    else if ((x < 80) && (y > 70)) {
+    } else if ((x < 80) && (y > 70)) {
       y = 100 - y;
       formContainer.style.bottom = y + '%';
       formContainer.style.left = x + '%';
-    }
-    else
-    {
+    } else {
       x = 100 - x;
-       y = 100 - y;
-       formContainer.style.bottom = y + '%';
+      y = 100 - y;
+      formContainer.style.bottom = y + '%';
       formContainer.style.right = x + '%';
 
     }
@@ -263,7 +260,7 @@ app.renderPage = (function() {
   }
 
   function _showCommentLayout(e) {
-   // app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
+    // app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.add('comment-layout-comment');
     e.target.addEventListener('click', _hideCommentLayout);
     hideHotSpots();
@@ -271,12 +268,18 @@ app.renderPage = (function() {
   }
 
   function _hideCommentLayout(e) {
-   // app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
+    // app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
-    e.target.addEventListener('click', _showCommentLayout);
     restoreHotSpots();
     deleteElementById('form-container');
-    e.target.removeEventListener('click', _hideCommentLayout);
+    if (e.target.id == 'comment-button') {
+      e.target.addEventListener('click', _showCommentLayout);
+      e.target.removeEventListener('click', _hideCommentLayout);
+    }
+    if(e.target.id == 'home-button'){
+      app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
+      app.domInfo.getById('comment-button').removeEventListener('click', _hideCommentLayout);
+    }
   }
 
   return {
