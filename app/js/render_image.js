@@ -115,7 +115,8 @@ app.renderPage = (function() {
     hotspotDiv.style.height = hotspot.h + '%';
     hotspotDiv.style.width = hotspot.w + '%';
     hotspotDiv.style.zIndex = '2';
-    hotspotDiv.style.background = 'rgba(192,192,192,0)';
+    
+    hotspotDiv.classList.add('hotspot');
     hotspotDiv.appendChild(faIcon);
     hotspotDiv.addEventListener('click', function() {
       location.href = 'index.html#' + hotspot.link;
@@ -271,11 +272,11 @@ app.renderPage = (function() {
     app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
     restoreHotSpots();
     deleteElementById('form-container');
-    if (e.target.id == 'comment-button') {
+    if (e.target.id === 'comment-button') {
       e.target.addEventListener('click', _showCommentLayout);
       e.target.removeEventListener('click', _hideCommentLayout);
     }
-    if (e.target.id == 'home-button') {
+    if (e.target.id === 'home-button') {
       app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
       app.domInfo.getById('comment-button').removeEventListener('click', _hideCommentLayout);
       app.domInfo.getById('info-section').classList.remove('make-full');

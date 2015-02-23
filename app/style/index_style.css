@@ -41,9 +41,9 @@ html, body {
   width: 100%;
   height: 100%;
 }
-.content-container{
+.content-container {
   -webkit-box-ordinal-group: 3;
-  -moz-box-ordinal-group:3;
+  -moz-box-ordinal-group: 3;
   -webkit-order: 2;
   -ms-flex-order: 2;
   order: 2;
@@ -58,7 +58,7 @@ html, body {
   min-width: 0;
   min-height: auto;
   height: 100%;
-  width:400%;
+  width: 400%;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -110,7 +110,7 @@ html, body {
   overflow: hidden;
 }
 .icon-container i {
-  color: rgba(106,67,0,1);
+  color: rgba(106, 67, 0, 1);
   font-size: 1.5em;
   width: 100%;
   padding-top: 10px;
@@ -143,7 +143,6 @@ html, body {
   height: 100%;
   width: 0%;
   overflow: hidden;
-  
 }
 .image-container {
   position: relative;
@@ -180,7 +179,7 @@ html, body {
   overflow: hidden;
   z-index: 6;
   background: #FAFAAD;
-  color: rgba(106,67,0,1);
+  color: rgba(106, 67, 0, 1);
 }
 .make-full {
   height: 10%;
@@ -196,4 +195,44 @@ ul {
   list-style-type: none;
   padding: 0;
   margin 0;
+}
+.hotspot {
+  box-shadow: 0 1px 13px ;
+  -webkit-animation: myfirst 2s infinite;
+  -moz-animation: myfirst 2s infinite;
+  animation: myfirst 2s infinite;
+  
+}
+@-webkit-keyframes myfirst {
+ 
+  0%, 100% {
+    box-shadow: 0 1px 13px black;
+  }
+  50%
+  {
+    box-shadow: none;
+
+  }
+}
+@-moz-keyframes myfirst {
+ 
+  0%, 100% {
+    box-shadow: 0 1px 13px black;
+  }
+  50%
+  {
+    box-shadow: none;
+
+  }
+}
+@keyframes myfirst {
+ 
+  0%, 100% {
+    box-shadow: 0 1px 13px black;
+  }
+  50%
+  {
+    box-shadow: none;
+
+  }
 }
