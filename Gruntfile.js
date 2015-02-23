@@ -55,7 +55,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['jshint', 'htmlhint']);
   grunt.registerTask('build', ['copy:task0', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
   grunt.registerTask('default', ['test', 'build']);
-
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerMultiTask('log', 'Log stuff.', function() {
     grunt.log.writeln(this.target + ': ' + this.data);

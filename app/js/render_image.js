@@ -3,7 +3,7 @@ app.renderPage = (function() {
   'use strict';
 
   function render() {
-    var imageContainer = document.getElementById('image-container');
+    var imageContainer = app.domInfo.getById('image-container');
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
@@ -25,7 +25,7 @@ app.renderPage = (function() {
 
 
   function addCommentBox(x, y) {
-    var imageContainer = document.getElementById('image-container');
+    var imageContainer = app.domInfo.getById('image-container');
     var formContainer = document.createElement('div');
     var header = document.createElement('div');
     var faIcon = document.createElement('i');
@@ -177,7 +177,7 @@ app.renderPage = (function() {
   }
 
   function deleteElementById(id) {
-    var element = document.getElementById(id);
+    var element = app.domInfo.getById(id);
     if (element !== null) {
       element.parentNode.removeChild(element);
     }
@@ -190,7 +190,7 @@ app.renderPage = (function() {
   }
 
   function flashCommentLocation(e) {
-    var imageContainer = document.getElementById('image-container');
+    var imageContainer = app.domInfo.getById('image-container');
     var faIcon = document.createElement('i');
     deleteElementById('commentFlash');
     faIcon.setAttribute('id', 'commentFlash');
@@ -227,12 +227,12 @@ app.renderPage = (function() {
       }
     }
 
-    var listNode = document.getElementById('comments');
+    var listNode = app.domInfo.getById('comments');
     listNode.appendChild(docFrag);
   }
 
   function _clearComments() {
-    var commentContainer = document.getElementById('comments');
+    var commentContainer = app.domInfo.getById('comments');
     while (commentContainer.firstChild) {
       commentContainer.removeChild(commentContainer.firstChild);
     }
