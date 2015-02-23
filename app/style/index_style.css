@@ -212,3 +212,43 @@ ul {
   padding: 0;
   margin 0;
 }
+.hotspot-blink {
+  box-shadow: 0 1px 13px ;
+  -webkit-animation: blink-hotspot 2s infinite;
+  -moz-animation: blink-hotspot 2s infinite;
+  animation: blink-hotspot 2s infinite;
+  
+}
+@-webkit-keyframes blink-hotspot {
+ 
+  0%, 100% {
+    box-shadow: 0 1px 13px black;
+  }
+  50%
+  {
+    box-shadow: none;
+
+  }
+}
+@-moz-keyframes blink-hotspot {
+ 
+  0%, 100% {
+    box-shadow: 0 1px 13px black;
+  }
+  50%
+  {
+    box-shadow: none;
+
+  }
+}
+@keyframes blink-hotspot {
+ 
+  0%, 100% {
+    box-shadow: 0 1px 13px black;
+  }
+  50%
+  {
+    box-shadow: none;
+
+  }
+}
