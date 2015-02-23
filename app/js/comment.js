@@ -10,6 +10,8 @@ app.commentPage = (function() {
     ycord: -100
   };
 
+  
+
 
   function getCoords(event) {
 
