@@ -14,6 +14,7 @@ app.renderPage = (function() {
     });
     app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
     app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
+    app.domInfo.getById('home-button').addEventListener('click', _hideCommentLayout);
 
   }
 
@@ -258,7 +259,7 @@ app.renderPage = (function() {
   }
 
   function _showCommentLayout(e) {
-   // app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
+    // app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.add('comment-layout-comment');
     e.target.addEventListener('click', _hideCommentLayout);
     hideHotSpots();
@@ -266,12 +267,21 @@ app.renderPage = (function() {
   }
 
   function _hideCommentLayout(e) {
-   // app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
+    // app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
-    e.target.addEventListener('click', _showCommentLayout);
     restoreHotSpots();
     deleteElementById('form-container');
-    e.target.removeEventListener('click', _hideCommentLayout);
+    if (e.target.id == 'comment-button') {
+      e.target.addEventListener('click', _showCommentLayout);
+      e.target.removeEventListener('click', _hideCommentLayout);
+    }
+    if (e.target.id == 'home-button') {
+      app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
+      app.domInfo.getById('comment-button').removeEventListener('click', _hideCommentLayout);
+      app.domInfo.getById('info-section').classList.remove('make-full');
+      app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
+      app.domInfo.getById('info-button').removeEventListener('click', _hideInfoSection);
+    }
   }
 
   return {
