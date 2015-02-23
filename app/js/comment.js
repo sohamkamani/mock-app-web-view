@@ -85,7 +85,7 @@ app.commentPage = (function() {
   return {
     assignEventToImage: assignEventToImage,
     getCoords: getCoords,
-    
+
     getCommentDetails: getCommentDetails
   };
 })();
