@@ -1,8 +1,10 @@
-describe('getCoords', function() {
+describe('commentpage', function() {
     'use strict';
   var getCoords = app.commentPage.getCoords;
   var img = document.createElement('img');
   var assignEventToImage = app.commentPage.assignEventToImage;
+  var comment = document.createElement('div');
+  var getCommentDetails = app.commentPage.getCommentDetails;
 
 
   beforeEach(function() {
@@ -24,6 +26,18 @@ describe('getCoords', function() {
   spyOn(img, 'assignEventToImage');
   img.assignEventToImage('click', app.commentPage.containerListener,false);
 
+   app.domInfo.getElementById = function(args){
+      return comment;
+    };
+
+    comment = {
+      getCommentDetails :function(args){
+      comment.getCommentDetails('click', app.commentPage.add,false);
+    }
+  };
+  spyOn(comment, 'getCommentDetails');
+  comment.getCommentDetails('click', app.commentPage.add,false);
+
   });
 
   
@@ -36,6 +50,11 @@ describe('getCoords', function() {
   it('should assign listener', function(){
     
     expect(img.assignEventToImage).toHaveBeenCalledWith('click',app.commentPage.containerListener,false);
+  });
+
+  it('should assign listener', function(){
+    
+    expect(comment.getCommentDetails).toHaveBeenCalledWith('click',app.commentPage.add,false);
   });
 
  
