@@ -222,7 +222,9 @@ ul {
 @-webkit-keyframes blink-hotspot {
  
   0%, 100% {
-    box-shadow: 0 1px 13px black;
+    box-shadow: 0 1px 13px black ,inset 0 1px 13px white;
+
+
   }
   50%
   {
@@ -233,7 +235,8 @@ ul {
 @-moz-keyframes blink-hotspot {
  
   0%, 100% {
-    box-shadow: 0 1px 13px black;
+    box-shadow: 0 1px 13px black ,inset 0 1px 13px white;
+
   }
   50%
   {
@@ -244,7 +247,8 @@ ul {
 @keyframes blink-hotspot {
  
   0%, 100% {
-    box-shadow: 0 1px 13px black;
+    box-shadow: 0 1px 13px black ,inset 0 1px 13px white;
+
   }
   50%
   {
