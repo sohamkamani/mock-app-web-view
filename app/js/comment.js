@@ -30,7 +30,7 @@ app.commentPage = (function() {
 
   function assignEventToImage() {
     var image = app.domInfo.getFirstElementOfClass('image');
-    image.addEventListener('click', containerListener, false);
+    image.addEventListener('click', app.commentPage.containerListener, false);
   }
 
 
