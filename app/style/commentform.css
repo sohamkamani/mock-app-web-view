@@ -13,22 +13,11 @@ h1 {
   margin-top: 9px;
   float: right;
 }
-.column {
-  position: relative;
-  float: left;
-  width: 85%;
-  left: 5%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  background-color: #FFFFCC;
-  -webkit-box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
-}
+
 li {
   font-size: 20px;
   font-weight: bold;
+  color: rgba(106,67,0,1);
 }
 li span {
   float: right;
@@ -54,56 +43,32 @@ ul {
   position: absolute;
   display: block;
   z-index: 5;
-  background: #FFFFCC;
-  border: 1px solid #FFFFCC;
+  background: #FAFAAD;
+  border: 1px solid #FAFAAD;
   width: 200px;
   margin-top: 2%;
   margin-left: 0.5%;
   -webkit-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
   -moz-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
-  box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
-  padding: 8px;
+  box-shadow: 0px 0px 21px   rgba(102, 102, 102, 1);
+  padding: 8px; 
+  border-radius: 2px;
 }
-#form-container input, #form-container textarea {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 8px 10px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  outline: 0;
-}
-#form-container textarea, input {
-  width: 87%;
-}
+
+
 #form-container input[type="button"] {
   cursor: pointer;
-  background: -webkit-linear-gradient(top, #efefef, #ddd);
-  background: -moz-linear-gradient(top, #efefef, #ddd);
-  background: -ms-linear-gradient(top, #efefef, #ddd);
-  background: -o-linear-gradient(top, #efefef, #ddd);
-  background: linear-gradient(top, #efefef, #ddd);
-  color: #333;
+  background: linear-gradient(rgb(157,108,48),rgb(106,67,0));
+  color: white;
   width: 30%;
   float: right;
-  text-shadow: 0px 1px 1px rgba(255, 255, 255, 1);
-  border: 1px solid #ccc;
+  letter-spacing: 1px;
+  border: 1px solid rgb(106,67,0);
+  height:28px;
+  border-radius: 3px;
+
 }
-#form-container input[type="button"]:hover {
-  background: -webkit-linear-gradient(top, #eee, #ccc);
-  background: -moz-linear-gradient(top, #eee, #ccc);
-  background: -ms-linear-gradient(top, #eee, #ccc);
-  background: -o-linear-gradient(top, #eee, #ccc);
-  background: linear-gradient(top, #eee, #ccc);
-  border: 1px solid #bbb;
-}
-#form-container input[type="button"]:active {
-  background: -webkit-linear-gradient(top, #ddd, #aaa);
-  background: -moz-linear-gradient(top, #ddd, #aaa);
-  background: -ms-linear-gradient(top, #ddd, #aaa);
-  background: -o-linear-gradient(top, #ddd, #aaa);
-  background: linear-gradient(top, #ddd, #aaa);
-  border: 1px solid #999;
-}
+
 .comments {
   height: 30%;
   margin-top: 2%;
@@ -148,7 +113,98 @@ ul {
   padding: 10px 5px;
   font-size: 15px;
   font-weight: bolder;
+  color :rgb(106,67,0);
 }
 #close-button {
   float: right;
+  color: rgb(106,67,0);
+}
+
+
+.column {
+
+  float: left;
+  width: 85%;
+  left: 5%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #FAFAAD;
+  display: block;
+  position: relative; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+
+
+.column:hover{
+  box-shadow: 0 15px 20px rgba(10,0,10,.3);
+  -webkit-filter: brightness(110%);
+  -moz-filter: brightness(110%);
+}
+#form-header{
+border-bottom: solid rgb(106,67,0) 2px;
+padding-bottom: 3px;
+}
+#name{
+ 
+  width:92%;
+  padding:3%;
+  margin-top: 3%;
+  background: #FAFAAD;
+  border-right: 0px;
+  border-top: 0px;
+  border-left: 0px;
+  border-bottom: rgb(157,108,48) 1px dotted;
+  
+
+  
+}
+#name:focus{
+  outline: 0 none;
+}
+#comment:focus{
+  outline: 0 none;
+}
+#comment{
+  
+  
+  width: 92%;
+  padding:3%;
+  margin-top: 2%;
+  
+  background: #FAFAAD;
+  border-right: 0px;
+  border-top: 0px;
+  border-left: 0px;
+  border-bottom: rgb(157,108,48) 1px dotted;
+  
+}
+::-webkit-input-placeholder {
+   color: rgb(157,108,48);
+   font-family: 'Roboto';
+   font-size: 13px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: rgb(157,108,48); 
+   font-family: 'Roboto'; 
+   font-size: 13px;
+
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgb(157,108,48);
+   font-family: 'Roboto';  
+   font-size: 13px;
+
+}
+
+:-ms-input-placeholder {  
+   color: rgb(157,108,48);  
+   font-family: 'Roboto';
+   font-size: 13px;
+
 }
