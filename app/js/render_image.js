@@ -239,13 +239,13 @@ app.renderPage = (function() {
   }
 
   function hideHotSpots() {
-    var img = document.getElementsByClassName('image')[0];
+    var img = app.domInfo.getFirstElementOfClass('image');
     img.style.zIndex = '3';
   }
 
   function restoreHotSpots() {
-    var img = document.getElementsByClassName('image')[0];
-    deleteElementById('commentFlash');
+    var img = app.domInfo.getFirstElementOfClass('image');
+    app.renderPage.deleteElementById('commentFlash');
     img.style.zIndex = '-1';
   }
 

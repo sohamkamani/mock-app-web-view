@@ -41,21 +41,11 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.loadNpmTasks('grunt-usemin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-htmlhint');
-  grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('test', ['jshint', 'htmlhint']);
   grunt.registerTask('build', ['copy:task0', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
   grunt.registerTask('default', ['test', 'build']);
-  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerMultiTask('log', 'Log stuff.', function() {
     grunt.log.writeln(this.target + ': ' + this.data);
