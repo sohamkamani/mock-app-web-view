@@ -276,9 +276,12 @@ app.renderPage = (function() {
       e.target.addEventListener('click', _showCommentLayout);
       e.target.removeEventListener('click', _hideCommentLayout);
     }
-    if(e.target.id == 'home-button'){
+    if (e.target.id == 'home-button') {
       app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
       app.domInfo.getById('comment-button').removeEventListener('click', _hideCommentLayout);
+      app.domInfo.getById('info-section').classList.remove('make-full');
+      app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
+      app.domInfo.getById('info-button').removeEventListener('click', _hideInfoSection);
     }
   }
 
