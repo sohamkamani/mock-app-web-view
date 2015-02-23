@@ -263,7 +263,7 @@ app.renderPage = (function() {
   }
 
   function _showCommentLayout(e) {
-    app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
+   // app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.add('comment-layout-comment');
     e.target.addEventListener('click', _hideCommentLayout);
     hideHotSpots();
@@ -271,7 +271,7 @@ app.renderPage = (function() {
   }
 
   function _hideCommentLayout(e) {
-    app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
+   // app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
     e.target.addEventListener('click', _showCommentLayout);
     restoreHotSpots();
