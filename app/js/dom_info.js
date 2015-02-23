@@ -7,7 +7,7 @@ app.domInfo = (function(){
   }
 
   function getFirstElementOfClass(className){
-    return document.getElementsByClassName(className);
+    return document.getElementsByClassName(className)[0];
   }
 
   return{

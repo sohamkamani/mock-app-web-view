@@ -1,12 +1,11 @@
-app.mongodb=(function(){
-'use strict';
-  function promise(requestType, url, data)
-  {
+app.mongodb = (function() {
+  'use strict';
+
+  function promise(requestType, url, data) {
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open(requestType, url, true);
-      if(requestType === 'get' || requestType === 'POST')
-      { 
+      if (requestType === 'get' || requestType === 'POST') {
         xhr.responseType = 'json';
         xhr.setRequestHeader('content-type', 'application/json');
       }
@@ -20,83 +19,79 @@ app.mongodb=(function(){
           reject(status);
         }
       };
-      if(requestType === 'get')
+      if (requestType === 'get') {
         xhr.send();
-      else
+      } else {
         xhr.send(data);
-    });   
+      }
+    });
   }
 
-  function getDatabase()
-  {
+  function getDatabase() {
     return 'orb';
   }
 
-  function getCollection()
-  {
+  function getCollection() {
     return 'comment_details';
   }
 
-  function getApiKey()
-  {
+  function getApiKey() {
     return 'V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
   }
 
-  function makeInsertFetchUrl()
-  {
+  function makeInsertFetchUrl() {
     var database = getDatabase();
     var collections = getCollection();
     var key = getApiKey();
-    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/'+collections+'?apiKey='+key;
+    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?apiKey=' + key;
     return url;
   }
 
-  function makeRemoveUrl(id)
-  {
+  function makeRemoveUrl(id) {
     var database = getDatabase();
     var collections = getCollection();
     var key = getApiKey();
-    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/'+collections+'/'+id+'?apiKey='+key;
+    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '/' + id + '?apiKey=' + key;
     return url;
   }
 
-  var insert = function(data){
+  var insert = function(data) {
 
     var url = makeInsertFetchUrl();
-    promise('POST',url,JSON.stringify(data)).then(function(response){
+    promise('POST', url, JSON.stringify(data)).then(function(response) {
       console.log('Successful !!');
-    },function(status) {
-      console.log('Unsuccessful!! Error status: '+status);
+    }, function(status) {
+      console.log('Unsuccessful!! Error status: ' + status);
     });
 
 
   };
 
-  var remove = function(id){
-    var url= makeRemoveUrl(id);
-    promise('DELETE',url,null).then(function(response){
+  var remove = function(id) {
+    var url = makeRemoveUrl(id);
+    promise('DELETE', url, null).then(function(response) {
       console.log('Successful !!');
-    },function(status) {
-      console.log('Unsuccessful!! Error status: '+status);
+    }, function(status) {
+      console.log('Unsuccessful!! Error status: ' + status);
     });
 
   };
 
-  var fetch = function(){
+  var fetch = function() {
     var url = makeInsertFetchUrl();
-    promise('get',url,null).then(function(response){
+    promise('get', url, null).then(function(response) {
       console.log('Successful !!');
       app.infoCenter.setCommentInfo(response);
       app.renderPage.displayComment();
-    },function(status) {
-      console.log('Unsuccessful!! Error status: '+status);
+    }, function(status) {
+      console.log('Unsuccessful!! Error status: ' + status);
     });
 
   };
 
- return{
-  fetch : fetch,
-  insert : insert,
-  remove : remove
- };
+  return {
+    fetch: fetch,
+    insert: insert,
+    remove: remove
+  };
 })();

@@ -7,23 +7,23 @@ app.renderPage = (function() {
     while (imageContainer.firstChild) {
       imageContainer.removeChild(imageContainer.firstChild);
     }
-   // imageContainer.style.height = app.infoCenter.getRelativeHeight();
+    // imageContainer.style.height = app.infoCenter.getRelativeHeight();
     _renderImage(imageContainer, app.infoCenter.getImageUrl());
     _.map(app.infoCenter.getHotspots(), function(hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
-    app.domInfo.getById('info-button').addEventListener('click',_showInfoSection);
-    app.domInfo.getById('comment-button').addEventListener('click',_showCommentLayout);
+    app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
+    app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
 
   }
 
 
 
-  
 
-  function addCommentBox(x,y){
+
+  function addCommentBox(x, y) {
     var imageContainer = document.getElementById('image-container');
-    var formContainer= document.createElement('div');
+    var formContainer = document.createElement('div');
     var authorName = document.createElement('input');
     var comment = document.createElement('textarea');
     var button = document.createElement('input');
@@ -39,8 +39,8 @@ app.renderPage = (function() {
     formContainer.appendChild(authorName);
     formContainer.appendChild(comment);
     formContainer.appendChild(button);
-    formContainer.style.top=y+'%';
-    formContainer.style.left=x +'%';
+    formContainer.style.top = y + '%';
+    formContainer.style.left = x + '%';
     imageContainer.appendChild(formContainer);
     app.commentPage.getCommentDetails();
 
@@ -92,7 +92,7 @@ app.renderPage = (function() {
       success: false,
       message: '| ' + JSON.stringify(comment) + ' | is not a valid item, hence skipping!'
     };
-     var current_image_id = app.infoCenter.getImageId();
+    var current_image_id = app.infoCenter.getImageId();
     // cheching for correct data  type
     if (comment !== null && typeof comment === 'object') {
       //checking if required keys are available
@@ -134,31 +134,39 @@ app.renderPage = (function() {
     }
   }
 
+  function deleteElementById(id) {
+    var element = document.getElementById(id);
+    if (element !== null) {
+      element.parentNode.removeChild(element);
+    }
+  }
+
   function deleteCommentListener(e) {
     var id = e.target.id;
     app.mongodb.remove(id);
+    deleteElementById(id);
   }
 
   function flashCommentLocation(e) {
     var imageContainer = document.getElementById('image-container');
     var faIcon = document.createElement('i');
-    if (document.getElementById('commentFlash') !== null) {
-      var element = document.getElementById('commentFlash');
-      element.parentNode.removeChild(element);
-    }
+    deleteElementById('commentFlash');
     faIcon.setAttribute('id', 'commentFlash');
     faIcon.classList.add('fa');
-    faIcon.classList.add('fa');
-    faIcon.classList.add('fa-comments');
-    
-    
+    faIcon.classList.add('fa-hand-o-up');
+    faIcon.classList.add('bounce');
+    faIcon.style.color = 'red';
     faIcon.style.fontSize = '2em';
-    faIcon.style.zIndex = '1';
+    faIcon.style.zIndex = '3';
     faIcon.style.position = 'absolute';
-    var top = e.target.getAttribute('positionx'); // + '%';
-    console.log(top);
-    faIcon.style.top = e.target.getAttribute('positiony') + '%';
-    faIcon.style.left = e.target.getAttribute('positionx') + '%';
+    if (e.target.hasAttribute('positionX')) {
+      faIcon.style.top = e.target.getAttribute('positiony') + '%';
+      faIcon.style.left = e.target.getAttribute('positionx') + '%';
+    } else {
+      faIcon.style.top = e.target.parentNode.getAttribute('positiony') + '%';
+      faIcon.style.left = e.target.parentNode.getAttribute('positionx') + '%';
+    }
+
     imageContainer.appendChild(faIcon);
   }
 
@@ -171,7 +179,7 @@ app.renderPage = (function() {
     for (var i = 0; i < data.length; i++) {
       var li = createListNode(data[i]);
       if (!li.success) {
-        console.info(li.message);
+        //console.info(li.message);
       } else {
         docFrag.appendChild(li.node);
       }
@@ -190,39 +198,42 @@ app.renderPage = (function() {
 
   function hideHotSpots() {
     var img = document.getElementsByClassName('image')[0];
-    img.style.zIndex = '1';
+    img.style.zIndex = '3';
   }
 
   function restoreHotSpots() {
     var img = document.getElementsByClassName('image')[0];
+    deleteElementById('commentFlash');
     img.style.zIndex = '-1';
   }
 
-  function _showInfoSection (e) {
+  function _showInfoSection(e) {
     app.domInfo.getById('info-section').classList.add('make-full');
-    e.target.addEventListener('click',_hideInfoSection);
-    e.target.removeEventListener('click',_showInfoSection);
+    e.target.addEventListener('click', _hideInfoSection);
+    e.target.removeEventListener('click', _showInfoSection);
   }
 
-  function _hideInfoSection (e) {
+  function _hideInfoSection(e) {
     app.domInfo.getById('info-section').classList.remove('make-full');
-    e.target.addEventListener('click',_showInfoSection);
-    e.target.removeEventListener('click',_hideInfoSection);
+    e.target.addEventListener('click', _showInfoSection);
+    e.target.removeEventListener('click', _hideInfoSection);
   }
 
-  function _showCommentLayout (e) {
+  function _showCommentLayout(e) {
     app.domInfo.getById('icon-container').classList.add('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.add('comment-layout-comment');
-    e.target.addEventListener('click',_hideCommentLayout);
+    e.target.addEventListener('click', _hideCommentLayout);
     hideHotSpots();
-    e.target.removeEventListener('click',_showCommentLayout);
+    e.target.removeEventListener('click', _showCommentLayout);
   }
-   function _hideCommentLayout (e) {
+
+  function _hideCommentLayout(e) {
     app.domInfo.getById('icon-container').classList.remove('comment-layout-icon');
     app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
-    e.target.addEventListener('click',_showCommentLayout);
+    e.target.addEventListener('click', _showCommentLayout);
     restoreHotSpots();
-    e.target.removeEventListener('click',_hideCommentLayout);
+    deleteElementById('form-container');
+    e.target.removeEventListener('click', _hideCommentLayout);
   }
 
   return {
@@ -230,7 +241,8 @@ app.renderPage = (function() {
     displayComment: displayComment,
     hideHotSpots: hideHotSpots,
     restoreHotSpots: restoreHotSpots,
-    addCommentBox: addCommentBox
+    addCommentBox: addCommentBox,
+    deleteElementById: deleteElementById
   };
 
 })();

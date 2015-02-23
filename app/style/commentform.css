@@ -1,13 +1,11 @@
 body {
   font-family: 'Roboto';
 }
-
 h1 {
   margin: 0px;
   font-size: 5em;
   font-weight: 500;
 }
-
 .comment {
   height: 56px;
   width: 56px;
@@ -15,9 +13,7 @@ h1 {
   margin-top: 9px;
   float: right;
 }
-
-
-.column{
+.column {
   position: relative;
   float: left;
   width: 85%;
@@ -30,63 +26,29 @@ h1 {
   -moz-box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.75);
 }
-
-
-
-
-span
-{
+span {
   float: right;
 }
-ul
-{
+ul {
   list-style-type: none;
 }
-
-
-
-
-
-
-.body{
+.body {
   position: absolute;
 }
-
-
-
-
-
-
-
-
-
 #form-container {
-  
-  
   position: absolute;
   display: block;
-
   z-index: 5;
-
   background: #CFD8DC;
-  
   border: 1px solid #D7CCC8;
-  
-  
+  width: 200px;
   margin-top: 2%;
-
-  margin-left:0.5%;
+  margin-left: 0.5%;
   -webkit-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
   -moz-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
   box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);
   padding: 8px;
-
-
-
 }
-
-
-
 #form-container input, #form-container textarea {
   border: 4px solid rgba(0, 0, 0, 0.1);
   padding: 8px 10px;
@@ -95,11 +57,8 @@ ul
   border-radius: 5px;
   outline: 0;
 }
-#form-container textarea {
-  width:90%;
-}
-#form-container input {
-  width:90%;
+#form-container textarea, input {
+  width: 87%;
 }
 #form-container input[type="button"] {
   cursor: pointer;
@@ -127,27 +86,44 @@ ul
   background: -o-linear-gradient(top, #ddd, #aaa);
   background: linear-gradient(top, #ddd, #aaa);
   border: 1px solid #999;
-
-
 }
-
-.comments{
-  height:30%;
+.comments {
+  height: 30%;
   margin-top: 2%;
-
 }
-
-ul
-{
+ul {
   list-style-type: none;
 }
-
-.deleteComment
-{
+.deleteComment {
+  cursor: pointer;
   color: red;
   font-size: 10px;
   padding: 3px;
   border: 1px solid black;
 }
-
-
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(15px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.bounce {
+  -webkit-animation: bounce 1s ease-out infinite;
+  animation: bounce 1s ease-out infinite;
+}
