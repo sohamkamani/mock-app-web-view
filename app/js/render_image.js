@@ -14,8 +14,10 @@ app.renderPage = (function() {
     });
     app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
     app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
-    app.domInfo.getById('home-button').addEventListener('click', _hideCommentLayout);
-
+    app.domInfo.getById('home-button').addEventListener('click', _defaultLayout);
+    app.domInfo.getById('expand-button').addEventListener('click', _fullScreenLayout);
+    app.domInfo.getById('compress-button').addEventListener('click', _defaultLayout);
+    app.domInfo.getById('hotspot-button').addEventListener('click',_flashHotspots);
   }
 
 
@@ -283,6 +285,53 @@ app.renderPage = (function() {
       app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
       app.domInfo.getById('info-button').removeEventListener('click', _hideInfoSection);
     }
+  }
+
+  function _flashHotspots (e) {
+    var hotspots = document.getElementsByClassName('hotspot');
+    _.map(hotspots,function  (hotspot) {
+      hotspot.classList.add('hotspot-blink');
+    });
+    e.target.addEventListener('click',_dontFlashHotspots);
+    e.target.removeEventListener('click',_flashHotspots);
+  }
+  function _dontFlashHotspots (e) {
+    var hotspots = document.getElementsByClassName('hotspot');
+    _.map(hotspots,function  (hotspot) {
+      hotspot.classList.remove('hotspot-blink');
+    });
+    e.target.removeEventListener('click',_dontFlashHotspots);
+    e.target.addEventListener('click',_flashHotspots);
+  }
+
+  function _fullScreenLayout(e) {
+    app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
+    restoreHotSpots();
+    deleteElementById('form-container');
+    app.domInfo.getById('icon-container').classList.add('display-none');
+    app.domInfo.getById('compress-button').classList.remove('display-none');
+    app.domInfo.getById('info-section').classList.remove('make-full');
+    app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
+    app.domInfo.getById('info-button').removeEventListener('click', _hideInfoSection);
+  }
+
+  function _defaultLayout(e) {
+    app.domInfo.getById('comment-container').classList.remove('comment-layout-comment');
+    restoreHotSpots();
+    deleteElementById('form-container');
+    app.domInfo.getById('icon-container').classList.remove('display-none');
+    app.domInfo.getById('compress-button').classList.add('display-none');
+    app.domInfo.getById('comment-button').addEventListener('click', _showCommentLayout);
+    app.domInfo.getById('comment-button').removeEventListener('click', _hideCommentLayout);
+    app.domInfo.getById('info-section').classList.remove('make-full');
+    app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
+    app.domInfo.getById('info-button').removeEventListener('click', _hideInfoSection);
+    var hotspots = document.getElementsByClassName('hotspot');
+    _.map(hotspots,function  (hotspot) {
+      hotspot.classList.remove('hotspot-blink');
+    });
+    app.domInfo.getById('hotspot-button').removeEventListener('click',_dontFlashHotspots);
+    app.domInfo.getById('hotspot-button').addEventListener('click',_flashHotspots);
   }
 
   return {

@@ -42,6 +42,7 @@ html, body {
   height: 100%;
 }
 .content-container {
+  position: relative;
   -webkit-box-ordinal-group: 3;
   -moz-box-ordinal-group: 3;
   -webkit-order: 2;
@@ -117,7 +118,7 @@ html, body {
   padding-bottom: 10px;
   border-bottom: 1px solid #f0e5e5;
 }
-.icon-container i:active, .icon-container i:hover {
+.icon-container i:active, .icon-container i:hover, .compress-button:hover {
   color: white;
   background: #FD9B27;
   -webkit-box-shadow: inset 0px 0px 12px 0px rgba(235, 78, 21, 1);
@@ -164,6 +165,7 @@ html, body {
   width: 600%;
   height: 100%;
 }
+
 .display-image {
   position: relative;
   z-index: -1;
@@ -191,19 +193,33 @@ html, body {
 .comment-layout-comment {
   width: 200%;
 }
+.display-none {
+  display: none;
+}
+.compress-button {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  font-size: 1.2em;
+  padding:5px;
+  border-radius: 50%;
+  color: rgba(106, 67, 0, 1);
+  background: white;
+  z-index: 6;
+}
 ul {
   list-style-type: none;
   padding: 0;
   margin 0;
 }
-.hotspot {
+.hotspot-blink {
   box-shadow: 0 1px 13px ;
-  -webkit-animation: myfirst 2s infinite;
-  -moz-animation: myfirst 2s infinite;
-  animation: myfirst 2s infinite;
+  -webkit-animation: blink-hotspot 2s infinite;
+  -moz-animation: blink-hotspot 2s infinite;
+  animation: blink-hotspot 2s infinite;
   
 }
-@-webkit-keyframes myfirst {
+@-webkit-keyframes blink-hotspot {
  
   0%, 100% {
     box-shadow: 0 1px 13px black;
@@ -214,7 +230,7 @@ ul {
 
   }
 }
-@-moz-keyframes myfirst {
+@-moz-keyframes blink-hotspot {
  
   0%, 100% {
     box-shadow: 0 1px 13px black;
@@ -225,7 +241,7 @@ ul {
 
   }
 }
-@keyframes myfirst {
+@keyframes blink-hotspot {
  
   0%, 100% {
     box-shadow: 0 1px 13px black;
