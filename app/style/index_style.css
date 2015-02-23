@@ -41,9 +41,10 @@ html, body {
   width: 100%;
   height: 100%;
 }
-.content-container{
+.content-container {
+  position: relative;
   -webkit-box-ordinal-group: 3;
-  -moz-box-ordinal-group:3;
+  -moz-box-ordinal-group: 3;
   -webkit-order: 2;
   -ms-flex-order: 2;
   order: 2;
@@ -58,7 +59,7 @@ html, body {
   min-width: 0;
   min-height: auto;
   height: 100%;
-  width:400%;
+  width: 400%;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -110,14 +111,14 @@ html, body {
   overflow: hidden;
 }
 .icon-container i {
-  color: rgba(106,67,0,1);
+  color: rgba(106, 67, 0, 1);
   font-size: 1.5em;
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #f0e5e5;
 }
-.icon-container i:active, .icon-container i:hover {
+.icon-container i:active, .icon-container i:hover, .compress-button:hover {
   color: white;
   background: #FD9B27;
   -webkit-box-shadow: inset 0px 0px 12px 0px rgba(235, 78, 21, 1);
@@ -143,7 +144,6 @@ html, body {
   height: 100%;
   width: 0%;
   overflow: hidden;
-  
 }
 .image-container {
   position: relative;
@@ -165,6 +165,7 @@ html, body {
   width: 600%;
   height: 100%;
 }
+
 .display-image {
   position: relative;
   z-index: -1;
@@ -180,7 +181,7 @@ html, body {
   overflow: hidden;
   z-index: 6;
   background: #FAFAAD;
-  color: rgba(106,67,0,1);
+  color: rgba(106, 67, 0, 1);
 }
 .make-full {
   height: 10%;
@@ -191,6 +192,20 @@ html, body {
 }
 .comment-layout-comment {
   width: 200%;
+}
+.display-none {
+  display: none;
+}
+.compress-button {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  font-size: 1.2em;
+  padding:5px;
+  border-radius: 50%;
+  color: rgba(106, 67, 0, 1);
+  background: white;
+  z-index: 6;
 }
 ul {
   list-style-type: none;
