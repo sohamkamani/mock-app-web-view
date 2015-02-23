@@ -73,7 +73,6 @@ app.renderPage = (function() {
       y = 100 - y;
       formContainer.style.bottom = y + '%';
       formContainer.style.right = x + '%';
-
     }
     imageContainer.appendChild(formContainer);
     app.commentPage.getCommentDetails();
