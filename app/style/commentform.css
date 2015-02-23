@@ -35,20 +35,17 @@ li span {
   font-size: 10px;
   padding-top: 3px;
 }
-li i
-{
+li i {
   float: right;
   padding-left: 3%;
 }
-li p
-{
+li p {
   font-weight: 100px;
-  font-size: 15px; 
+  font-size: 15px;
 }
 ul {
   list-style-type: none;
 }
-
 .body {
   position: absolute;
 }
@@ -146,15 +143,11 @@ ul {
   -webkit-animation: bounce 1s ease-out infinite;
   animation: bounce 1s ease-out infinite;
 }
-
-#form-header
-{
+#form-header {
   padding: 10px 5px;
   font-size: 15px;
   font-weight: bolder;
 }
-
-#close-button
-{
+#close-button {
   float: right;
 }

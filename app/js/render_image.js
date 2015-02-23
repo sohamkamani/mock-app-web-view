@@ -138,7 +138,7 @@ app.renderPage = (function() {
         li.appendChild(timeSpan);
 
         timeSpan.appendChild(time);
-        
+
         faCloseIcon.setAttribute('id', comment._id.$oid);
         faCloseIcon.addEventListener('click', deleteCommentListener);
         commentp.appendChild(commentvalue);
