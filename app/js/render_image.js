@@ -115,7 +115,7 @@ app.renderPage = (function() {
     hotspotDiv.style.height = hotspot.h + '%';
     hotspotDiv.style.width = hotspot.w + '%';
     hotspotDiv.style.zIndex = '2';
-    hotspotDiv.style.background = 'rgba(192,192,192,0)';
+    hotspotDiv.style.background = 'rgba(240, 240, 240, 0.5)';
     hotspotDiv.appendChild(faIcon);
     hotspotDiv.addEventListener('click', function() {
       location.href = 'index.html#' + hotspot.link;
