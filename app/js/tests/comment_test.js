@@ -1,22 +1,67 @@
-describe('myFunction', function() {
+describe('commentpage', function() {
     'use strict';
-  var getCoordsInPercentage = app.infoCenter.getCoordsInPercentage;
+  var getCoords = app.commentPage.getCoords;
+  var img = document.createElement('img');
+  var assignEventToImage = app.commentPage.assignEventToImage;
+  var comment = document.createElement('div');
+  var getCommentDetails = app.commentPage.getCommentDetails;
+
 
   beforeEach(function() {
-    app.domInfo.getById = function(args) {
+    app.infoCenter.getCoordsInPercentage = function(x,y) {
       return {
-        offsetTop: 10,
-        offsetLeft: 10,
-        offsetHeight:1,
-        offsetWidth : 1
+        xcord:10,
+        ycord:10
       };
     };
+    app.domInfo.getFirstElementOfClass = function(args){
+      return img;
+    };
+
+    img = {
+      assignEventToImage :function(args){
+      img.assignEventToImage('click', app.commentPage.containerListener,false);
+    }
+  };
+  spyOn(img, 'assignEventToImage');
+  img.assignEventToImage('click', app.commentPage.containerListener,false);
+
+   app.domInfo.getElementById = function(args){
+      return comment;
+    };
+
+    comment = {
+      getCommentDetails :function(args){
+      comment.getCommentDetails('click', app.commentPage.add,false);
+    }
+  };
+  spyOn(comment, 'getCommentDetails');
+  comment.getCommentDetails('click', app.commentPage.add,false);
+
   });
 
+  
 
-  it('should get coords', function() {
-    expect(getCoordsInPercentage(20,20)).toEqual({xcord:1000,ycord:1000});
+
+  it('should get coords of mouse click', function() {
+    expect(getCoords('click')).toEqual({xcord:10,ycord:10});
   });
 
-  //will insert additional tests here later
+  it('should assign listener', function(){
+    
+    expect(img.assignEventToImage).toHaveBeenCalledWith('click',app.commentPage.containerListener,false);
+  });
+
+  it('should assign listener', function(){
+    
+    expect(comment.getCommentDetails).toHaveBeenCalledWith('click',app.commentPage.add,false);
+  });
+
+ 
 });
+
+
+ 
+
+
+

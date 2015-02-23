@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 describe('render page', function() {
   'use strict';
   var hideHotSpots = app.renderPage.hideHotSpots;
@@ -42,3 +43,5 @@ describe('render page', function() {
 
   //will insert additional tests here later
 });
+=======
+>>>>>>> d594991034a891180e2d9d696e616d7924653e96
