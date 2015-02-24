@@ -1,8 +1,8 @@
-app.mongodb = (function () {
+app.mongodb = (function() {
   'use strict';
 
   function promise(requestType, url, data) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open(requestType, url, true);
       if (requestType === 'get' || requestType === 'POST') {
@@ -10,7 +10,7 @@ app.mongodb = (function () {
         xhr.setRequestHeader('content-type', 'application/json');
       }
 
-      xhr.onload = function () {
+      xhr.onload = function() {
 
         var status = xhr.status;
         if (status === 200) {
@@ -28,7 +28,7 @@ app.mongodb = (function () {
   }
 
   function getDatabase() {
-    return 'hotspots';
+    return 'orb';
   }
 
   function getCollection() {
@@ -48,7 +48,7 @@ app.mongodb = (function () {
   }
 
   function makeJsonFetchUrl() {
-    var database = getDatabase();
+    var database = 'hotspots';
     var collections = 'hotspot_details';
     var key = getApiKey();
     var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?apiKey=' + key;
@@ -63,48 +63,49 @@ app.mongodb = (function () {
     return url;
   }
 
-  var insert = function (data) {
+  var insert = function(data) {
 
     var url = makeInsertFetchUrl();
-    promise('POST', url, JSON.stringify(data)).then(function (response) {
-      console.log('Comment insert Successful !!');
-    }, function (status) {
+    promise('POST', url, JSON.stringify(data)).then(function(response) {
+      console.log('Successful !!');
+    }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
 
 
   };
 
-  var remove = function (id) {
+  var remove = function(id) {
     var url = makeRemoveUrl(id);
-    promise('DELETE', url, null).then(function (response) {
-      console.log('Comment delete Successful !!');
-    }, function (status) {
+    promise('DELETE', url, null).then(function(response) {
+      console.log('Successful !!');
+    }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
 
   };
 
-  var fetch = function () {
+  var fetch = function() {
     var url = makeInsertFetchUrl();
-    promise('get', url, null).then(function (response) {
-      console.log('Comment fetch Successful !!');
+    promise('get', url, null).then(function(response) {
+      console.log('Successful !!');
       app.infoCenter.setCommentInfo(response);
       app.renderPage.displayComment();
-    }, function (status) {
+    }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
 
   };
 
-  var fetchJsonInfo = function () {
+  var fetchJsonInfo = function() {
     var url = makeJsonFetchUrl();
-    promise('get', url, null).then(function (response) {
-      console.log('JSON fetch Successful !!');
+    promise('get', url, null).then(function(response) {
+      console.log('Successful !!');
       app.infoCenter.setJsonInfo(response[response.length - 1]);
       app.renderPage.render();
       app.commentPage.assignEventToImage();
-    }, function (status) {
+      fetch();
+    }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
 
@@ -114,6 +115,6 @@ app.mongodb = (function () {
     fetch: fetch,
     insert: insert,
     remove: remove,
-    fetchJsonInfo: fetchJsonInfo
+    fetchJsonInfo:fetchJsonInfo
   };
 })();
