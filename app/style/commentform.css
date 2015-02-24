@@ -43,8 +43,15 @@ ul {
   position: absolute;
   display: block;
   z-index: 5;
-  background: #FAFAAD;
-  border: 1px solid #FAFAAD;
+  background: #222327; /* Old browsers */
+background: -moz-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#222327), color-stop(100%,#42404a), color-stop(100%,#42404a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* IE10+ */
+background: linear-gradient(to right, #222327 0%,#42404a 100%,#42404a 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222327', endColorstr='#42404a',GradientType=1 ); /* IE6-9 */
+  border: 1px solid none;
   width: 200px;
   margin-top: 2%;
   margin-left: 0.5%;
@@ -59,12 +66,19 @@ ul {
 
 #form-container input[type="button"] {
   cursor: pointer;
-  background: linear-gradient(rgb(157,108,48),rgb(106,67,0));
+  background: #222327; /* Old browsers */
+background: -moz-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#222327), color-stop(100%,#42404a), color-stop(100%,#42404a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* IE10+ */
+background: linear-gradient(to right, #222327 0%,#42404a 100%,#42404a 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222327', endColorstr='#42404a',GradientType=1 ); 
   color: white;
   width: 30%;
   float: right;
   letter-spacing: 1px;
-  border: 1px solid rgb(106,67,0);
+  border: 1px solid none;
   height:28px;
   border-radius: 3px;
 
@@ -114,11 +128,11 @@ ul {
   padding: 10px 5px;
   font-size: 15px;
   font-weight: bolder;
-  color :rgb(106,67,0);
+  color :white;
 }
 #close-button {
   float: right;
-  color: rgb(106,67,0);
+  color: white;
 }
 
 
@@ -136,8 +150,14 @@ ul {
   -webkit-transition: all .5s ease;
   -moz-transition: all .5s ease;
   transition: all .5s ease;
-  background-color: #222327;
-
+  background: #222327; /* Old browsers */
+background: -moz-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#222327), color-stop(100%,#42404a), color-stop(100%,#42404a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #222327 0%,#42404a 100%,#42404a 100%); /* IE10+ */
+background: linear-gradient(to right, #222327 0%,#42404a 100%,#42404a 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222327', endColorstr='#42404a',GradientType=1 ); /* IE6-9 */
 
   /* IE6-9 */}
 
@@ -148,7 +168,7 @@ ul {
   -moz-filter: brightness(110%);
 }
 #form-header{
-border-bottom: solid rgb(106,67,0) 2px;
+border-bottom: solid white 2px;
 padding-bottom: 3px;
 }
 #name{
@@ -156,11 +176,11 @@ padding-bottom: 3px;
   width:92%;
   padding:3%;
   margin-top: 3%;
-  background: #FAFAAD;
+  background: none;
   border-right: 0px;
   border-top: 0px;
   border-left: 0px;
-  border-bottom: rgb(157,108,48) 1px dotted;
+  border-bottom: white 1px dotted;
   
 
   
@@ -178,35 +198,35 @@ padding-bottom: 3px;
   padding:3%;
   margin-top: 2%;
   
-  background: #FAFAAD;
+  background: none;
   border-right: 0px;
   border-top: 0px;
   border-left: 0px;
-  border-bottom: rgb(157,108,48) 1px dotted;
+  border-bottom: white 1px dotted;
   
 }
 ::-webkit-input-placeholder {
-   color: rgb(157,108,48);
+   color: white;
    font-family: 'Roboto';
    font-size: 13px;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: rgb(157,108,48); 
+   color: white; 
    font-family: 'Roboto'; 
    font-size: 13px;
 
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: rgb(157,108,48);
+   color: white;
    font-family: 'Roboto';  
    font-size: 13px;
 
 }
 
 :-ms-input-placeholder {  
-   color: rgb(157,108,48);  
+   color: white;  
    font-family: 'Roboto';
    font-size: 13px;
 
