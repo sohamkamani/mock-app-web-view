@@ -43,18 +43,7 @@ describe('myFunction', function() {
     expect(getCommentInfo()).toEqual(dummyComment);
   });
 
-<<<<<<< HEAD
-   it('shoul set Json', function() {
-    var a =35;
-    expect(setJsonInfo(a)).toEqual(35);
-  });
 
-  
-=======
-
-
-  //will insert additional tests here later
->>>>>>> 534fd56ed571dc11a2f886d0e7b1fbbe90fda4fb
 });
 
  
