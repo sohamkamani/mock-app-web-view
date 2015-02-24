@@ -19,25 +19,13 @@ describe('commentpage', function() {
       return img;
     };
 
-    img = {
-      assignEventToImage :function(args){
-      img.assignEventToImage('click', app.commentPage._containerListener,false);
-    }
-  };
-  spyOn(img, 'assignEventToImage');
-  img.assignEventToImage('click', app.commentPage._containerListener,false);
 
-   app.domInfo.getElementById = function(args){
+   app.domInfo.getById = function(args){
       return comment;
     };
 
-    comment = {
-      getCommentDetails :function(args){
-      comment.getCommentDetails('click', app.commentPage._add,false);
-    }
-  };
-  spyOn(comment, 'getCommentDetails');
-  comment.getCommentDetails('click', app.commentPage._add,false);
+    spyOn(comment,'addEventListener');
+    spyOn(img,'addEventListener');
 
   });
 
@@ -49,15 +37,13 @@ describe('commentpage', function() {
   });
 
   it('should assign listener', function(){
-    
-    expect(img.assignEventToImage).toHaveBeenCalledWith('click',app.commentPage._containerListener,false);
+    assignEventToImage();
+    expect(img.addEventListener).toHaveBeenCalled();
   });
-
-  it('should assign listener', function(){
-    
-    expect(comment.getCommentDetails).toHaveBeenCalledWith('click',app.commentPage._add,false);
+  it('get comment details', function(){
+    getCommentDetails();
+    expect(comment.addEventListener).toHaveBeenCalled();
   });
-
  
 });
 
