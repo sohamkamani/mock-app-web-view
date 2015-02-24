@@ -4,6 +4,9 @@ describe('myFunction', function() {
   var getFirstElementOfClass = app.domInfo.getFirstElementOfClass;
   var img = document.createElement('img');
   img.setAttribute('id', '1234');
+  var div = document.createElement('div');
+  div.setAttribute('class', 'mayanka');
+
 
   beforeEach(function() {
     document.getElementById = function(id) {
@@ -13,15 +16,22 @@ describe('myFunction', function() {
           break;
       }
     };
+    document.getElementsByClassName = function(className) {
+      switch (className) {
+        case 'mayanka':
+          return [div];
+          break;
+      }
+    };
   });
 
   it('should get id', function() {
 
     expect(getById('1234')).toEqual(img);
   });
+  it('should get class name', function() {
 
-
-
-
+    expect(getFirstElementOfClass('mayanka')).toEqual(div);
+  });
   //will insert additional tests here later
 });
