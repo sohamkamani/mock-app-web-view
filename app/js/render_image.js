@@ -148,10 +148,8 @@ app.renderPage = (function() {
         li.setAttribute('id', comment._id.$oid);
         li.setAttribute('positionX', comment.position_x);
         li.setAttribute('positionY', comment.position_y);
-        li.setAttribute('id', comment._id.$oid);
         faCloseIcon.classList.add('fa');
         faCloseIcon.classList.add('fa-times');
-        //faCloseIcon.style.color = 'red';
         li.classList.add('column');
         li.appendChild(aname);
         li.appendChild(faCloseIcon);
