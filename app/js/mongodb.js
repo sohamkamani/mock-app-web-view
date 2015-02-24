@@ -67,7 +67,7 @@ app.mongodb = (function() {
 
     var url = makeInsertFetchUrl();
     promise('POST', url, JSON.stringify(data)).then(function(response) {
-      console.log('Successful !!');
+      console.log('Comment insert Successful !!');
     }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
@@ -78,7 +78,7 @@ app.mongodb = (function() {
   var remove = function(id) {
     var url = makeRemoveUrl(id);
     promise('DELETE', url, null).then(function(response) {
-      console.log('Successful !!');
+      console.log('Comment delete Successful !!');
     }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
@@ -88,7 +88,7 @@ app.mongodb = (function() {
   var fetch = function() {
     var url = makeInsertFetchUrl();
     promise('get', url, null).then(function(response) {
-      console.log('Successful !!');
+      console.log('Comment fetch Successful !!');
       app.infoCenter.setCommentInfo(response);
       app.renderPage.displayComment();
     }, function(status) {
@@ -100,7 +100,7 @@ app.mongodb = (function() {
   var fetchJsonInfo = function() {
     var url = makeJsonFetchUrl();
     promise('get', url, null).then(function(response) {
-      console.log('Successful !!');
+      console.log('JSON fetch Successful !!');
       app.infoCenter.setJsonInfo(response[response.length - 1]);
       app.renderPage.render();
       app.commentPage.assignEventToImage();
