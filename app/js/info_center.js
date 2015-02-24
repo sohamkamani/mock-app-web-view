@@ -20,14 +20,13 @@ app.infoCenter = (function() {
   }
 
   function getImage() {
-    var imgName = location.hash;
-    // imgName === "" ? (imgName = JsonInfo.default ): (imgName = imgName.split('#')[1]);
-    if (imgName === '') {
-      imgName = JsonInfo.default;
+    var imgName = location.hash.split('#')[1];
+    if (JsonInfo.images[imgName] === undefined) {
+      return JsonInfo.images[JsonInfo.default];
     } else {
-      imgName = imgName.split('#')[1];
+      return JsonInfo.images[imgName];
     }
-    return JsonInfo.images[imgName];
+    
   }
 
   function getImageUrl() {
