@@ -110,14 +110,16 @@ html, body {
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    background: #222327; /* Old browsers */
-    background: -moz-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #222327), color-stop(100%, #42404a), color-stop(100%, #42404a)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /* IE10+ */
-    background: linear-gradient(to right, #222327 0%, #42404a 100%, #42404a 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222327', endColorstr='#42404a', GradientType=1); /* IE6-9 */
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(left, #45484d 0%, #2b2b2b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #45484d), color-stop(100%, #2b2b2b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, #45484d 0%, #2b2b2b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, #45484d 0%, #2b2b2b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, #45484d 0%, #2b2b2b 100%); /* IE10+ */
+    background: linear-gradient(to right, #45484d 0%, #2b2b2b 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#45484d', endColorstr='#2b2b2b', GradientType=1); /* IE6-9 */
+    border-left: 1px solid rgba(255, 255, 255, .2);
+    border-right: 1px solid rgba(0, 0, 0, 1);
 }
 
 .icon-container i {
@@ -128,9 +130,14 @@ html, body {
     padding-bottom: 15px;
 }
 
-.icon-container i:hover, .compress-button:hover {
+.icon-container i:hover {
+    background: rgba(0, 0, 0, .5);
+    border-radius: 3px;
+    cursor: pointer;
+}
 
-    background: #222327;
+.compress-button:hover {
+    cursor: pointer;
 }
 
 .comment-container {
