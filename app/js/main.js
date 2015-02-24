@@ -11,7 +11,7 @@ function init() {
   // app.renderPage.render();
   app.mongodb.fetchJsonInfo();
 
-  app.mongodb.fetch();
+ // app.mongodb.fetch();
 
   app.domInfo.getById('compress-button').classList.add('display-none');
 

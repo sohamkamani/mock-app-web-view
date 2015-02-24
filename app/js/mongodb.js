@@ -104,6 +104,7 @@ app.mongodb = (function() {
       app.infoCenter.setJsonInfo(response[response.length - 1]);
       app.renderPage.render();
       app.commentPage.assignEventToImage();
+      fetch();
     }, function(status) {
       console.log('Unsuccessful!! Error status: ' + status);
     });
