@@ -4,10 +4,14 @@ describe('render page', function() {
   var restoreHotSpots = app.renderPage.restoreHotSpots;
   var addCommentBox = app.renderPage.addCommentBox;
   var displayComment = app.renderPage.displayComment;
+  var deleteElementById = app.renderPage.deleteElementById;
   var render = app.renderPage.render;
   var img = document.createElement('img');
   var imageContainer = document.createElement('div');
   var commentContainer = document.createElement('ul');
+  var deletedContainer = document.createElement('div');
+  var deletedParentContainer = document.createElement('div');
+  deletedParentContainer.appendChild(deletedContainer);
 
   beforeEach(function() {
     app.domInfo.getFirstElementOfClass = function(args) {
@@ -22,6 +26,9 @@ describe('render page', function() {
           break;
         case 'comments':
           return commentContainer;
+          break;
+        case 'delete':
+          return deletedContainer;
           break;
         default:
           return document.createElement('div');
@@ -66,7 +73,8 @@ describe('render page', function() {
 
     app.commentPage.getCommentDetails = function() {};
     spyOn(app.commentPage, 'getCommentDetails');
-    spyOn(commentContainer,'appendChild');
+    spyOn(commentContainer, 'appendChild');
+    spyOn(deletedContainer.parentNode,'removeChild');
   });
 
   afterEach(function() {
@@ -120,7 +128,11 @@ describe('render page', function() {
   it('should display comment info', function() {
     displayComment();
     expect(commentContainer.appendChild).toHaveBeenCalled();
-    expect(commentContainer.firstChild).not.toEqual(null);
+  });
+
+  it('should test deleting of an element by Id', function() {
+    deleteElementById('delete');
+    expect(deletedContainer.parentNode.removeChild).toHaveBeenCalledWith(deletedContainer);
   });
 
 
