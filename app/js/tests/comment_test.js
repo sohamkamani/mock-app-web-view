@@ -21,11 +21,11 @@ describe('commentpage', function() {
 
     img = {
       assignEventToImage :function(args){
-      img.assignEventToImage('click', app.commentPage.containerListener,false);
+      img.assignEventToImage('click', app.commentPage._containerListener,false);
     }
   };
   spyOn(img, 'assignEventToImage');
-  img.assignEventToImage('click', app.commentPage.containerListener,false);
+  img.assignEventToImage('click', app.commentPage._containerListener,false);
 
    app.domInfo.getElementById = function(args){
       return comment;
@@ -33,11 +33,11 @@ describe('commentpage', function() {
 
     comment = {
       getCommentDetails :function(args){
-      comment.getCommentDetails('click', app.commentPage.add,false);
+      comment.getCommentDetails('click', app.commentPage._add,false);
     }
   };
   spyOn(comment, 'getCommentDetails');
-  comment.getCommentDetails('click', app.commentPage.add,false);
+  comment.getCommentDetails('click', app.commentPage._add,false);
 
   });
 
@@ -50,12 +50,12 @@ describe('commentpage', function() {
 
   it('should assign listener', function(){
     
-    expect(img.assignEventToImage).toHaveBeenCalledWith('click',app.commentPage.containerListener,false);
+    expect(img.assignEventToImage).toHaveBeenCalledWith('click',app.commentPage._containerListener,false);
   });
 
   it('should assign listener', function(){
     
-    expect(comment.getCommentDetails).toHaveBeenCalledWith('click',app.commentPage.add,false);
+    expect(comment.getCommentDetails).toHaveBeenCalledWith('click',app.commentPage._add,false);
   });
 
  
