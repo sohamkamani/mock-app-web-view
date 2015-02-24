@@ -1,4 +1,4 @@
-app.commentPage = (function() {
+app.commentPage = (function () {
   'use strict';
   var comment_detail = {
     author_name: 'apurva',
@@ -9,8 +9,6 @@ app.commentPage = (function() {
     xcord: -100,
     ycord: -100
   };
-
-  
 
 
   function getCoords(event) {
@@ -59,9 +57,6 @@ app.commentPage = (function() {
   }
 
 
-
-
-
   function _add() {
     var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];
     var image = _getImageId();
@@ -80,12 +75,9 @@ app.commentPage = (function() {
   }
 
 
-
-
   return {
     assignEventToImage: assignEventToImage,
     getCoords: getCoords,
-
     getCommentDetails: getCommentDetails
   };
 })();
