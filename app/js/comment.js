@@ -22,7 +22,7 @@ app.commentPage = (function() {
     return coords;
   }
 
-  function containerListener(e) {
+  function _containerListener(e) {
     var coords = getCoords(e);
     app.renderPage.deleteElementById('form-container');
     app.renderPage.addCommentBox(coords.xcord, coords.ycord);
@@ -30,11 +30,11 @@ app.commentPage = (function() {
 
   function assignEventToImage() {
     var image = app.domInfo.getFirstElementOfClass('image');
-    image.addEventListener('click', containerListener, false);
+    image.addEventListener('click', _containerListener, false);
   }
 
 
-  function getImageId() {
+  function _getImageId() {
     var img = app.domInfo.getFirstElementOfClass('image');
     var id = img.getAttribute('id');
     return {
@@ -42,7 +42,7 @@ app.commentPage = (function() {
     };
   }
 
-  function addCommentDetails() {
+  function _addCommentDetails() {
     var aname = app.domInfo.getById('name').value;
     var comment = app.domInfo.getById('comment').value;
     return {
@@ -55,17 +55,17 @@ app.commentPage = (function() {
   function getCommentDetails() {
 
     var commentList = app.domInfo.getById('addComment');
-    commentList.addEventListener('click', add, false);
+    commentList.addEventListener('click', _add, false);
   }
 
 
 
 
 
-  function add() {
+  function _add() {
     var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];
-    var image = getImageId();
-    var comment_detail = addCommentDetails();
+    var image = _getImageId();
+    var comment_detail = _addCommentDetails();
     var json = {};
     json.image_id = image.image_id;
     json.author_name = comment_detail.author_name;
