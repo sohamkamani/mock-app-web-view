@@ -1,4 +1,4 @@
-app.renderPage = (function() {
+app.renderPage = (function () {
 
   'use strict';
 
@@ -9,7 +9,7 @@ app.renderPage = (function() {
     }
     // imageContainer.style.height = app.infoCenter.getRelativeHeight();
     _renderImage(imageContainer, app.infoCenter.getImageUrl());
-    _.map(app.infoCenter.getHotspots(), function(hotspot) {
+    _.map(app.infoCenter.getHotspots(), function (hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
     app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
@@ -17,11 +17,8 @@ app.renderPage = (function() {
     app.domInfo.getById('home-button').addEventListener('click', _defaultLayout);
     app.domInfo.getById('expand-button').addEventListener('click', _fullScreenLayout);
     app.domInfo.getById('compress-button').addEventListener('click', _defaultLayout);
-    app.domInfo.getById('hotspot-button').addEventListener('click',_flashHotspots);
+    app.domInfo.getById('hotspot-button').addEventListener('click', _flashHotspots);
   }
-
-
-
 
 
   function addCommentBox(x, y) {
@@ -95,7 +92,6 @@ app.renderPage = (function() {
   }
 
 
-
   function _renderHotspot(imageContainer, hotspot) {
     var hotspotDiv = document.createElement('div');
     var faIcon = document.createElement('i');
@@ -116,10 +112,10 @@ app.renderPage = (function() {
     hotspotDiv.style.height = hotspot.h + '%';
     hotspotDiv.style.width = hotspot.w + '%';
     hotspotDiv.style.zIndex = '2';
-    
+
     hotspotDiv.classList.add('hotspot');
     hotspotDiv.appendChild(faIcon);
-    hotspotDiv.addEventListener('click', function() {
+    hotspotDiv.addEventListener('click', function () {
       location.href = 'index.html#' + hotspot.link;
     });
     imageContainer.appendChild(hotspotDiv);
@@ -137,22 +133,22 @@ app.renderPage = (function() {
       //checking if required keys are available
       if (comment.hasOwnProperty('author_name') && (comment.hasOwnProperty('comment_value')) && (comment.hasOwnProperty('time_stamp')) && (comment.image_id === current_image_id)) {
         var li = document.createElement('li'),
-          aname = document.createTextNode(comment.author_name),
+          aname = document.createElement('img'),
           timeSpan = document.createElement('span'),
           time = document.createTextNode(comment.time_stamp),
           faCloseIcon = document.createElement('i'),
           commentp = document.createElement('p'),
           commentvalue = document.createTextNode(comment.comment_value);
-
         li.setAttribute('id', comment._id.$oid);
         li.setAttribute('positionX', comment.position_x);
         li.setAttribute('positionY', comment.position_y);
+        aname.setAttribute('src', 'http://www.gravatar.com/avatar/838e261917d5ad8e5d1f65c336702365?s=30');
         faCloseIcon.classList.add('fa');
-        faCloseIcon.classList.add('fa-times');
+        faCloseIcon.classList.add('fa-trash-o');
         li.classList.add('column');
         li.appendChild(aname);
         li.appendChild(faCloseIcon);
-        li.appendChild(timeSpan);
+        //li.appendChild(timeSpan);
 
         timeSpan.appendChild(time);
 
@@ -284,21 +280,22 @@ app.renderPage = (function() {
     }
   }
 
-  function _flashHotspots (e) {
+  function _flashHotspots(e) {
     var hotspots = document.getElementsByClassName('hotspot');
-    _.map(hotspots,function  (hotspot) {
+    _.map(hotspots, function (hotspot) {
       hotspot.classList.add('hotspot-blink');
     });
-    e.target.addEventListener('click',_dontFlashHotspots);
-    e.target.removeEventListener('click',_flashHotspots);
+    e.target.addEventListener('click', _dontFlashHotspots);
+    e.target.removeEventListener('click', _flashHotspots);
   }
-  function _dontFlashHotspots (e) {
+
+  function _dontFlashHotspots(e) {
     var hotspots = document.getElementsByClassName('hotspot');
-    _.map(hotspots,function  (hotspot) {
+    _.map(hotspots, function (hotspot) {
       hotspot.classList.remove('hotspot-blink');
     });
-    e.target.removeEventListener('click',_dontFlashHotspots);
-    e.target.addEventListener('click',_flashHotspots);
+    e.target.removeEventListener('click', _dontFlashHotspots);
+    e.target.addEventListener('click', _flashHotspots);
   }
 
   function _fullScreenLayout(e) {
@@ -324,11 +321,11 @@ app.renderPage = (function() {
     app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
     app.domInfo.getById('info-button').removeEventListener('click', _hideInfoSection);
     var hotspots = document.getElementsByClassName('hotspot');
-    _.map(hotspots,function  (hotspot) {
+    _.map(hotspots, function (hotspot) {
       hotspot.classList.remove('hotspot-blink');
     });
-    app.domInfo.getById('hotspot-button').removeEventListener('click',_dontFlashHotspots);
-    app.domInfo.getById('hotspot-button').addEventListener('click',_flashHotspots);
+    app.domInfo.getById('hotspot-button').removeEventListener('click', _dontFlashHotspots);
+    app.domInfo.getById('hotspot-button').addEventListener('click', _flashHotspots);
   }
 
   return {
