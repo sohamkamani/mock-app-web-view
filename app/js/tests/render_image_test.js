@@ -23,17 +23,14 @@ describe('render page', function() {
       switch (id) {
         case 'image-container':
           return imageContainer;
-          break;
         case 'comments':
           return commentContainer;
-          break;
         case 'delete':
           return deletedContainer;
-          break;
         default:
           return document.createElement('div');
 
-      };
+      }
     };
 
     app.infoCenter.getImageUrl = function() {
@@ -46,15 +43,15 @@ describe('render page', function() {
 
     app.infoCenter.getCommentInfo = function() {
       return [{
-        "_id": {
-          "$oid": "54eacedfe4b01ec4150fa141"
+        '_id': {
+          '$oid': '54eacedfe4b01ec4150fa141'
         },
-        "image_id": "dummyId",
-        "author_name": "Mayanka",
-        "comment_value": "Super bad!!",
-        "position_x": 56,
-        "position_y": 16,
-        "time_stamp": "Mon Feb 23 2015 12:26:35 PM"
+        'image_id': 'dummyId',
+        'author_name': 'Mayanka',
+        'comment_value': 'Super bad!!',
+        'position_x': 56,
+        'position_y': 16,
+        'time_stamp': 'Mon Feb 23 2015 12:26:35 PM'
       }];
     };
 

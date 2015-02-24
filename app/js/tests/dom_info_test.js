@@ -13,14 +13,12 @@ describe('myFunction', function() {
       switch (id) {
         case '1234':
           return img;
-          break;
       }
     };
     document.getElementsByClassName = function(className) {
       switch (className) {
         case 'mayanka':
           return [div];
-          break;
       }
     };
   });
