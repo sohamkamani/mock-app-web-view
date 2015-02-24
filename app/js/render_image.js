@@ -233,7 +233,7 @@ app.renderPage = (function () {
 
   function hideHotSpots() {
     var img = app.domInfo.getFirstElementOfClass('image');
-    img.style.zIndex = '3';
+    //img.style.zIndex = '3';
   }
 
   function restoreHotSpots() {
