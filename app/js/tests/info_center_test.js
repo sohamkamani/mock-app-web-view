@@ -1,7 +1,8 @@
 describe('myFunction', function() {
     'use strict';
   var getCoordsInPercentage = app.infoCenter.getCoordsInPercentage;
-
+  var setJsonInfo = app.infoCenter.setJsonInfo;
+  var getRelativeHeight = app.infoCenter.getRelativeHeight;
   beforeEach(function() {
     app.domInfo.getById = function(args) {
       return {
@@ -11,12 +12,19 @@ describe('myFunction', function() {
         offsetWidth : 1
       };
     };
-  });
+   });
 
 
   it('should get coords', function() {
     expect(getCoordsInPercentage(20,20)).toEqual({xcord:1000,ycord:1000});
   });
 
-  //will insert additional tests here later
+   it('shoul set Json', function() {
+    var a =35;
+    expect(setJsonInfo(a)).toEqual(35);
+  });
+
+  
 });
+
+ 
