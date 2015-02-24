@@ -14,6 +14,7 @@ describe('commentpage', function() {
         ycord:10
       };
     };
+    
     app.domInfo.getFirstElementOfClass = function(args){
       return img;
     };
