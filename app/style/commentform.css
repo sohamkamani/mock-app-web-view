@@ -12,23 +12,17 @@ h1 {
     float: right;
 }
 
-input,textarea{
-  color:white;
-}
 
-input:focus , textarea:focus { 
-  color: white;
-}
 
 .body {
     position: absolute;
 }
 
-.form-container {
+.form-container{
     position: absolute;
     display: block;
     z-index: 5;
-    background: #222327; /* Old browsers */
+    background: none; /* Old browsers */
     /*background: -moz-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /!* FF3.6+ *!/*/
     /*background: -webkit-gradient(linear, left top, right top, color-stop(0%, #222327), color-stop(100%, #42404a), color-stop(100%, #42404a)); /!* Chrome,Safari4+ *!/*/
     /*background: -webkit-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /!* Chrome10+,Safari5.1+ *!/*/
@@ -37,36 +31,18 @@ input:focus , textarea:focus {
     /*background: linear-gradient(to right, #222327 0%, #42404a 100%, #42404a 100%); /!* W3C *!/*/
     /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222327', endColorstr='#42404a', GradientType=1); /!* IE6-9 *!/*/
     border: 1px solid none;
-    width: 200px;
+    width: 224px;
     /*margin-top: 2%;*/
     /*margin-left: 0.5%;*/
     /*-webkit-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);*/
     /*-moz-box-shadow: -7px 6px 21px -10px rgba(102, 102, 102, 1);*/
     /*box-shadow: 0px 0px 21px rgba(102, 102, 102, 1);*/
-    padding: 8px;
-    border-radius: 2px;
+    
+    
 
 }
 
-.form-container input[type="button"] {
-    /*cursor: pointer;*/
-    /*background: #222327; /!* Old browsers *!/*/
-    /*background: -moz-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /!* FF3.6+ *!/*/
-    /*background: -webkit-gradient(linear, left top, right top, color-stop(0%, #222327), color-stop(100%, #42404a), color-stop(100%, #42404a)); /!* Chrome,Safari4+ *!/*/
-    /*background: -webkit-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /!* Chrome10+,Safari5.1+ *!/*/
-    /*background: -o-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /!* Opera 11.10+ *!/*/
-    /*background: -ms-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /!* IE10+ *!/*/
-    /*background: linear-gradient(to right, #222327 0%, #42404a 100%, #42404a 100%); /!* W3C *!/*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222327', endColorstr='#42404a', GradientType=1);*/
-    color: black;
-    /*width: 30%;*/
-    /*float: right;*/
-    /*letter-spacing: 1px;*/
-    /*border: 1px solid none;*/
-    /*height: 28px;*/
-    /*border-radius: 3px;*/
 
-}
 
 .comments {
     height: 30%;
@@ -114,14 +90,7 @@ ul {
     animation: bounce 1s ease-out infinite;
 }
 
-.form-header {
-    padding: 10px 5px;
-    font-size: 15px;
-    font-weight: bolder;
-    color: white;
-    border-bottom: solid white 2px;
-    padding-bottom: 3px;
-}
+
 
 .close-button {
     float: right;
@@ -170,51 +139,69 @@ ul {
 }
 
 
+i.envelope-button , i.comment-box-button{
+    margin-right: 5px;
+    font-size: 0.6em;
+    color:rgb(106,67,0);
+}
 
-.name {
+i.comment-box-button{
+    vertical-align: top;
+    margin-top: 35px;
+}
 
-    width: 92%;
+
+.comments {
+    margin: 10px;
+}
+.form {
+    
+    font-family: "sans-serif";
+    padding: 20px 7px;
+    margin: 0px auto;
+    width: 200px;
+    height: 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+    
+    
+    background:
+        rgb(255,249,231);  
+    
+}
+
+.name{
+   width: 85%;
     padding: 3%;
-    margin-top: 3%;
+    margin-top: 0%;
     background: none;
+    border-left: 0px;
     border-right: 0px;
     border-top: 0px;
-    border-left: 0px;
-    border-bottom: white 1px dotted;
-
+    border-bottom: 1px solid rgb(106,67,0);
+    
 }
-
-.name:focus {
-    outline: 0 none;
-}
-
-.comment-area:focus {
-    outline: 0 none;
-}
-
-.comment-area {
-
-    width: 92%;
+.comment-area{
+    
+    width: 85%;
     padding: 3%;
-    margin-top: 2%;
+    margin-top: 6%;
 
     background: none;
+    border-left: 0px;
     border-right: 0px;
     border-top: 0px;
-    border-left: 0px;
-    border-bottom: white 1px dotted;
-
+    border-bottom: 1px solid rgb(106,67,0);
+    
 }
-
 ::-webkit-input-placeholder {
-    color: white;
+    color: black;
     font-family: 'Roboto';
     font-size: 13px;
 }
 
 :-moz-placeholder {
     /* Firefox 18- */
-    color: white;
+    color: black;
     font-family: 'Roboto';
     font-size: 13px;
 
@@ -222,7 +209,8 @@ ul {
 
 ::-moz-placeholder {
     /* Firefox 19+ */
-    color: white;
+    color: black;
+    
     font-family: 'Roboto';
     font-size: 13px;
 
@@ -234,7 +222,31 @@ ul {
     font-size: 13px;
 
 }
+ 
 
-.comments {
-    margin: 10px;
+.button{
+    margin-right:3%;
+    width: 50px;
+    color: white;
+    background-color:rgb(106,67,0);
+    border : none;
+    border-radius:2px;
+    float :right;
+    padding :2%;
+}
+.top{
+    width:215px;
+    height:2px;
+    background-color:rgb(106,67,0);
+    margin-top: 0px;
+    border: 5px solid rgb(106,67,0);
+    border-radius: 5px;
+}
+.comment-area:focus{
+    border-bottom: 3px solid rgb(106,67,0);
+    outline: 0px none;
+}
+.name:focus{
+    border-bottom: 3px solid rgb(106,67,0);
+    outline: 0px none;
 }
