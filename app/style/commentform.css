@@ -24,7 +24,7 @@ input:focus , textarea:focus {
     position: absolute;
 }
 
-#form-container {
+.form-container {
     position: absolute;
     display: block;
     z-index: 5;
@@ -48,7 +48,7 @@ input:focus , textarea:focus {
 
 }
 
-#form-container input[type="button"] {
+.form-container input[type="button"] {
     /*cursor: pointer;*/
     /*background: #222327; /!* Old browsers *!/*/
     /*background: -moz-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /!* FF3.6+ *!/*/
@@ -114,14 +114,16 @@ ul {
     animation: bounce 1s ease-out infinite;
 }
 
-#form-header {
+.form-header {
     padding: 10px 5px;
     font-size: 15px;
     font-weight: bolder;
     color: white;
+    border-bottom: solid white 2px;
+    padding-bottom: 3px;
 }
 
-#close-button {
+.close-button {
     float: right;
     color: white;
 }
@@ -167,12 +169,9 @@ ul {
     bottom: 0;
 }
 
-#form-header {
-    border-bottom: solid white 2px;
-    padding-bottom: 3px;
-}
 
-#name {
+
+.name {
 
     width: 92%;
     padding: 3%;
@@ -185,15 +184,15 @@ ul {
 
 }
 
-#name:focus {
+.name:focus {
     outline: 0 none;
 }
 
-#comment:focus {
+.comment-area:focus {
     outline: 0 none;
 }
 
-#comment {
+.comment-area {
 
     width: 92%;
     padding: 3%;
@@ -236,6 +235,6 @@ ul {
 
 }
 
-#comments {
+.comments {
     margin: 10px;
 }
