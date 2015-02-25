@@ -202,7 +202,7 @@ html, body {
     height: 0%;
     overflow: hidden;
     z-index: 6;
-    background: #FAFAAD;
+    background: rgb(255, 249, 231);
     color: rgba(106, 67, 0, 1);
 }
 
