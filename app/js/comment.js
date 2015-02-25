@@ -42,7 +42,7 @@ app.commentPage = (function () {
 
   function _addCommentDetails() {
     var aname = app.domInfo.getById('name').value;
-    var comment = app.domInfo.getById('comment').value;
+    var comment = app.domInfo.getById('comment-area').value;
     return {
       author_name: aname,
       comment_value: comment

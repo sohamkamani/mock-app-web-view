@@ -35,17 +35,23 @@ app.renderPage = (function() {
     faCloseIcon.classList.add('fa-times');
     //faCloseIcon.style.color = 'red';
     faCloseIcon.setAttribute('id', 'close-button');
+    faCloseIcon.classList.add('close-button');
+
     faCloseIcon.addEventListener('click', closeCommentBox);
     var authorName = document.createElement('input');
     var comment = document.createElement('textarea');
     var button = document.createElement('input');
     formContainer.setAttribute('id', 'form-container');
+    formContainer.setAttribute('class', 'form-container');
     header.setAttribute('id', 'form-header');
+    header.setAttribute('class', 'form-header');
     authorName.setAttribute('type', 'text');
     authorName.setAttribute('placeholder', 'Enter Name');
     authorName.setAttribute('id', 'name');
+    authorName.setAttribute('class', 'name');
     comment.setAttribute('placeholder', 'Enter Comment');
-    comment.setAttribute('id', 'comment');
+    comment.setAttribute('id', 'comment-area');
+    comment.setAttribute('class', 'comment-area');
     button.setAttribute('type', 'button');
     button.setAttribute('id', 'addComment');
     button.setAttribute('value', 'Post');
@@ -134,12 +140,12 @@ app.renderPage = (function() {
       //checking if required keys are available
       if (comment.hasOwnProperty('author_name') && (comment.hasOwnProperty('comment_value')) && (comment.hasOwnProperty('time_stamp')) && (comment.image_id === current_image_id)) {
         var li = document.createElement('li'),
-          aname = document.createElement('img'),
-          timeSpan = document.createElement('span'),
-          time = document.createTextNode(comment.time_stamp),
-          faCloseIcon = document.createElement('i'),
-          commentp = document.createElement('p'),
-          commentvalue = document.createTextNode(comment.comment_value);
+        aname = document.createElement('img'),
+        timeSpan = document.createElement('span'),
+        time = document.createTextNode(comment.time_stamp),
+        faCloseIcon = document.createElement('i'),
+        commentp = document.createElement('p'),
+        commentvalue = document.createTextNode(comment.comment_value);
         li.setAttribute('id', comment._id.$oid);
         li.setAttribute('positionX', comment.position_x);
         li.setAttribute('positionY', comment.position_y);
