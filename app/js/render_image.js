@@ -49,10 +49,15 @@ app.renderPage = (function() {
     faCommentIcon.setAttribute('id', 'comment-box-button');
     faCommentIcon.classList.add('comment-box-button');
 
+    var button = document.createElement('i');
+    button.classList.add('fa');
+    button.classList.add('fa-check-circle');
+    button.setAttribute('id', 'submit-box-button');
+    button.classList.add('submit-box-button');
+
     faCloseIcon.addEventListener('click', closeCommentBox);
     var authorName = document.createElement('input');
     var comment = document.createElement('textarea');
-    var button = document.createElement('input');
     formContainer.setAttribute('id', 'form-container');
     formContainer.setAttribute('class', 'form-container');
     top.setAttribute('id', 'top');
@@ -60,28 +65,22 @@ app.renderPage = (function() {
     form.setAttribute('id', 'form');
     form.setAttribute('class', 'form');
     authorName.setAttribute('type', 'text');
-    authorName.setAttribute('placeholder', 'Enter Name');
     authorName.setAttribute('id', 'name');
     authorName.setAttribute('class', 'name');
-    comment.setAttribute('placeholder', 'Enter Comment');
     comment.setAttribute('id', 'comment-area');
     comment.setAttribute('class', 'comment-area');
-    button.setAttribute('type', 'button');
     button.setAttribute('id', 'addComment');
-    button.setAttribute('value', 'Post');
     
-    // form.appendChild(faIcon);
-    
-    
-
-    formContainer.appendChild(top);
-    formContainer.appendChild(form);
     form.appendChild(faEnvelopeIcon);
     form.appendChild(authorName);
     form.appendChild(faCommentIcon);
     form.appendChild(comment);
     form.appendChild(faCloseIcon);
     form.appendChild(button);
+    top.appendChild(form);
+    formContainer.appendChild(top);
+    
+    
     if ((x < 80) && (y < 70)) {
       formContainer.style.top = y + '%';
       formContainer.style.left = x + '%';

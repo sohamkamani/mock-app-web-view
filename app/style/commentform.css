@@ -92,9 +92,14 @@ ul {
 
 
 
-.close-button {
+
+
+.close-button , .submit-box-button{
     float: right;
-    color: white;
+    color:rgb(106,67,0);
+    font-size: 1em;
+    margin-top: 5px;
+    margin-left:6px;
 }
 
 .column {
