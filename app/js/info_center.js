@@ -68,19 +68,21 @@ app.infoCenter = (function() {
   }
 
   function getImageSrcForAuthor(authorName) {
-    switch (authorName) {
-      case 'Suman':
-        return 'http://www.gravatar.com/avatar/838e261917d5ad8e5d1f65c336702365?s=30';
-      case 'Mayo':
-        return '../dummy_data/mayo.png';
-      case 'Soham':
-        return '../dummy_data/soham.png';
-      case 'Apurva':
-        return '../dummy_data/apurva.png';
-      default:
-        return '../dummy_data/anon.png';
+    // switch (authorName) {
+    //   case 'Suman':
+    //     return 'http://www.gravatar.com/avatar/838e261917d5ad8e5d1f65c336702365?s=30';
+    //   case 'Mayo':
+    //     return '../dummy_data/mayo.png';
+    //   case 'Soham':
+    //     return '../dummy_data/soham.png';
+    //   case 'Apurva':
+    //     return '../dummy_data/apurva.png';
+    //   default:
+    //     return '../dummy_data/anon.png';
 
-    }
+    // }
+    var md5Hash = authorName.toLowerCase().trim();
+    return 'http://www.gravatar.com/avatar/' + md5(md5Hash);
   }
 
   return {

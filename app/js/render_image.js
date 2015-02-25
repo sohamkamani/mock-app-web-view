@@ -65,10 +65,17 @@ app.renderPage = (function() {
     form.setAttribute('id', 'form');
     form.setAttribute('class', 'form');
     authorName.setAttribute('type', 'text');
+
+    authorName.setAttribute('placeholder', 'Enter Email');
+    if (sessionStorage.currentAuthor !== undefined) {
+      authorName.setAttribute('value', sessionStorage.currentAuthor);
+    }
+
     authorName.setAttribute('id', 'name');
     authorName.setAttribute('class', 'name');
     comment.setAttribute('id', 'comment-area');
     comment.setAttribute('class', 'comment-area');
+    comment.setAttribute('placeholder', 'Enter Comment');
     button.setAttribute('id', 'addComment');
     
     form.appendChild(faEnvelopeIcon);
@@ -159,28 +166,29 @@ app.renderPage = (function() {
       //checking if required keys are available
       if (comment.hasOwnProperty('author_name') && (comment.hasOwnProperty('comment_value')) && (comment.hasOwnProperty('time_stamp')) && (comment.image_id === current_image_id)) {
         var li = document.createElement('li'),
-        aname = document.createElement('img'),
-        timeSpan = document.createElement('span'),
-        time = document.createTextNode(comment.time_stamp),
-        faCloseIcon = document.createElement('i'),
-        commentp = document.createElement('p'),
-        commentvalue = document.createTextNode(comment.comment_value);
+          aname = document.createElement('img'),
+          email = document.createElement('div'),
+          emailValue = document.createTextNode(comment.author_name),
+          faCloseIcon = document.createElement('i'),
+          commentp = document.createElement('p'),
+          commentvalue = document.createTextNode(comment.comment_value);
         li.setAttribute('id', comment._id.$oid);
         li.setAttribute('positionX', comment.position_x);
         li.setAttribute('positionY', comment.position_y);
         aname.setAttribute('src', app.infoCenter.getImageSrcForAuthor(comment.author_name));
+        aname.addEventListener('click', displayEmail);
         aname.setAttribute('height', '33px');
         faCloseIcon.classList.add('fa');
         faCloseIcon.classList.add('fa-trash-o');
         li.classList.add('column');
-        li.appendChild(aname);
-        li.appendChild(faCloseIcon);
-        //li.appendChild(timeSpan);
-
-        timeSpan.appendChild(time);
-
         faCloseIcon.setAttribute('id', comment._id.$oid);
         faCloseIcon.addEventListener('click', deleteCommentListener);
+        email.style.display = 'none';
+        email.setAttribute('id', 'email');
+        li.appendChild(aname);
+        li.appendChild(faCloseIcon);
+        li.appendChild(email);
+        email.appendChild(emailValue);
         commentp.appendChild(commentvalue);
         li.appendChild(commentp);
         li.addEventListener('click', flashCommentLocation);
@@ -194,6 +202,21 @@ app.renderPage = (function() {
     } else {
       return failResponse;
     }
+  }
+
+  function displayEmail(e) {
+    var li = e.target.parentNode;
+    li.childNodes[2].style.display = 'block';
+    e.target.removeEventListener('click', displayEmail);
+    e.target.addEventListener('click', hideEmail);
+
+  }
+
+  function hideEmail(e) {
+    var li = e.target.parentNode;
+    li.childNodes[2].style.display = 'none';
+    e.target.addEventListener('click', displayEmail);
+    e.target.removeEventListener('click', hideEmail);
   }
 
   function deleteElementById(id) {
@@ -221,7 +244,7 @@ app.renderPage = (function() {
     faIcon.style.fontSize = '2em';
     faIcon.style.zIndex = '3';
     faIcon.style.position = 'absolute';
-    if (e.target.hasAttribute('positionX')) {
+    if (e.target.hasAttribute('positionX') && !(e.target.classList.contains('fa-trash-o'))) {
       faIcon.style.top = e.target.getAttribute('positiony') + '%';
       faIcon.style.left = e.target.getAttribute('positionx') + '%';
     } else {

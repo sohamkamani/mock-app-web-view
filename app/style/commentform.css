@@ -119,6 +119,8 @@ ul {
 .column p {
     margin: 0;
     padding-bottom: 10px;
+    width: 94%;
+    overflow: auto;
 }
 
 .column i.fa {
@@ -144,49 +146,55 @@ ul {
 }
 
 
+
 i.envelope-button , i.comment-box-button{
     margin-right: 5px;
     font-size: 0.6em;
-    color:rgb(106,67,0);
-}
+    color:rgb(106,67,0);}
 
-i.comment-box-button{
-    vertical-align: top;
-    margin-top: 35px;
-}
+    .column div {
+        font-weight: bolder;
+        font-size: 13px;
+        color: black;
+    }
+
+    i.comment-box-button{
+        vertical-align: top;
+        margin-top: 35px;
+    }
 
 
-.comments {
-    margin: 10px;
-}
-.form {
-    
-    font-family: "sans-serif";
-    padding: 20px 7px;
-    margin: 0px auto;
-    width: 200px;
-    height: 100px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-    
-    
-    background:
+    .comments {
+        margin: 10px;
+    }
+    .form {
+
+        font-family: "sans-serif";
+        padding: 10px 7px;
+        margin: 0px auto;
+        width: 200px;
+        height: 100px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+
+
+        background:
         rgb(255,249,231);  
-    
-}
 
-.name{
-   width: 85%;
-    padding: 3%;
-    margin-top: 0%;
-    background: none;
-    border-left: 0px;
-    border-right: 0px;
-    border-top: 0px;
-    border-bottom: 1px solid rgb(106,67,0);
-    
-}
-.comment-area{
-    
+    }
+
+    .name{
+     width: 85%;
+     padding: 3%;
+     margin-top: 0%;
+     background: none;
+     border-left: 0px;
+     border-right: 0px;
+     border-top: 0px;
+     border-bottom: 1px solid rgb(106,67,0);
+
+ }
+ .comment-area{
+
     width: 85%;
     padding: 3%;
     margin-top: 6%;
@@ -206,7 +214,7 @@ i.comment-box-button{
 
 :-moz-placeholder {
     /* Firefox 18- */
-    color: black;
+    color: rgb(136, 120, 75);
     font-family: 'Roboto';
     font-size: 13px;
 
@@ -214,7 +222,7 @@ i.comment-box-button{
 
 ::-moz-placeholder {
     /* Firefox 19+ */
-    color: black;
+    color: rgb(136, 120, 75);
     
     font-family: 'Roboto';
     font-size: 13px;
@@ -222,12 +230,12 @@ i.comment-box-button{
 }
 
 :-ms-input-placeholder {
-    color: white;
+    color: rgb(136, 120, 75);
     font-family: 'Roboto';
     font-size: 13px;
 
 }
- 
+
 
 .button{
     margin-right:3%;
