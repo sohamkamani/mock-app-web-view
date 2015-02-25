@@ -169,7 +169,11 @@ ul {
     bottom: 0;
 }
 
-
+.column div {
+    font-weight: bolder;
+    font-size: 13px;
+    color: black;
+}
 
 .name {
 
