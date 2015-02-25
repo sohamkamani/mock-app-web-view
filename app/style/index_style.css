@@ -254,6 +254,7 @@ ul {
 
 .hotspot-blink {
     box-shadow: 0 1px 13px;
+    border-radius: 10px;
     -webkit-animation: blink-hotspot 2s infinite;
     -moz-animation: blink-hotspot 2s infinite;
     animation: blink-hotspot 2s infinite;
