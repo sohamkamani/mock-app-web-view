@@ -24,47 +24,70 @@ app.renderPage = (function() {
 
   function addCommentBox(x, y) {
     var imageContainer = app.domInfo.getById('image-container');
+    
     var formContainer = document.createElement('div');
-    var header = document.createElement('div');
-    var faIcon = document.createElement('i');
-    faIcon.classList.add('fa');
-    faIcon.classList.add('fa-comments-o');
-    var headerContent = document.createTextNode('  Comment');
+    var top = document.createElement('div');
+    var form = document.createElement('div');
+    // var faIcon = document.createElement('i');
+    
+    
     var faCloseIcon = document.createElement('i');
     faCloseIcon.classList.add('fa');
     faCloseIcon.classList.add('fa-times');
-    //faCloseIcon.style.color = 'red';
     faCloseIcon.setAttribute('id', 'close-button');
     faCloseIcon.classList.add('close-button');
+
+    var faEnvelopeIcon = document.createElement('i');
+    faEnvelopeIcon.classList.add('fa');
+    faEnvelopeIcon.classList.add('fa-envelope');
+    faEnvelopeIcon.setAttribute('id', 'envelope-button');
+    faEnvelopeIcon.classList.add('envelope-button');
+
+    var faCommentIcon = document.createElement('i');
+    faCommentIcon.classList.add('fa');
+    faCommentIcon.classList.add('fa-comment');
+    faCommentIcon.setAttribute('id', 'comment-box-button');
+    faCommentIcon.classList.add('comment-box-button');
+
+    var button = document.createElement('i');
+    button.classList.add('fa');
+    button.classList.add('fa-check-circle');
+    button.setAttribute('id', 'submit-box-button');
+    button.classList.add('submit-box-button');
 
     faCloseIcon.addEventListener('click', closeCommentBox);
     var authorName = document.createElement('input');
     var comment = document.createElement('textarea');
-    var button = document.createElement('input');
     formContainer.setAttribute('id', 'form-container');
     formContainer.setAttribute('class', 'form-container');
-    header.setAttribute('id', 'form-header');
-    header.setAttribute('class', 'form-header');
+    top.setAttribute('id', 'top');
+    top.setAttribute('class', 'top');
+    form.setAttribute('id', 'form');
+    form.setAttribute('class', 'form');
     authorName.setAttribute('type', 'text');
-    authorName.setAttribute('placeholder', 'Enter Name');
+
+    authorName.setAttribute('placeholder', 'Enter Email');
     if (sessionStorage.currentAuthor !== undefined) {
       authorName.setAttribute('value', sessionStorage.currentAuthor);
     }
+
     authorName.setAttribute('id', 'name');
     authorName.setAttribute('class', 'name');
-    comment.setAttribute('placeholder', 'Enter Comment');
     comment.setAttribute('id', 'comment-area');
     comment.setAttribute('class', 'comment-area');
-    button.setAttribute('type', 'button');
+    comment.setAttribute('placeholder', 'Enter Comment');
     button.setAttribute('id', 'addComment');
-    button.setAttribute('value', 'Post');
-    formContainer.appendChild(header);
-    header.appendChild(faIcon);
-    header.appendChild(headerContent);
-    header.appendChild(faCloseIcon);
-    formContainer.appendChild(authorName);
-    formContainer.appendChild(comment);
-    formContainer.appendChild(button);
+    
+    form.appendChild(faEnvelopeIcon);
+    form.appendChild(authorName);
+    form.appendChild(faCommentIcon);
+    form.appendChild(comment);
+    form.appendChild(faCloseIcon);
+    form.appendChild(button);
+    top.appendChild(form);
+    formContainer.appendChild(top);
+    
+    
     if ((x < 80) && (y < 70)) {
       formContainer.style.top = y + '%';
       formContainer.style.left = x + '%';
