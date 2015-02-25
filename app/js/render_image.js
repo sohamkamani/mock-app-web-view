@@ -1,4 +1,4 @@
-app.renderPage = (function () {
+app.renderPage = (function() {
 
   'use strict';
 
@@ -9,7 +9,7 @@ app.renderPage = (function () {
     }
     // imageContainer.style.height = app.infoCenter.getRelativeHeight();
     _renderImage(imageContainer, app.infoCenter.getImageUrl());
-    _.map(app.infoCenter.getHotspots(), function (hotspot) {
+    _.map(app.infoCenter.getHotspots(), function(hotspot) {
       _renderHotspot(imageContainer, hotspot);
     });
     app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
@@ -116,7 +116,7 @@ app.renderPage = (function () {
 
     hotspotDiv.classList.add('hotspot');
     hotspotDiv.appendChild(faIcon);
-    hotspotDiv.addEventListener('click', function () {
+    hotspotDiv.addEventListener('click', function() {
       location.href = 'index.html#' + hotspot.link;
     });
     imageContainer.appendChild(hotspotDiv);
@@ -143,7 +143,8 @@ app.renderPage = (function () {
         li.setAttribute('id', comment._id.$oid);
         li.setAttribute('positionX', comment.position_x);
         li.setAttribute('positionY', comment.position_y);
-        aname.setAttribute('src', 'http://www.gravatar.com/avatar/838e261917d5ad8e5d1f65c336702365?s=30');
+        aname.setAttribute('src', app.infoCenter.getImageSrcForAuthor(comment.author_name));
+        aname.setAttribute('height', '33px');
         faCloseIcon.classList.add('fa');
         faCloseIcon.classList.add('fa-trash-o');
         li.classList.add('column');
@@ -283,7 +284,7 @@ app.renderPage = (function () {
 
   function _flashHotspots(e) {
     var hotspots = document.getElementsByClassName('hotspot');
-    _.map(hotspots, function (hotspot) {
+    _.map(hotspots, function(hotspot) {
       hotspot.classList.add('hotspot-blink');
     });
     e.target.addEventListener('click', _dontFlashHotspots);
@@ -292,7 +293,7 @@ app.renderPage = (function () {
 
   function _dontFlashHotspots(e) {
     var hotspots = document.getElementsByClassName('hotspot');
-    _.map(hotspots, function (hotspot) {
+    _.map(hotspots, function(hotspot) {
       hotspot.classList.remove('hotspot-blink');
     });
     e.target.removeEventListener('click', _dontFlashHotspots);
@@ -322,7 +323,7 @@ app.renderPage = (function () {
     app.domInfo.getById('info-button').addEventListener('click', _showInfoSection);
     app.domInfo.getById('info-button').removeEventListener('click', _hideInfoSection);
     var hotspots = document.getElementsByClassName('hotspot');
-    _.map(hotspots, function (hotspot) {
+    _.map(hotspots, function(hotspot) {
       hotspot.classList.remove('hotspot-blink');
     });
     app.domInfo.getById('hotspot-button').removeEventListener('click', _dontFlashHotspots);

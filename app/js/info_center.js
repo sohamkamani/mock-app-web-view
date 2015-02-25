@@ -26,7 +26,7 @@ app.infoCenter = (function() {
     } else {
       return JsonInfo.images[imgName];
     }
-    
+
   }
 
   function getImageUrl() {
@@ -37,34 +37,50 @@ app.infoCenter = (function() {
     return getImage().hotspots;
   }
 
-  function getRelativeHeight () {
+  function getRelativeHeight() {
     var w = getImage().dimensions.width;
     var h = getImage().dimensions.height;
 
-    return h*100/w + '%'; 
+    return h * 100 / w + '%';
   }
 
-  function getDateTime(){
+  function getDateTime() {
     var currentDate = new Date();
-    return currentDate.toDateString()+' ' + currentDate.toLocaleTimeString();
+    return currentDate.toDateString() + ' ' + currentDate.toLocaleTimeString();
   }
 
-  function getImageId(){
+  function getImageId() {
     return getImage().id;
   }
 
-  function getCoordsInPercentage (x,y) {
+  function getCoordsInPercentage(x, y) {
     var imageContainer = app.domInfo.getById('image-container');
     var offsetTop = imageContainer.offsetTop;
     var offsetLeft = imageContainer.offsetLeft;
     var offsetHeight = imageContainer.offsetHeight;
     var offsetWidth = imageContainer.offsetWidth;
-    var xPercentage = (x-offsetLeft) * 100 / offsetWidth ; 
-    var yPercentage = (y-offsetTop) * 100 / offsetHeight ; 
+    var xPercentage = (x - offsetLeft) * 100 / offsetWidth;
+    var yPercentage = (y - offsetTop) * 100 / offsetHeight;
     return {
-      xcord : xPercentage,
-      ycord : yPercentage
+      xcord: xPercentage,
+      ycord: yPercentage
     };
+  }
+
+  function getImageSrcForAuthor(authorName) {
+    switch (authorName) {
+      case 'Suman':
+        return 'http://www.gravatar.com/avatar/838e261917d5ad8e5d1f65c336702365?s=30';
+      case 'Mayo':
+        return '../dummy_data/mayo.png';
+      case 'Soham':
+        return '../dummy_data/soham.png';
+      case 'Apurva':
+        return '../dummy_data/apurva.png';
+      default:
+        return '../dummy_data/anon.png';
+
+    }
   }
 
   return {
@@ -73,11 +89,12 @@ app.infoCenter = (function() {
     getImage: getImage,
     getImageUrl: getImageUrl,
     getHotspots: getHotspots,
-    getRelativeHeight : getRelativeHeight,
-    getCommentInfo : getCommentInfo,
-    setCommentInfo : setCommentInfo,
-    getDateTime : getDateTime,
-    getImageId : getImageId,
-    getCoordsInPercentage : getCoordsInPercentage
+    getRelativeHeight: getRelativeHeight,
+    getCommentInfo: getCommentInfo,
+    setCommentInfo: setCommentInfo,
+    getDateTime: getDateTime,
+    getImageId: getImageId,
+    getCoordsInPercentage: getCoordsInPercentage,
+    getImageSrcForAuthor: getImageSrcForAuthor
   };
 })();
