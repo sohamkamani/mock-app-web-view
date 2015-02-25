@@ -146,6 +146,34 @@ i.comment-box-button {
   -moz-box-shadow: 14px 16px 24px -14px rgba(0, 0, 0, 1), inset 0px 18px 28px -14px rgba(184, 172, 92, 1);
   box-shadow: 14px 16px 24px -14px rgba(0, 0, 0, 1), inset 0px 18px 28px -14px rgba(184, 172, 92, 1);
   background: rgb(255, 249, 231);
+  -webkit-animation: come-down .64s;
+  -moz-animation: come-down .64s;
+  animation: come-down .64s;
+  overflow: hidden;
+}
+@-webkit-keyframes come-down {
+  from{
+    height: 0px;
+  }
+  to{
+    height: 130px;
+  }
+}
+@-moz-keyframes come-down {
+  from{
+    height: 0px;
+  }
+  to{
+    height: 130px;
+  }
+}
+@keyframes come-down {
+  from{
+    height: 0px;
+  }
+  to{
+    height: 130px;
+  }
 }
 .name {
   font-size: 13px;
@@ -170,7 +198,8 @@ i.comment-box-button {
   border-bottom: 1px solid rgb(106, 67, 0);
 }
 ::-webkit-input-placeholder {
-  color: black;
+  color: rgb(136, 120, 75);
+  ;
   font-family: 'Roboto';
   font-size: 13px;
 }
@@ -212,10 +241,8 @@ i.comment-box-button {
   border-radius: 5px;
 }
 .comment-area:focus {
-  border-bottom: 3px solid rgb(106, 67, 0);
   outline: 0px none;
 }
 .name:focus {
-  border-bottom: 2px solid rgb(106, 67, 0);
   outline: 0px none;
 }
