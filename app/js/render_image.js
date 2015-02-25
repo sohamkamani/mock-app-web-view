@@ -47,6 +47,9 @@ app.renderPage = (function() {
     header.setAttribute('class', 'form-header');
     authorName.setAttribute('type', 'text');
     authorName.setAttribute('placeholder', 'Enter Name');
+    if (sessionStorage.currentAuthor !== undefined) {
+      authorName.setAttribute('value', sessionStorage.currentAuthor);
+    }
     authorName.setAttribute('id', 'name');
     authorName.setAttribute('class', 'name');
     comment.setAttribute('placeholder', 'Enter Comment');
@@ -146,7 +149,6 @@ app.renderPage = (function() {
           faCloseIcon = document.createElement('i'),
           commentp = document.createElement('p'),
           commentvalue = document.createTextNode(comment.comment_value);
-
         li.setAttribute('id', comment._id.$oid);
         li.setAttribute('positionX', comment.position_x);
         li.setAttribute('positionY', comment.position_y);
@@ -187,7 +189,7 @@ app.renderPage = (function() {
 
   }
 
-  function hideEmail (e) {
+  function hideEmail(e) {
     var li = e.target.parentNode;
     li.childNodes[2].style.display = 'none';
     e.target.addEventListener('click', displayEmail);

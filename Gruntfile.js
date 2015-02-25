@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'app/js/**/*.js', 'test/**/*.js'],
+      files: ['Gruntfile.js', 'app/js/**/*.js', 'test/**/*.js','!app/js/md5.js'],
 
 
       options: {
