@@ -205,7 +205,7 @@ app.renderPage = (function() {
     faIcon.style.fontSize = '2em';
     faIcon.style.zIndex = '3';
     faIcon.style.position = 'absolute';
-    if (e.target.hasAttribute('positionX')) {
+    if (e.target.hasAttribute('positionX') && !(e.target.classList.contains('fa-trash-o'))) {
       faIcon.style.top = e.target.getAttribute('positiony') + '%';
       faIcon.style.left = e.target.getAttribute('positionx') + '%';
     } else {
