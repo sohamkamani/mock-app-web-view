@@ -252,6 +252,6 @@ i.comment-box-button{
     outline: 0px none;
 }
 .name:focus{
-    border-bottom: 3px solid rgb(106,67,0);
+    border-bottom: 2px solid rgb(106,67,0);
     outline: 0px none;
 }
