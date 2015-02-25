@@ -39,11 +39,19 @@ app.mongodb = (function() {
     return 'V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf';
   }
 
+  // function getProjectName (url) {
+  //   var getReq = url.split('?')[1].split('#')[0].split('=')[1];
+  // }
+
   function makeInsertFetchUrl() {
     var database = getDatabase();
     var collections = getCollection();
     var key = getApiKey();
     var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?apiKey=' + key;
+    // var projectName = location.href.split('?')[1].split('#')[0].split('=')[1];
+    // var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?q={name:"'+projectName+'"}&apiKey=' + key;
+    // https://api.mongolab.com/api/1/databases/hotspots/collections/hotspot_details?apiKey=V5I7Vu0FFEfKWmcURoXs4LbGRW_INYAf
+
     return url;
   }
 
@@ -51,7 +59,9 @@ app.mongodb = (function() {
     var database = 'hotspots';
     var collections = 'hotspot_details';
     var key = getApiKey();
-    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?apiKey=' + key;
+    var projectName = location.href.split('?')[1].split('#')[0].split('=')[1];
+    var url = 'https://api.mongolab.com/api/1/databases/' + database + '/collections/' + collections + '?q={name:"' + projectName + '"}&apiKey=' + key;
+
     return url;
   }
 
@@ -115,6 +125,6 @@ app.mongodb = (function() {
     fetch: fetch,
     insert: insert,
     remove: remove,
-    fetchJsonInfo:fetchJsonInfo
+    fetchJsonInfo: fetchJsonInfo
   };
 })();

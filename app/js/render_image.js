@@ -149,7 +149,7 @@ app.renderPage = (function() {
     hotspotDiv.classList.add('hotspot');
     hotspotDiv.appendChild(faIcon);
     hotspotDiv.addEventListener('click', function() {
-      location.href = 'index.html#' + hotspot.link;
+      location.hash = '#' + hotspot.link;
     });
     imageContainer.appendChild(hotspotDiv);
   }

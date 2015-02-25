@@ -146,9 +146,9 @@ i.comment-box-button {
   -moz-box-shadow: 14px 16px 24px -14px rgba(0, 0, 0, 1), inset 0px 18px 28px -14px rgba(184, 172, 92, 1);
   box-shadow: 14px 16px 24px -14px rgba(0, 0, 0, 1), inset 0px 18px 28px -14px rgba(184, 172, 92, 1);
   background: rgb(255, 249, 231);
-  -webkit-animation: come-down .64s;
-  -moz-animation: come-down .64s;
-  animation: come-down .64s;
+  -webkit-animation: come-down .x64s;
+  -moz-animation: come-down .x64s;
+  animation: come-down .x64s;
   overflow: hidden;
 }
 @-webkit-keyframes come-down {
