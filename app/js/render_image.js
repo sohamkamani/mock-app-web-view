@@ -18,6 +18,7 @@ app.renderPage = (function () {
     app.domInfo.getById('expand-button').addEventListener('click', _fullScreenLayout);
     app.domInfo.getById('compress-button').addEventListener('click', _defaultLayout);
     app.domInfo.getById('hotspot-button').addEventListener('click', _flashHotspots);
+    _defaultLayout(null);
   }
 
 
@@ -233,7 +234,7 @@ app.renderPage = (function () {
 
   function hideHotSpots() {
     var img = app.domInfo.getFirstElementOfClass('image');
-    //img.style.zIndex = '3';
+    img.style.zIndex = '3';
   }
 
   function restoreHotSpots() {

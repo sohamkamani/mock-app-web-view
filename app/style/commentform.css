@@ -12,6 +12,14 @@ h1 {
     float: right;
 }
 
+input,textarea{
+  color:white;
+}
+
+input:focus , textarea:focus { 
+  color: white;
+}
+
 .body {
     position: absolute;
 }
@@ -50,7 +58,7 @@ h1 {
     /*background: -ms-linear-gradient(left, #222327 0%, #42404a 100%, #42404a 100%); /!* IE10+ *!/*/
     /*background: linear-gradient(to right, #222327 0%, #42404a 100%, #42404a 100%); /!* W3C *!/*/
     /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222327', endColorstr='#42404a', GradientType=1);*/
-    /*color: white;*/
+    color: black;
     /*width: 30%;*/
     /*float: right;*/
     /*letter-spacing: 1px;*/
