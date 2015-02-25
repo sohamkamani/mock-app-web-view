@@ -64,6 +64,7 @@ app.commentPage = (function () {
     var json = {};
     json.image_id = image.image_id;
     json.author_name = comment_detail.author_name;
+    sessionStorage.currentAuthor = json.author_name;
     json.comment_value = comment_detail.comment_value;
     json.position_x = coords.xcord;
     json.position_y = coords.ycord;
