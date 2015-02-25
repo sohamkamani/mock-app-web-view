@@ -145,6 +145,8 @@ ul {
 .column p {
     margin: 0;
     padding-bottom: 10px;
+    width: 94%;
+    overflow: auto;
 }
 
 .column i.fa {
