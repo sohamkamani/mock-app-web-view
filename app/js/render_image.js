@@ -221,7 +221,7 @@ app.renderPage = (function() {
 
   function deleteElementById(id) {
     var element = app.domInfo.getById(id);
-    if (element !== null) {
+    if (element !== null && element.parentNode !== null) {
       element.parentNode.removeChild(element);
     }
   }

@@ -18,7 +18,7 @@
     <h1>Code coverage report for <span class="entity">js/comment.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">46.34% <small>(19 / 41)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">45.24% <small>(19 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -27,7 +27,7 @@
         Functions: <span class="metric">50% <small>(4 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">46.34% <small>(19 / 41)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">45.24% <small>(19 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -119,14 +119,7 @@
 82
 83
 84
-85
-86
-87
-88
-89
-90
-91
-92</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+85</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,8 +127,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,9 +178,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -201,12 +189,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -216,8 +203,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">app.commentPage = (function() {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">app.commentPage = (function () {
   'use strict';
   var comment_detail = {
     author_name: 'apurva',
@@ -228,8 +214,6 @@
     xcord: -100,
     ycord: -100
   };
-&nbsp;
-  
 &nbsp;
 &nbsp;
   function getCoords(event) {
@@ -263,7 +247,7 @@
 &nbsp;
 <span class="fstat-no" title="function not covered" >  function _addCommentDetails() {</span>
 <span class="cstat-no" title="statement not covered" >    var aname = app.domInfo.getById('name').value;</span>
-<span class="cstat-no" title="statement not covered" >    var comment = app.domInfo.getById('comment').value;</span>
+<span class="cstat-no" title="statement not covered" >    var comment = app.domInfo.getById('comment-area').value;</span>
 <span class="cstat-no" title="statement not covered" >    return {</span>
       author_name: aname,
       comment_value: comment
@@ -278,9 +262,6 @@
   }
 &nbsp;
 &nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
 <span class="fstat-no" title="function not covered" >  function _add() {</span>
 <span class="cstat-no" title="statement not covered" >    var field = ['image_id', 'author_name', 'comment_value', 'position_x', 'position_y', 'time_stamp'];</span>
 <span class="cstat-no" title="statement not covered" >    var image = _getImageId();</span>
@@ -288,6 +269,7 @@
 <span class="cstat-no" title="statement not covered" >    var json = {};</span>
 <span class="cstat-no" title="statement not covered" >    json.image_id = image.image_id;</span>
 <span class="cstat-no" title="statement not covered" >    json.author_name = comment_detail.author_name;</span>
+<span class="cstat-no" title="statement not covered" >    sessionStorage.currentAuthor = json.author_name;</span>
 <span class="cstat-no" title="statement not covered" >    json.comment_value = comment_detail.comment_value;</span>
 <span class="cstat-no" title="statement not covered" >    json.position_x = coords.xcord;</span>
 <span class="cstat-no" title="statement not covered" >    json.position_y = coords.ycord;</span>
@@ -299,12 +281,9 @@
   }
 &nbsp;
 &nbsp;
-&nbsp;
-&nbsp;
   return {
     assignEventToImage: assignEventToImage,
     getCoords: getCoords,
-&nbsp;
     getCommentDetails: getCommentDetails
   };
 })();
@@ -313,7 +292,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Feb 24 2015 12:07:07 GMT+0530 (IST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Feb 26 2015 15:12:20 GMT+0530 (IST)</div>
 </div>
 
 <script src="../prettify.js"></script>

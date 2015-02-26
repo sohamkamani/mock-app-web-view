@@ -18,16 +18,16 @@
     <h1>Code coverage report for <span class="entity">js/info_center.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">72.5% <small>(29 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">76.19% <small>(32 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">61.54% <small>(8 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">72.5% <small>(29 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">76.19% <small>(32 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -119,7 +119,25 @@
 82
 83
 84
-85</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -142,17 +160,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -161,6 +174,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -190,6 +207,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,14 +261,13 @@
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  function getImage() {</span>
-<span class="cstat-no" title="statement not covered" >    var imgName = location.hash;</span>
-    // imgName === "" ? (imgName = JsonInfo.default ): (imgName = imgName.split('#')[1]);
-<span class="cstat-no" title="statement not covered" >    if (imgName === '') {</span>
-<span class="cstat-no" title="statement not covered" >      imgName = JsonInfo.default;</span>
+<span class="cstat-no" title="statement not covered" >    var imgName = location.hash.split('#')[1];</span>
+<span class="cstat-no" title="statement not covered" >    if (JsonInfo.images[imgName] === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >      return JsonInfo.images[JsonInfo.default];</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      imgName = imgName.split('#')[1];</span>
+<span class="cstat-no" title="statement not covered" >      return JsonInfo.images[imgName];</span>
     }
-<span class="cstat-no" title="statement not covered" >    return JsonInfo.images[imgName];</span>
+&nbsp;
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  function getImageUrl() {</span>
@@ -243,34 +278,52 @@
 <span class="cstat-no" title="statement not covered" >    return getImage().hotspots;</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  function getRelativeHeight () {</span>
+<span class="fstat-no" title="function not covered" >  function getRelativeHeight() {</span>
 <span class="cstat-no" title="statement not covered" >    var w = getImage().dimensions.width;</span>
 <span class="cstat-no" title="statement not covered" >    var h = getImage().dimensions.height;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return h*100/w + '%'; </span>
+<span class="cstat-no" title="statement not covered" >    return h * 100 / w + '%';</span>
   }
 &nbsp;
-  function getDateTime(){
+  function getDateTime() {
     var currentDate = new Date();
-    return currentDate.toDateString()+' ' + currentDate.toLocaleTimeString();
+    return currentDate.toDateString() + ' ' + currentDate.toLocaleTimeString();
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  function getImageId(){</span>
+<span class="fstat-no" title="function not covered" >  function getImageId() {</span>
 <span class="cstat-no" title="statement not covered" >    return getImage().id;</span>
   }
 &nbsp;
-  function getCoordsInPercentage (x,y) {
+  function getCoordsInPercentage(x, y) {
     var imageContainer = app.domInfo.getById('image-container');
     var offsetTop = imageContainer.offsetTop;
     var offsetLeft = imageContainer.offsetLeft;
     var offsetHeight = imageContainer.offsetHeight;
     var offsetWidth = imageContainer.offsetWidth;
-    var xPercentage = (x-offsetLeft) * 100 / offsetWidth ; 
-    var yPercentage = (y-offsetTop) * 100 / offsetHeight ; 
+    var xPercentage = (x - offsetLeft) * 100 / offsetWidth;
+    var yPercentage = (y - offsetTop) * 100 / offsetHeight;
     return {
-      xcord : xPercentage,
-      ycord : yPercentage
+      xcord: xPercentage,
+      ycord: yPercentage
     };
+  }
+&nbsp;
+  function getImageSrcForAuthor(authorName) {
+    // switch (authorName) {
+    //   case 'Suman':
+    //     return 'http://www.gravatar.com/avatar/838e261917d5ad8e5d1f65c336702365?s=30';
+    //   case 'Mayo':
+    //     return '../dummy_data/mayo.png';
+    //   case 'Soham':
+    //     return '../dummy_data/soham.png';
+    //   case 'Apurva':
+    //     return '../dummy_data/apurva.png';
+    //   default:
+    //     return '../dummy_data/anon.png';
+&nbsp;
+    // }
+    var md5Hash = authorName.toLowerCase().trim();
+    return 'http://www.gravatar.com/avatar/' + md5(md5Hash);
   }
 &nbsp;
   return {
@@ -279,12 +332,13 @@
     getImage: getImage,
     getImageUrl: getImageUrl,
     getHotspots: getHotspots,
-    getRelativeHeight : getRelativeHeight,
-    getCommentInfo : getCommentInfo,
-    setCommentInfo : setCommentInfo,
-    getDateTime : getDateTime,
-    getImageId : getImageId,
-    getCoordsInPercentage : getCoordsInPercentage
+    getRelativeHeight: getRelativeHeight,
+    getCommentInfo: getCommentInfo,
+    setCommentInfo: setCommentInfo,
+    getDateTime: getDateTime,
+    getImageId: getImageId,
+    getCoordsInPercentage: getCoordsInPercentage,
+    getImageSrcForAuthor: getImageSrcForAuthor
   };
 })();
 &nbsp;</pre></td></tr>
@@ -292,7 +346,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Feb 24 2015 12:07:07 GMT+0530 (IST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Feb 26 2015 15:12:20 GMT+0530 (IST)</div>
 </div>
 
 <script src="../prettify.js"></script>
